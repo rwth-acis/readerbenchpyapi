@@ -1,5 +1,6 @@
 numpy<1.20
 scikit-learn
+nltk
 pandas
 absl-py
 beautifulsoup4

@@ -46,9 +46,9 @@ def gradient_boosting_regression(X, y):
 
 
 def compute_textual_indices(text):
-    model = get_default_model(Lang.RO)
+    model = get_default_model(Lang.EN)
     # model = create_vector_model(Lang.RO, VectorModelType.WORD2VEC, 'readme', 300, False)
-    doc = Document(Lang.RO, text)
+    doc = Document(Lang.EN, text)
     cna_graph = CnaGraph(docs=doc, models=[model])
     compute_indices(doc=doc, cna_graph=cna_graph)
 
