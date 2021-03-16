@@ -294,7 +294,7 @@ def automatic_feedback_pca(doc_indices, feedback_metrics):
     return feedback
 
 def automatic_feedback(doc_indices):
-    url = 'rb_api/feedback/feedback_rules.json'
+    url = 'rb_api/feedback/feedback_rules_de.json'
     feedback_metrics = get_feedback_metrics(url)
 
     return {

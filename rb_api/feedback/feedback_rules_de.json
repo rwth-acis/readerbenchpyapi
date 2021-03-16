@@ -1,0 +1,451 @@
+{
+    "document": [
+        {
+            "id": "AvgDocWdEntropy",
+            "name": "Vielfalt der Konzepte",
+            "min": 4.682572323,
+            "max": 5.112678814,
+            "feedbackMessagesLow": [
+              "Weltweit wird zu wenig Lexikon verwendet. Wir empfehlen die Einführung neuer Konzepte zur Abwechslung und zur Vermeidung von Monotonie."
+            ],
+            "feedbackMessagesHigh": [
+                "Der Aufsatz hat zu viel Vielfalt des verwendeten Lexikons. Wir empfehlen, die Anzahl der verwendeten einzigartigen Konzepte zu reduzieren."
+              ]
+        },
+        {
+            "id": "AvgWordWdLen",
+            "name": "Durchschnittliche Länge aller Wörter",
+            "min": 5.620840609,
+            "max": 7.081674433,
+            "feedbackMessagesLow": [
+              "Der Text erscheint in Bezug auf die durchschnittliche Länge der Wörter recht simpel. Wir empfehlen die Verwendung einer höheren Sprache."
+            ],
+            "feedbackMessagesHigh": [
+              "Der Text erscheint in Bezug auf die durchschnittliche Länge der Wörter viel zu kompliziert. Wir empfehlen die Verwendung einer vereinfachten Sprache, um das Lesen des Aufsatzes zu erleichtern"
+              ]
+        },
+        {
+            "id": "AvgDocAdjCoh_DOC",
+            "name": "Kohäsion zwischen Absätzen, basierend auf word2vec",
+            "min": 0.68723419,
+            "max": 1.00,
+            "feedbackMessagesLow": [
+              "Der Text weist insgesamt eine geringe Kohäsion zwischen den Absätzen auf. Wir empfehlen, eine Struktur zu erstellen, in der die Kohäsion zwischen benachbarten Absätzen maximiert wird."
+            ],
+            "feedbackMessagesHigh": [
+                "Der Text weist insgesamt einen hohen Zusammenhalt zwischen den Absätzen auf. Wir empfehlen, eine Struktur aufzubauen, in der die zwischen den benachbarten Absätzen behandelten Konzepte diversifiziert werden können."
+              ]
+        },
+        {
+            "id": "AvgBlockNoSent",
+            "name": "Durchschnittliche Anzahl von Sätzen pro Absatz",
+            "min": 3,
+            "max": 6,
+            "feedbackMessagesLow": [
+              "Die Absätze enthalten zu wenige Sätze. Wir empfehlen, zusätzliche Details einzugeben, um die zentrale Idee der Absätze hervorzuheben."
+            ],
+            "feedbackMessagesHigh": [
+                "Die Absätze enthalten zu viele Sätze. Wir empfehlen, entweder kurze Sätze zu vereinheitlichen oder Absätze in zwei oder mehr zusammenhängende Absätze zu unterteilen."
+              ]
+        },
+        {
+            "id": "AvgBlockNoWd",
+            "name": "Durchschnittliche Anzahl von Wörtern pro Absatz",
+            "min": 50,
+            "max": 150,
+            "feedbackMessagesLow": [
+              "Absätze enthalten zu wenige Wörter. Wir empfehlen eine breitere Beschreibung bestimmter Konzepte."
+            ],
+            "feedbackMessagesHigh": [
+                "Wir empfehlen, die Anzahl der Wörter in den Absätzen zu reduzieren. Versuchen Sie, Teile zu entfernen, die nicht zur Gesamtidee des Textes beitragen."
+              ]
+        },
+        {
+            "id": "AvgBlockPOSMain_noun",
+            "min": 0.00,
+            "max": 32.424,
+            "name": "Durchschnittliche Anzahl von Substantiven pro Absatz",
+            "feedbackMessagesLow": ["Absätze enthalten zu wenige Substantive. Wir empfehlen, die Anzahl zu erhöhen, um die Konsistenz zu erhöhen."
+            ],
+            "feedbackMessagesHigh": ["Die Absätze enthalten zu viele Substantive. Versuchen Sie, die Anzahl zu verringern, um die Fließfähigkeit der Absätze zu verbessern."
+              ]
+        },
+        {
+            "id": "AvgBlockPOSMain_verb",
+            "min": 0.00,
+            "max": 30.36,
+            "name": "Durchschnittliche Anzahl von Verben pro Absatz",
+            "feedbackMessagesLow": [
+              "Die Anzahl der Verben in diesem Text ist zu gering. Es wird empfohlen, ihre Häufigkeit zu erhöhen, um die Absätze besser zu verstehen."
+            ],
+            "feedbackMessagesHigh": [
+                "Die Anzahl der Verben in diesem Text ist zu groß. Es wird empfohlen, sie zu reduzieren, um die Absätze besser zu verstehen."
+                ]
+        },
+        {
+            "id": "AvgBlockPOSMain_adv",
+            "min": 0.00,
+            "max": 16.08,
+            "name": "Durchschnittliche Anzahl von Adverbien pro Absatz",
+            "feedbackMessagesLow": [
+              "Dieser Text enthält zu wenige Adverbien. Versuchen Sie, ihre Anzahl zu erhöhen, um die Absätze besser zu verstehen."
+            ],
+            "feedbackMessagesHigh": [
+              "Die Anzahl der Adverbien in diesem Text ist zu groß. Es wird empfohlen, sie zu reduzieren, um die Absätze zu vereinfachen."
+              ]
+        },
+        {
+            "id": "AvgBlockPOSMain_adj",
+            "min": 0.00,
+            "max": 17.22,
+            "name": "Die durchschnittliche Anzahl von Adjektiven pro Absatz",
+            "feedbackMessagesLow": [
+              "Dieser Text enthält zu wenige Adjektive. Es wird empfohlen, ihre Häufigkeit zu erhöhen, um die Absätze besser zu verstehen. "
+            ],
+            "feedbackMessagesHigh": [
+              "Die Anzahl der Adjektive in diesem Text ist zu groß. Versuchen Sie, die Anzahl zu verringern, um die Absätze besser zu verstehen."
+              ]
+        },
+        {
+            "id": "AvgSentNoWd",
+            "name": "Durchschnittliche Anzahl von Wörtern pro Satz",
+            "min": 5,
+            "max": 35,
+            "feedbackMessagesLow": [
+              "Die Sätze sind viel zu kurz, wir empfehlen Ideen zu entwickeln."
+            ],
+            "feedbackMessagesHigh": [
+              "Die Sätze enthalten zu viele Wörter. Ihre Segmentierung ist angegeben."
+            ]
+        },
+        {
+            "id": "AvgBlockIntraCoh_BLOCK",
+            "name": "Intra-Absatz-Zusammenhalt, basierend auf word2vec",
+            "min": 0.461116332,
+            "max": 1.0,
+            "feedbackMessagesLow": [
+              "Der Text weist eine geringe lokale Kohäsion zwischen den in den Absätzen enthaltenen Sätzen auf. Wir empfehlen die kursive und verknüpfte Darstellung der nachfolgenden Ideen in den Absätzen."
+            ],
+            "feedbackMessagesHigh": [
+                "Der Text hat einen zu hohen Zusammenhalt. Wir empfehlen, Konzepte und Ausdruck zu diversifizieren."
+                ]
+        },
+        {
+            "id": "AvgSentPOSMain_noun",
+            "name": "Durchschnittliche Anzahl von Substantiven pro Satz",
+            "min": 0.00,
+            "max": 7.5502,
+            "feedbackMessagesLow": [
+              "Die Anzahl der Substantive in den Sätzen ist zu gering. Versuchen Sie, ihre Anzahl zu reduzieren, um die Satzkompetenz zu verbessern."
+            ],
+            "feedbackMessagesHigh": [
+                "Die Anzahl der Substantive in den Sätzen ist zu hoch. Wir empfehlen, die Häufigkeit zu reduzieren, um den Text zu vereinfachen."
+              ]
+        },
+        {
+            "id": "AvgSentPOSMain_verb",
+            "name": "Durchschnittliche Anzahl von Verben pro Satz",
+            "min": 0.00,
+            "max": 7.09,
+            "feedbackMessagesLow": [
+                "Die Anzahl der Verben in den Sätzen ist zu gering. Wir empfehlen, die Häufigkeit zu erhöhen, um die Fließfähigkeit des Textes zu verbessern."
+            ],
+            "feedbackMessagesHigh": [
+                "Die Anzahl der Verben in den Sätzen ist zu hoch. Es wird empfohlen, die Anzahl zu reduzieren, um den Text zu vereinfachen."
+              ]
+        },
+        {
+            "id": "AvgSentPOSMain_adv",
+            "name": "Durchschnittliche Anzahl von Adverbien pro Satz",
+            "min": 0.00,
+            "max": 3.80,
+            "feedbackMessagesLow": [
+              "Die Anzahl der Adverbien in Sätzen ist zu gering. Wir empfehlen, die Häufigkeit zu erhöhen, um die Fließfähigkeit des Textes zu verbessern."
+            ],
+            "feedbackMessagesHigh": [
+              "Die Anzahl der Adverbien auf Satzebene ist zu hoch. Es wird empfohlen, die Anzahl zu reduzieren, um den Text zu vereinfachen."
+              ]
+        },
+        {
+            "id": "AvgSentPOSMain_adj",
+            "name": "Die durchschnittliche Anzahl von Adjektiven pro Satz",
+            "min": 0.00,
+            "max": 4.24,
+            "feedbackMessagesLow": [
+              "Die Anzahl der Adjektive auf Satzebene ist zu gering. Wir empfehlen, die Häufigkeit zu erhöhen, um die Fließfähigkeit des Textes zu verbessern."
+            ],
+            "feedbackMessagesHigh": [
+                "Die Anzahl der Adjektive auf Satzebene ist zu hoch. Es wird empfohlen, die Anzahl zu reduzieren, um den Text zu vereinfachen."
+              ]
+        },
+        {
+            "id": "AvgSentRepetitions",
+            "name": "Konzepte in Sätzen wiederholen",
+            "min": 0,
+            "max": 5,
+            "feedbackMessagesLow": [
+              "Der Text enthält einige neue Konzepte. Wir empfehlen Ihnen, Ihre Informationen zu diversifizieren."
+            ],
+            "feedbackMessagesHigh": [
+                "Der Text enthält zu viele Informationen. Wir empfehlen, die neu eingeführten Konzepte zu erklären und zu differenzieren."
+              ]
+        },
+        {
+            "id": "AvgSentNoPunct",
+            "name": "Die durchschnittliche Anzahl von Satzzeichen auf Satzebene",
+            "min": 1,
+            "max": 20,
+            "feedbackMessagesLow": [
+              "Die Sätze zeigen eine sehr kleine Anzahl von Satzzeichen. Wir empfehlen, die grammatikalische Korrektheit zu überprüfen."
+            ],
+            "feedbackMessagesHigh": [
+                "Die Sätze zeigen eine sehr hohe Anzahl von Satzzeichen. Wir empfehlen, die grammatikalische Korrektheit zu überprüfen."
+              ]
+        },
+        {
+            "id": "AvgBlockNoPunct",
+            "name": "Die durchschnittliche Anzahl von Satzzeichen auf Absatzebene",
+            "min": 5,
+            "max": 125,
+            "feedbackMessagesLow": [
+              "Die Absätze zeigen eine sehr kleine Anzahl von Satzzeichen. Wir empfehlen, die grammatikalische Korrektheit zu überprüfen oder mehrere kurze Sätze in einem Satz neu zu formulieren."
+            ],
+            "feedbackMessagesHigh": [
+                "Die Absätze zeigen eine sehr hohe Anzahl von Satzzeichen. Wir empfehlen, die grammatikalische Korrektheit zu überprüfen oder den Text neu zu formulieren, indem Sie lange Sätze brechen."
+              ]
+        },
+        {
+            "id": "AvgSentNoCommas",
+            "name": "Die durchschnittliche Anzahl von Kommas auf Satzebene",
+            "min": 0,
+            "max": 20,
+            "feedbackMessagesLow": [
+              "Die Sätze haben eine sehr kleine Anzahl von Kommas. Wir empfehlen, die grammatikalische Korrektheit zu überprüfen."
+            ],
+            "feedbackMessagesHigh": [
+                "Die Sätze haben eine sehr große Anzahl von Kommas. Wir empfehlen, die grammatikalische Korrektheit zu überprüfen."
+              ]
+        },
+        {
+            "id": "AvgBlockNoCommas",
+            "name": "Die durchschnittliche Anzahl von Kommas auf Absatzebene",
+            "min": 0,
+            "max": 90,
+            "feedbackMessagesLow": [
+              "Absätze haben eine sehr kleine Anzahl von Kommas. Wir empfehlen, die grammatikalische Korrektheit zu überprüfen."
+            ],
+            "feedbackMessagesHigh": [
+                "Die Absätze haben eine sehr große Anzahl von Kommas. Wir empfehlen, die grammatikalische Korrektheit zu überprüfen."
+              ]
+        }
+    ],
+    "pca": [
+        {
+            "id": "PC1",
+            "name": "Concepte",
+            "min": -4,
+            "max": 4,
+            "feedbackMessagesLow": [
+              "Der Text enthält Informationen zu einer kleinen Anzahl von Konzepten mit einfachen Worten. Es wird empfohlen, mit komplexeren Begriffen neu zu formulieren und die Informationen zu diversifizieren."
+            ],
+            "feedbackMessagesHigh": [
+              "Der Text enthält Informationen zu einer erhöhten Anzahl von Konzepten, wobei viele Wörter komplex sind. Es wird empfohlen, es mit einfacheren Begriffen neu zu formulieren und die Informationen zu reduzieren."
+            ]
+        },
+        {
+            "id": "PC2",
+            "name": "Entropie",
+            "min": -2.5,
+            "max": 2.5,
+            "feedbackMessagesLow": [
+              "Weltweit wird eine kleine Vielfalt von Lexikonen verwendet. Wir empfehlen die Einführung neuer Konzepte zur Abwechslung und zur Vermeidung von Monotonie."
+            ],
+            "feedbackMessagesHigh": [
+              "Der Aufsatz hat zu viel Vielfalt des verwendeten Lexikons. Wir empfehlen, die Anzahl der verwendeten einzigartigen Konzepte zu reduzieren."
+            ]
+        },
+        {
+            "id": "PC3",
+            "name": "Zusammenhalt/Kohäsion",
+            "min": -1,
+            "max": 1,
+            "feedbackMessagesLow": [
+              "Der Text weist insgesamt eine geringe Kohäsion zwischen den Absätzen auf. Wir empfehlen, eine Struktur zu erstellen, in der die semantische Verbindung zwischen benachbarten Absätzen maximiert wird."
+            ],
+            "feedbackMessagesHigh": [
+              "Der Text weist insgesamt einen hohen Zusammenhalt zwischen den Absätzen auf. Wir empfehlen, eine Struktur aufzubauen, in der die zwischen den benachbarten Absätzen behandelten Konzepte diversifiziert werden können."
+            ]
+        }
+    ],
+    "block": [
+				{
+					"id": "AvgBlockNoSent",
+					"type": "index",
+					"name": "Anzahl der Sätze",
+					"min": 0.892,
+					"max": 10.423,
+					"feedbackMessagesLow": [
+						"Der aktuelle Absatz enthält zu wenige Sätze. Wir empfehlen Ihnen, zusätzliche Details einzugeben, um die zentrale Idee des Absatzes hervorzuheben."
+					],
+					"feedbackMessagesHigh": [
+						"Der aktuelle Absatz enthält zu viele Sätze. Wir empfehlen, entweder kurze Sätze zu vereinheitlichen oder den Absatz in zwei oder mehr zusammenhängende Absätze zu unterteilen."
+					]
+				},
+				{
+					"id": "AvgBlockIntraCoh_BLOCK",
+					"type": "index",
+					"name": "Zusammenhalt/Kohäsion zwischen Sätzen",
+					"min": 0.25,
+					"max": 1.0451,
+					"feedbackMessagesLow": [
+						"Der Text weist eine geringe lokale Kohäsion zwischen den im Absatz enthaltenen Sätzen auf. Wir empfehlen die kursive und verwandte Darstellung der nachfolgenden Ideen im Absatz."
+					],
+					"feedbackMessagesHigh": []
+				},
+				{
+					"id": "AvgBlockNoWd",
+					"type": "index",
+					"name": "Die Anzahl der Wörter",
+					"min": 19.441,
+					"max": 282.565,
+					"feedbackMessagesLow": [
+						"Der angegebene Absatz ist viel zu kurz, wir empfehlen, Ideen zu entwickeln."
+					],
+					"feedbackMessagesHigh": [
+						"Der angegebene Absatz enthält zu viele Wörter. Die Segmentierung ist angegeben."
+					]
+				},
+				{
+					"id": "AvgBlockPOSMain_adv",
+					"type": "index",
+					"name": "Anzahl der Adverbien",
+					"min": 0,
+					"max": 13.046,
+					"feedbackMessagesLow": [
+						"Der angegebene Absatz enthält zu wenige Adverbien. Wir empfehlen eine ausführlichere Beschreibung der Aktionen."
+					],
+					"feedbackMessagesHigh": [
+						"Der angegebene Absatz enthält zu viele Adverbien. Wir empfehlen eine kürzere Beschreibung der Aktionen."
+					]
+				},
+				{
+					"id": "AvgBlockPOSMain_adj",
+					"type": "index",
+					"name": "Anzahl der Adjektive",
+					"min": 0.348,
+					"max": 18.367,
+					"feedbackMessagesLow": [
+						"Der angegebene Absatz enthält zu wenige Adjektive. Wir empfehlen eine ausführlichere Beschreibung der Objekte."
+					],
+					"feedbackMessagesHigh": [
+						"Der angegebene Absatz enthält zu viele Adjektive. Wir empfehlen eine kürzere Beschreibung der Objekte."
+					]
+				},
+				{
+					"id": "AvgBlockPOSMain_noun",
+					"type": "index",
+					"name": "Anzahl der Substantive",
+					"min": 6.406,
+					"max": 87.934,
+					"feedbackMessagesLow": [
+						"Der angegebene Absatz enthält zu wenige Substantive. Wir empfehlen eine Vergrößerung der vorliegenden Objekte."
+					],
+					"feedbackMessagesHigh": [
+						"Der angegebene Absatz enthält zu viele Substantive. Wir empfehlen eine Reduzierung der vorhandenen Objekte."
+					]
+				}
+			],
+    "sentence": [
+        {
+            "id": "AvgSentNoPunct",
+            "type": "index",
+            "name": "Anzahl der Satzzeichen",
+            "min": 1.839,
+            "max": 5,
+            "feedbackMessagesLow": [
+                "Die angegebene Phrase enthält zu wenige Satzzeichen."
+            ],
+            "feedbackMessagesHigh": [
+                "Die angegebene Phrase enthält zu viele Satzzeichen."
+            ]
+        },
+        {
+            "id": "AvgSentPOSMain_noun",
+            "type": "index",
+            "name": "Anzahl der Substantive",
+            "min": 5.024,
+            "max": 11.758,
+            "feedbackMessagesLow": [
+                "Die angegebene Phrase enthält zu wenige Substantive. Wir empfehlen eine Vergrößerung der vorliegenden Objekte."
+            ],
+            "feedbackMessagesHigh": [
+                "Die angegebene Phrase enthält zu viele Substantive. Wir empfehlen eine Reduzierung der vorhandenen Objekte."
+            ]
+        },
+        {
+            "id": "AvgSentPOSMain_adj",
+            "type": "index",
+            "name": "Anzahl der Adjektive",
+            "min": 0.694,
+            "max": 2.649,
+            "feedbackMessagesLow": [
+                "Der angegebene Satz enthält zu wenige Adjektive. Wir empfehlen eine ausführlichere Beschreibung der Objekte."
+            ],
+            "feedbackMessagesHigh": [
+                "Der angegebene Satz enthält zu viele Adjektive. Wir empfehlen eine kürzere Beschreibung der Objekte."
+            ]
+        },
+        {
+            "id": "AvgSentPOSMain_adv",
+            "type": "index",
+            "name": "Anzahl der Adverbien",
+            "min": 0.468,
+            "max": 1.697,
+            "feedbackMessagesLow": [
+                "Die angegebene Phrase enthält zu wenige Adverbien. Wir empfehlen eine ausführlichere Beschreibung der Aktionen."
+            ],
+            "feedbackMessagesHigh": [
+                "Die angegebene Phrase enthält zu viele Adverbien. Wir empfehlen eine kürzere Beschreibung der Aktionen."
+            ]
+        },
+        {
+            "id": "AvgSentPOSMain_verb",
+            "type": "index",
+            "name": "Anzahl der Verben",
+            "min": 1.989,
+            "max": 4.465,
+            "feedbackMessagesLow": [
+                "Der angegebene Satz enthält zu wenige Verben. Wir empfehlen die Verwendung mehrerer Aktionen."
+            ],
+            "feedbackMessagesHigh": [
+                "Der angegebene Satz enthält zu viele Verben. Wir empfehlen, weniger Aktionen zu verwenden."
+            ]
+        },
+        {
+            "id": "AvgSentNoCommas",
+            "type": "index",
+            "name": "Anzahl der Kommas",
+            "min": 0,
+            "max": 2.918,
+            "feedbackMessagesLow": [
+                "Die angegebene Phrase enthält zu wenige Kommas."
+            ],
+            "feedbackMessagesHigh": [
+                "Die angegebene Phrase enthält zu viele Kommas."
+            ]
+        },
+        {
+            "id": "AvgSentPOSMain_pron",
+            "type": "index",
+            "name": "Die Anzahl der Pronomen",
+            "min": 0.712,
+            "max": 2.152,
+            "feedbackMessagesLow": [
+                "Die angegebene Phrase enthält zu wenige Pronomen."
+            ],
+            "feedbackMessagesHigh": [
+                "Die angegebene Phrase enthält zu viele Pronomen."
+            ]
+        }
+    ]
+}
