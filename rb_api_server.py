@@ -20,7 +20,6 @@ from rb_api.cscl import cscl
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-
 @app.route("/api/v1/isalive")
 def hello():
     return "Alive"
@@ -168,4 +167,4 @@ def error(message: str) -> Response:
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=6006, debug=True)
+    app.run(host='0.0.0.0', port=6006 , debug=True)

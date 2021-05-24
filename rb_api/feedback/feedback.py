@@ -257,6 +257,7 @@ def get_feedback_metrics(url):
     return feedback_metrics
 
 
+
 def automatic_feedback_granularity(doc_indices, granularity, feedback_metrics):
     indices = {}
     feedback = []
@@ -267,12 +268,16 @@ def automatic_feedback_granularity(doc_indices, granularity, feedback_metrics):
         if indices[metric['id']] <= metric['min']:
             feedback.append({
                 'name': metric['name'],
-                'description': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
+                'description': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))],
+                'metric_id': metric['id'],
+                'metric': indices[metric['id']]
             })
         if indices[metric['id']] >= metric['max']:
             feedback.append({
                 'name': metric['name'],
-                'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))]
+                'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))],
+                'metric_id': metric['id'],
+                'metric': indices[metric['id']]
             })
     return feedback
 
@@ -284,12 +289,16 @@ def automatic_feedback_pca(doc_indices, feedback_metrics):
         if pca_indices[metric['id']] <= metric['min']:
             feedback.append({
                 'name': metric['name'],
-                'description': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
+                'description': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))],
+                'metric_id': metric['id'],
+                'metric': pca_indices[metric['id']]
             })
         if pca_indices[metric['id']] >= metric['max']:
             feedback.append({
                 'name': metric['name'],
-                'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))]
+                'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))],
+                'metric_id': metric['id'],
+                'metric': pca_indices[metric['id']]
             })
     return feedback
 

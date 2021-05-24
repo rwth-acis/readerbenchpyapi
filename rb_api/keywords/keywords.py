@@ -8,7 +8,7 @@ from rb.core.document import Document
 from rb.core.lang import Lang
 from rb.core.text_element import TextElement
 from rb.core.word import Word
-from rb.processings.keywords.keywords_extractor import extract_keywords
+from rb.processings.keywords.keywords_extractor import KeywordExtractor
 from rb.similarity.vector_model import (CorporaEnum, VectorModel,
                                         VectorModelType)
 from rb.similarity.vector_model_factory import VECTOR_MODELS, get_default_model
@@ -83,5 +83,6 @@ def keywordsPost():
     # textElement = Document(lang=lang, text=text, vector_model=vector_model)
     # print(textElement.keywords)
 
-    keywords = extract_keywords(text=text, lang=lang, threshold=threshold)
+    keywords_extractor = KeywordExtractor()
+    keywords = keywords_extractor.extract_keywords(text=text, lang=lang, threshold=threshold)
     return jsonify(transform_for_visualization(keywords=keywords, lang=lang))

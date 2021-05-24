@@ -7,8 +7,16 @@ RUN pip3 install nltk
 ADD requirements.txt /app/requirements.txt
 RUN pip3 install -r requirements.txt
 RUN pip3 install -U numpy==1.19
+RUN python3 -m spacy download de_core_news_lg
 RUN python3 -m spacy download en_core_web_lg
-RUN python3 -m spacy download ro_core_news_lg
+
+COPY . /src
+WORKDIR /src
+
+RUN chmod +x /src/docker-entrypoint.sh
+
+
+
+
 EXPOSE 6006
-ENTRYPOINT [ "python3" ]
-CMD [ "rb_api_server.py" ]
+ENTRYPOINT ["/src/docker-entrypoint.sh"]

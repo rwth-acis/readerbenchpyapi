@@ -3,14 +3,15 @@ from rb_api.json_serialize import JsonSerialize
 
 class TextualComplexityDataDTO(JsonSerialize):
 
-    def __init__(self, lang, texts, categoriesList, complexityIndices):
+    def __init__(self, lang, level, texts, categoriesList, complexityIndices):
         self.lang = lang
         self.texts = texts
         self.list = categoriesList
         self.complexityIndices = complexityIndices
+        self.level = level
 
     def __str__(self):
-        return "TextualComplexityData (lang=%s):\nCategories=%s\nIndices=%s" % (self.lang, self.list, self.complexityIndices)
+        return "TextualComplexityData (lang=%s, level='%s'):\nCategories=%s\nIndices=%s" % (self.lang, self.level, self.list, self.complexityIndices)
 
     def serialize(self):
         return json.dumps(self.__dict__)

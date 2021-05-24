@@ -17,28 +17,33 @@ container by pressing CTRL+C and restart it as a daemon with:
 To stop the container use:
     > docker-compose down
 
+To create an image use:
+    > docker  build  . -t rb_api
 
 ## API endpoints
 
 The server runs on the 6006 port. In order to see the list of available endpoints the "rb_api_server.py" file can
 be inspected.
 
-### Sentiment endpoint
-
-In order to access the sentiment endpoint a POST request has to be made to the following link
+In order to access an endpoint a POST request has to be made to the following link:
 (server_address is the link where the container runs, for example "localhost"):
-    server_address:6006/api/v1/sentiment
+server_address:6006/api/v1/servicename
 
+### Complexity endpoint
+
+
+
+### Similarity endpoint
 The body MUST be in a JSON format and contains three fields: text, lang and model.
     - text: the input text
-    - lang: the language of the text (for Romanian is "RO")
-    - model: the model to be used (for sentiment only the "base" model is available). This param is optional
+    - lang: the language of the text (for German is "DE")
+    - model: the model to be used (for German  the "WORD2VEC model is recommended). 
 
 An example of the JSON:
     {
         "text": "Iubesc acest produs. Îl folosesc în fiecare zi!",
-        "lang": "RO",
-        "model": "base"
+        "lang": "DE",
+        "model": "WORD2VEC"
     }
 
 The response is similar to the one presented below:

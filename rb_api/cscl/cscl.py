@@ -17,7 +17,7 @@ from rb.core.lang import Lang
 from rb.core.pos import POS
 from rb.core.text_element import TextElement
 from rb.processings.cscl.participant_evaluation import evaluate_interaction, evaluate_involvement, evaluate_textual_complexity, get_block_importance, perform_sna
-from rb.processings.keywords.keywords_extractor import extract_keywords
+from rb.processings.keywords.keywords_extractor import KeywordExtractor
 from rb.similarity.vector_model import (CorporaEnum, VectorModel,
                                         VectorModelType)
 from rb.similarity.vector_model_factory import (VECTOR_MODELS,
@@ -69,9 +69,10 @@ def csclPost():
     }
     # Begin Concept Map
     for vectorModel in vectorModels:
-        keywords = extract_keywords(text=conv.text, lang=lang, vector_model=vectorModel)
+        keywords_extractor = KeywordExtractor()
+        keywords = keywords_extractor.extract_keywords(text=conv.text, lang=lang, vector_model=vectorModel)
         conceptMap = {
-            "nodeList": [],
+            "nodeList": [], 
             "edgeList": [],
         }
         for score, word in keywords:

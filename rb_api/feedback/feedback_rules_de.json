@@ -180,7 +180,7 @@
         },
         {
             "id": "AvgSentRepetitions",
-            "name": "Konzepte in Sätzen wiederholen",
+            "name": "Wiederholung von Begriffen in Sätzen",
             "min": 0,
             "max": 5,
             "feedbackMessagesLow": [

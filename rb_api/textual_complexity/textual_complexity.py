@@ -14,6 +14,8 @@ from rb_api.dto.textual_complexity.complexity_index_dto import ComplexityIndexDT
 from rb_api.dto.textual_complexity.textual_complexity_data_dto import TextualComplexityDataDTO
 from rb_api.dto.textual_complexity.textual_complexity_response import TextualComplexityResponse
 from rb_api.dto.textual_complexity.complexity_indices_dto import ComplexityIndicesDTO
+import pandas as pd
+import pickle
 
 app = Flask(__name__)
 
@@ -46,6 +48,9 @@ def textualComplexityPost():
     elif lang is Lang.RU:
         vector_model = VECTOR_MODELS[lang][CorporaEnum.RNC_WIKIPEDIA][VectorModelType.WORD2VEC](
             name=CorporaEnum.RNC_WIKIPEDIA.value, lang=lang)
+    elif lang is Lang.DE:
+        vector_model = VECTOR_MODELS[lang][CorporaEnum.WIKI][VectorModelType.WORD2VEC](
+            name=CorporaEnum.WIKI.value, lang=lang)
 
     document = Document(lang=lang, text=text)
     cna_graph = CnaGraph(docs=document, models=[vector_model])
@@ -64,6 +69,16 @@ def textualComplexityPost():
         if categoryName not in complexityIndices:
             complexityIndices[categoryName] = []
         complexityIndices[categoryName].append(complexityIndexDTO)
+
+    data = {}
+    for key, v in document.indices.items():
+        data[repr(key)] = [v]
+
+    # load the model from disk
+    loaded_model = pickle.load(open("rb_api/textual_complexity/lsvc.sav", 'rb'))
+
+    item = pd.DataFrame.from_dict(data)
+    level = loaded_model.predict(item)[0]
 
     for paragraph_id, paragraph in enumerate(document.components):
         for key, value in paragraph.indices.items():
@@ -106,7 +121,7 @@ def textualComplexityPost():
     ]
     
     textualComplexityDataDTO = TextualComplexityDataDTO(
-        languageString, texts, categoriesList, complexityIndicesResponse)
+        languageString, level, texts, categoriesList, complexityIndicesResponse)
 
     textualComplexityResponse = TextualComplexityResponse(
         textualComplexityDataDTO, "", True)
