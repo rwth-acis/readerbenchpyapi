@@ -8,7 +8,6 @@ ADD requirements.txt /app/requirements.txt
 RUN pip3 install -r requirements.txt
 RUN pip3 install -U numpy==1.19
 RUN python3 -m spacy download de_core_news_lg
-RUN python3 -m spacy download en_core_web_lg
 
 COPY . /src
 WORKDIR /src

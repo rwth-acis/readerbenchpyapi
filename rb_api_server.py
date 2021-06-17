@@ -48,6 +48,37 @@ def textualComplexityOption():
 def textualComplexityPost():
     return textual_complexity.textualComplexityPost()
 
+@app.route("/api/v1/expert-complexity", methods=['OPTIONS'])
+def expertComplexityOption():
+    return generate_response(success())
+
+
+@app.route("/api/v1/expert-complexity", methods=['POST'])
+def expertComplexityPost():
+    params = json.loads(request.get_data())
+    text = params.get('text')
+    response= feedback.compute_indices_format(text)
+    print(response)
+    response = success(response)
+    return generate_response(response)
+
+
+@app.route("/api/v1/complexity-compare", methods=['OPTIONS'])
+def complexityCompareOption():
+    return generate_response(success())
+
+
+@app.route("/api/v1/complexity-compare", methods=['POST'])
+def complexityComparePost():
+    params = json.loads(request.get_data())
+    text = params.get('text')
+    expert_indices=  json.loads(json.dumps(params.get('expert')))
+    response = dict()
+    doc_indices = feedback.compute_textual_indices(text)
+    response['feedback'] = feedback.compare_feedback(expert_indices, doc_indices)
+    response = success(response)
+    return generate_response(response)
+
 
 @app.route("/api/v1/amoc", methods=['OPTIONS'])
 def amocOption():

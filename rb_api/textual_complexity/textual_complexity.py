@@ -130,3 +130,4 @@ def textualComplexityPost():
     # jsonString = json.dumps(textualComplexityResponse, default=TextualComplexityResponse.dumper, indent=2)
 
     return jsonString
+
