@@ -363,10 +363,10 @@
             "min": 1.839,
             "max": 5,
             "feedbackMessagesLow": [
-                "Die angegebene Phrase enthält zu wenige Satzzeichen."
+                "Der angegebene Satz enthält zu wenige Satzzeichen."
             ],
             "feedbackMessagesHigh": [
-                "Die angegebene Phrase enthält zu viele Satzzeichen."
+                "Der angegebene Satz enthält zu viele Satzzeichen."
             ]
         },
         {
@@ -376,10 +376,10 @@
             "min": 5.024,
             "max": 11.758,
             "feedbackMessagesLow": [
-                "Die angegebene Phrase enthält zu wenige Substantive. Wir empfehlen eine Vergrößerung der vorliegenden Objekte."
+                "Der angegebene Satz enthält zu wenige Substantive. Wir empfehlen eine Vergrößerung der vorliegenden Objekte."
             ],
             "feedbackMessagesHigh": [
-                "Die angegebene Phrase enthält zu viele Substantive. Wir empfehlen eine Reduzierung der vorhandenen Objekte."
+                "Der angegebene Satz enthält zu viele Substantive. Wir empfehlen eine Reduzierung der vorhandenen Objekte."
             ]
         },
         {
@@ -402,10 +402,10 @@
             "min": 0.468,
             "max": 1.697,
             "feedbackMessagesLow": [
-                "Die angegebene Phrase enthält zu wenige Adverbien. Wir empfehlen eine ausführlichere Beschreibung der Aktionen."
+                "Der angegebene Satz enthält zu wenige Adverbien. Wir empfehlen eine ausführlichere Beschreibung der Aktionen."
             ],
             "feedbackMessagesHigh": [
-                "Die angegebene Phrase enthält zu viele Adverbien. Wir empfehlen eine kürzere Beschreibung der Aktionen."
+                "Der angegebene Satz enthält zu viele Adverbien. Wir empfehlen eine kürzere Beschreibung der Aktionen."
             ]
         },
         {
@@ -428,10 +428,10 @@
             "min": 0,
             "max": 2.918,
             "feedbackMessagesLow": [
-                "Die angegebene Phrase enthält zu wenige Kommas."
+                "Der angegebene Satz enthält zu wenige Kommas."
             ],
             "feedbackMessagesHigh": [
-                "Die angegebene Phrase enthält zu viele Kommas."
+                "Der angegebene Satz enthält zu viele Kommas."
             ]
         },
         {
@@ -441,10 +441,10 @@
             "min": 0.712,
             "max": 2.152,
             "feedbackMessagesLow": [
-                "Die angegebene Phrase enthält zu wenige Pronomen."
+                "Der angegebene Satz enthält zu wenige Pronomen."
             ],
             "feedbackMessagesHigh": [
-                "Die angegebene Phrase enthält zu viele Pronomen."
+                "Der angegebene Satz enthält zu viele Pronomen."
             ]
         }
     ]

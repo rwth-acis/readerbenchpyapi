@@ -337,8 +337,6 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
 
     for metric in feedback_metrics[granularity]:
         if (metric['id'] in expert_indices) and metric['id'] in doc:
-            print("expert" + metric['id'] + str(expert_indices[metric['id']]))
-            print("doc" + metric['id'] + str(doc[metric['id']]))
             low = expert_indices[metric['id']] - doc[metric['id']]
             high = doc[metric['id']] - expert_indices[metric['id']]
             if low > 1:
@@ -348,7 +346,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'metric_id': metric['id'],
                     'metric': doc[metric['id']],
                     'expert_metric': expert_indices[metric['id']],
-                    'message': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))] + '\n Der Indexwert deines Textes: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
+                    'message': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))] + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
                 })
             elif high > 1:
                 feedback.append({
@@ -357,7 +355,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'metric_id': metric['id'],
                     'metric': doc[metric['id']],
                     'expert_metric': expert_indices[metric['id']],
-                    'message': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))] + '\n Der Indexwert deines Textes: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
+                    'message': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))] + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
                 })
             else:
                 feedback.append({
@@ -366,7 +364,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'metric_id': metric['id'],
                     'metric': doc[metric['id']],
                     'expert_metric': expert_indices[metric['id']],
-                    'message': "Das Attribut "+ metric['name'] + "von deinen Text hat der passender wert laut deer Musterlösung" + '\n Der Indexwert deines Textes: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
+                    'message': "Das Attribut mit dem Titel \" "+ metric['name'] + " \" von deinem Schreiben stimmt überein mit der Musterlösung" + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
                 })
     return feedback
 
@@ -394,13 +392,10 @@ def compute_indices_format(text):
             sentence.update({str(key): value})
         if "Word" in str(key):
             word.update({str(key): value})
-        if "Coh" in str(key):
-            coh.update({str(key): value})
         indices.update({"document": document})
         indices.update({"sentence": sentence})
         indices.update({"block": block})
         indices.update({"word": word})
-        indices.update({"cohesion": coh})
     return indices
 
 #def automatic_compare_pca( expert_indices, doc_indices, feedback_metrics):

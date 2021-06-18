@@ -23,6 +23,17 @@ app = Flask(__name__)
 def textualComplexityOption():
     return ""
 
+def predictLevel(indices):
+    data = {}
+    for key, v in indices.items():
+        data[repr(key)] = [v]
+
+    # load the model from disk
+    loaded_model = pickle.load(open("rb_api/textual_complexity/lsvc.sav", 'rb'))
+
+    item = pd.DataFrame.from_dict(data)
+    level = loaded_model.predict(item)[0]
+    return level
 
 def textualComplexityPost():
     params = json.loads(request.get_data())
