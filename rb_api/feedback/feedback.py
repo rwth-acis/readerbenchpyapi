@@ -364,7 +364,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'metric_id': metric['id'],
                     'metric': doc[metric['id']],
                     'expert_metric': expert_indices[metric['id']],
-                    'message': "Das Attribut mit dem Titel \" "+ metric['name'] + " \" von deinem Schreiben stimmt überein mit der Musterlösung" + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
+                    'message': "Das Attribut mit dem Titel \" "+ metric['name'] + " \" deines Schreibens stimmt überein mit der Musterlösung" + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
                 })
     return feedback
 
