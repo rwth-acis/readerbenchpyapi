@@ -50,7 +50,8 @@ def compute_textual_indices(text):
     lang = str_to_lang("de")
     #model =  VECTOR_MODELS[lang][CorporaEnum.WIKI][VectorModelType.WORD2VEC](
     #        name=CorporaEnum.WIKI.value, lang=Lang.DE)
-    model = create_vector_model(Lang.DE, VectorModelType.WORD2VEC, 'wiki', 300, False)
+    model = VECTOR_MODELS[lang][CorporaEnum.WIKI][VectorModelType.WORD2VEC](
+            name=CorporaEnum.WIKI.value, lang=lang)
     doc = Document(Lang.DE, text)
     cna_graph = CnaGraph(docs=doc, models=[model])
     compute_indices(doc=doc, cna_graph=cna_graph)
