@@ -12,12 +12,19 @@ from rb.similarity.vector_model_factory import VECTOR_MODELS
 from rb.cna.cna_graph import CnaGraph
 from rb.complexity.complexity_index import compute_indices
 from rb.core.document import Document
+from rb.similarity.vector_model import VectorModelType, CorporaEnum, VectorModel
+from rb.similarity.vector_model_factory import VECTOR_MODELS
 from rb.core.lang import Lang
-from rb.similarity.vector_model_factory import get_default_model, create_vector_model
 from sklearn.metrics import cohen_kappa_score, mean_squared_error
 from scipy.stats import zscore
 from rb.utils.utils import str_to_lang
-from rb.similarity.vector_model import VectorModelType, CorporaEnum, VectorModel
+
+
+from rb.core.text_element import TextElement
+from rb.complexity.index_category import IndexCategory
+
+import pandas as pd
+
 
 import numpy as np
 
@@ -48,12 +55,21 @@ def gradient_boosting_regression(X, y):
 
 def compute_textual_indices(text):
     lang = str_to_lang("de")
+<<<<<<< HEAD
+    model =  VECTOR_MODELS[lang][CorporaEnum.WIKI][VectorModelType.WORD2VEC](
+            name=CorporaEnum.WIKI.value, lang=Lang.DE)
+    
+
+    doc = Document(lang, text)
+    cna_graph = CnaGraph(docs=doc, models=[vector_model])
+=======
     #model =  VECTOR_MODELS[lang][CorporaEnum.WIKI][VectorModelType.WORD2VEC](
     #        name=CorporaEnum.WIKI.value, lang=Lang.DE)
     model = VECTOR_MODELS[lang][CorporaEnum.WIKI][VectorModelType.WORD2VEC](
             name=CorporaEnum.WIKI.value, lang=lang)
     doc = Document(Lang.DE, text)
     cna_graph = CnaGraph(docs=doc, models=[model])
+>>>>>>> parent of 4beca3d (added Model)
     compute_indices(doc=doc, cna_graph=cna_graph)
 
     block = []
@@ -371,9 +387,8 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
 
 def compute_indices_format(text):
     lang = str_to_lang("de")
-    #model =  VECTOR_MODELS[lang][CorporaEnum.WIKI][VectorModelType.WORD2VEC](
-    #        name=CorporaEnum.WIKI.value, lang=Lang.DE)
-    model = create_vector_model(Lang.DE, VectorModelType.WORD2VEC, 'wiki', 300, False)
+    model =  VECTOR_MODELS[lang][CorporaEnum.WIKI][VectorModelType.WORD2VEC](
+            name=CorporaEnum.WIKI.value, lang=Lang.DE)
     doc = Document(Lang.DE, text)
     cna_graph = CnaGraph(docs=doc, models=[model])
     compute_indices(doc=doc, cna_graph=cna_graph)
