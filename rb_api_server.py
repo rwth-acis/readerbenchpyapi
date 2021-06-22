@@ -72,9 +72,10 @@ def complexityCompareOption():
 def complexityComparePost():
     params = json.loads(request.get_data())
     text = params.get('text')
-    expert_indices=  json.loads(json.dumps(params.get('expert')))
+    expert=  params.get('expert') 
     response = dict()
     doc_indices = feedback.compute_textual_indices(text)
+    expert_indices = response= feedback.compute_indices_format(expert)
     level = textual_complexity.predictLevel(doc_indices['indices']['document'])
     response['feedback'] = feedback.compare_feedback(expert_indices, doc_indices)
     response['level'] = level
