@@ -401,7 +401,7 @@ def compute_indices_format_array(questions):
         compute_indices(doc=doc, cna_graph=cna_graph)
         doc_indices={}
         for key, value in doc.indices.items():
-            doc_indices[repr(key)] = [v]
+            doc_indices.update({str(key): value})
 
         doc = Document(Lang.DE, question['text'])
         cna_graph = CnaGraph(docs=doc, models=[model])
