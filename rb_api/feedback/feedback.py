@@ -347,7 +347,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
         if (metric['id'] in expert_indices) and metric['id'] in doc:
             low = expert_indices[metric['id']] - doc[metric['id']]
             high = doc[metric['id']] - expert_indices[metric['id']]
-            if low > 1:
+            if low > 3:
                 feedback.append({
                     'name': metric['name'],
                     'description': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))],
@@ -356,7 +356,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'expert_metric': expert_indices[metric['id']],
                     'message': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))] + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
                 })
-            elif high > 1:
+            if high > 3:
                 feedback.append({
                     'name': metric['name'],
                     'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))],
@@ -365,15 +365,15 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'expert_metric': expert_indices[metric['id']],
                     'message': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))] + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
                 })
-            else:
-                feedback.append({
-                    'name': metric['name'],
-                    'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))],
-                    'metric_id': metric['id'],
-                    'metric': doc[metric['id']],
-                    'expert_metric': expert_indices[metric['id']],
-                    'message': "es gibt nichts über den Index zu sagen, der durch den Namen" + metric['name'] + "beschrieben wird, weil er derselbe ist wie der der Korrektur " + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
-                })
+            #else:
+            #    feedback.append({
+            #        'name': metric['name'],
+            #        'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))],
+            #        'metric_id': metric['id'],
+            #        'metric': doc[metric['id']],
+            #        'expert_metric': expert_indices[metric['id']],
+            #        'message': "es gibt nichts über den Index zu sagen, der durch den Namen" + metric['name'] + "beschrieben wird, weil er derselbe ist wie der der Korrektur " + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
+            #    })
     return feedback
 
 def compute_indices_format(text):
@@ -405,32 +405,90 @@ def compute_indices_format(text):
         indices.update({"word": word})
     return indices
 
-#def automatic_compare_pca( expert_indices, doc_indices, feedback_metrics):
-#    expert_indices = {}
-#    doc_indices = {}
-#    feedback = []
-#    pca_expert_indices = compute_PCA_on_new_text(expert_indices)
-#    pca_doc_indices = compute_PCA_on_new_text(doc_indices)
-#    for metric in feedback_metrics['pca']:
-#        low = pca_expert_indices[metric['id']] - pca_doc_indices[metric['id']]
-#        high = pca_doc_indices[metric['id']] - pca_expert_indices[metric['id']]
-#        if low > 1:
-#            feedback.append({
-#                'name': metric['name'],
-#                'description': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))],
-#                'metric_id': metric['id'],
-#                'metric': pca_indices[metric['id']]
-#                'message': str(metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]) + '\n Dein Wert: ' + pca_doc_indices[metric['id']]+ ' \n Musterlösung '+  pca_expert_indices[metric['id']]
-#            })
-#        if high > 1:
-#            feedback.append({
-#                'name': metric['name'],
-#                'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))],
-#                'metric_id': metric['id'],
-#                'metric': pca_indices[metric['id']]
-#                'message': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))] + '\n Dein Wert: ' + pca_doc_indices[metric['id']]+ ' \n Musterlösung '+  pca_expert_indices[metric['id']]
-#           })
-#    return feedback
+def compute_indices_format_array(questions):
+    lang = str_to_lang("de")
+    model =  VECTOR_MODELS[lang][CorporaEnum.WIKI][VectorModelType.WORD2VEC](
+            name=CorporaEnum.WIKI.value, lang=Lang.DE)
+    result =[]
+    for question in questions:
+        doc = Document(Lang.DE, question['expert'])
+        cna_graph = CnaGraph(docs=doc, models=[model])
+        compute_indices(doc=doc, cna_graph=cna_graph)
+        doc_indices={}
+        document = {}
+        sentence = {}
+        block = {}
+        word = {}
+        coh = {}
+        for key, value in doc.indices.items():
+            if "Doc" in str(key):
+                document.update({str(key): value})
+            if "Block" in str(key):
+                block.update({str(key): value})
+            if "Sent" in str(key):
+                sentence.update({str(key): value})
+            if "Word" in str(key):
+                word.update({str(key): value})
+            expert.update({"document": document})
+            expert.update({"sentence": sentence})
+            expert.update({"block": block})
+            expert.update({"word": word})
+
+        doc = Document(Lang.DE, question['text'])
+        cna_graph = CnaGraph(docs=doc, models=[model])
+        compute_indices(doc=doc, cna_graph=cna_graph)
+
+        
+        block = []
+
+        for b in expert.get_blocks():
+            sent = []
+            for s in b.get_sentences():
+                sent.append(s.text)
+            block.append({'text': b.text, 'sentences': sent})
+
+        feedback_text = {
+            'doc': doc.text,
+            'blocks': block
+        }
+
+        sentences = [sent.indices for sent in doc.get_sentences()]
+        blocks = [block.indices for block in doc.get_blocks()]
+
+        doc_indices = {
+                'text': feedback_text,
+                'indices': {
+                    'document': expert.indices,
+                    'sentence': sentences,
+                    'block': blocks
+                }
+            }
+        level= predictLevel(doc_indices['indices']['document'])
+        result.append({'feedback':compare_feedback(expert,doc_indices), 'level':level})
+    
+    return result
+
+def format_indice():
+    indices={}
+    document = {}
+    sentence = {}
+    block = {}
+    word = {}
+    coh = {}
+    for key, value in doc.indices.items():
+        if "Doc" in str(key):
+            document.update({str(key): value})
+        if "Block" in str(key):
+            block.update({str(key): value})
+        if "Sent" in str(key):
+            sentence.update({str(key): value})
+        if "Word" in str(key):
+            word.update({str(key): value})
+        indices.update({"document": document})
+        indices.update({"sentence": sentence})
+        indices.update({"block": block})
+        indices.update({"word": word})
+    return indices
 
 if __name__ == '__main__':
     text = u'Povestea lui Harap-Alb este un basm cult de Ion Creangă, care reprezintă o sinteză de motive epice cu o circulaţie foarte largă. Respectând tiparul basmului, textul începe cu o formulă introductivă: Amu cică era odată, care avertizează cititorul asupra intrării într-o lume a poveştii. Spre deosebire de basmele populare, unde formula introductivă este compusă din trei termeni, unul care atestă o existenţă, (a fost odată), altul care o neagă (ca niciodată) şi, cel din urmă, format dintr-o serie de complemente circumstanţiale de timp care induc fantasticul, aici intrarea ex abrupto în text: era odată un craiu, care avea trei feciori… situează deocamdată textul la intersecţia dintre povestire şi basm. Structura textului corespunde basmului. Lipsa este marcată de scrisoarea lui Verde- împărat şi se concretizează în absenţa bărbatului, de aceea el îl roagă pe fratele lui să i-1 trimită pe cel mai bun dintre băieţi ca să rămână urmaş la tron. Următoarea etapă este căutarea eroului. în basm, ea se concretizează prin încercarea la care îşi supune craiul băieţii: se îmbracă în piele de urs şi iese în faţa lor de sub un pod. Conform structurii formale a basmului cel care reuşeşte să treacă proba este fiul cel mic; el trece proba din două motive: primul, se înscrie în etapele iniţierii cu ajutorul dat de Sfânta Duminecă, care îi spune să ia armele tatălui şi calul care va veni la tava cu jăratic; al doilea este de natură personală. El devine protagonistul acţiunii. Fiul cel mic este curajos. Podul reprezintă, în plan simbolic, limita lumii cunoscute – lumea împărăţiei craiului unde codul comportamental este bine cunoscut de fiul cel mic – şi punctul iniţial al unui spaţiu necunoscut. De aceea tatăl îi dă în acest loc primele indicaţii despre noua lume: să se ferească de omul spân şi de împăratul Roş şi îi dă piele de urs. Din acest moment debutează a doua etapă a basmului: înşelătoria. Pe drum, fiul cel mic al craiului se întâlneşte cu un om spân care îi cere să-1 ia în slujba lui. Băiatul refuză de două ori, dar a treia oară spânul reuşeşte să-1 înşele: ajunşi la o fântână, spânul intră şi se răcoreşte, apoi îl sfătuieşte pe băiat să facă acelaşi lucru. Fiul craiului, boboc tn felul său la trebi de aieste, se potriveşte Spânului, şi se bagă în fântână, fără să-l trăsnească prin minte ce i se poate întâmpla. Momentul este important pentru imaginea fiului de crai dinaintea încercărilor. Trăsătura vizată este naivitatea, trăsătură marcată direct de autor – fiind boboc la trebi din aiestea, Harap-Alb nu intuieşte că Spânul, antagonistul său, are intenţii ascunse. Naivitatea eroului e foarte importantă în evoluţia conflictului, întrucât textul urmăreşte tocmai maturizarea lui Harap-Alb. Naivitatea se înscrie în codul ritual al iniţierii prin care trece fiul craiului. Atitudinea empatică a naratorului este menită să sporească tensiunea dramatică şi să inducă un principiu etic.'

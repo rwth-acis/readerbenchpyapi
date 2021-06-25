@@ -82,6 +82,18 @@ def complexityComparePost():
     response = success(response)
     return generate_response(response)
 
+@app.route("/api/v1/complexity-multicompare", methods=['OPTIONS'])
+def complexitymultiCompareOption():
+    return generate_response(success())
+
+
+@app.route("/api/v1/complexity-multicompare", methods=['POST'])
+def complexitymultiComparePost():
+    params = json.loads(request.get_data())
+    response = feedback.compute_indices_format_array(params)
+    response = success(response)
+    return generate_response(response)
+
 
 @app.route("/api/v1/amoc", methods=['OPTIONS'])
 def amocOption():
