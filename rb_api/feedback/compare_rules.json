@@ -65,7 +65,7 @@
             "min": 0.00,
             "max": 32.424,
             "name": "Durchschnittliche Anzahl von Substantiven pro Absatz",
-            "feedbackMessagesLow": ["Absätze enthalten zu wenige Substantive. Wir empfehlen, die Anzahl zu erhöhen, um die Konsistenz zu erhöhen."
+            "feedbackMessagesLow": ["Die Absätze enthalten zu wenige Substantive. Wir empfehlen, die Anzahl zu erhöhen, um die Konsistenz zu erhöhen."
             ],
             "feedbackMessagesHigh": ["Die Absätze enthalten zu viele Substantive. Versuchen Sie, die Anzahl zu verringern, um die Fließfähigkeit der Absätze zu verbessern."
               ]

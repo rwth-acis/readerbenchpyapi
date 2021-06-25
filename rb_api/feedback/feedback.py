@@ -348,23 +348,23 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
         if (metric['id'] in expert_indices) and metric['id'] in doc:
             low = expert_indices[metric['id']] - doc[metric['id']]
             high = doc[metric['id']] - expert_indices[metric['id']]
-            if low > 0:
+            if low > 1:
                 feedback.append({
                     'name': metric['name'],
                     'description': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))],
                     'metric_id': metric['id'],
                     'metric': doc[metric['id']],
                     'expert_metric': expert_indices[metric['id']],
-                    'message': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))] + '\n Der Indexwert deines Schreibens: ' + str(round(doc[metric['id']]))+ ' \n Der Indexwert der Musterlösung: '+  str(round(expert_indices[metric['id']]))+'\n'
+                    'message': metric['name']+ ': '+ str(round(doc[metric['id']])) +' gegen' +str(round(expert_indices[metric['id']])) +' für die Musterlösung. Also ' + metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
                 })
-            if high > 0:
+            if high > 1:
                 feedback.append({
                     'name': metric['name'],
                     'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))],
                     'metric_id': metric['id'],
                     'metric': doc[metric['id']],
                     'expert_metric': expert_indices[metric['id']],
-                    'message': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))] + '\n Der Indexwert deines Schreibens: ' + str(round(doc[metric['id']]))+ ' \n Der Indexwert der Musterlösung: '+  str(round(expert_indices[metric['id']]))+'\n'
+                    'message': metric['name']+ ': '+ str(round(doc[metric['id']])) +' gegen' +str(round(expert_indices[metric['id']])) +' für die Musterlösung. Also ' + metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))]
                 })
             #else:
             #    feedback.append({
