@@ -332,7 +332,7 @@ def compare_feedback(expert_indices, doc_indices):
     feedback_metrics = get_feedback_metrics(url)
     return {
         'text': doc_indices['text'],
-        'document': automatic_compare_granularity(expert_indices['document'],doc_indices['indices']['document'], 'document', feedback_metrics),
+        'document': automatic_compare_granularity(expert_indices,doc_indices['indices']['document'], 'document', feedback_metrics),
         #'sentence': [automatic_compare_granularity(expert_indices['sentence'], ind, 'sentence', feedback_metrics) for ind in doc_indices['indices']['sentence']],
         #'block': [automatic_compare_granularity(expert_indices['block'], ind, 'block', feedback_metrics) for ind in doc_indices['indices']['block']]
     }
@@ -386,24 +386,8 @@ def compute_indices_format(text):
     compute_indices(doc=doc, cna_graph=cna_graph)
 
     indices={}
-    document = {}
-    sentence = {}
-    block = {}
-    word = {}
-    coh = {}
     for key, value in doc.indices.items():
-        if "Doc" in str(key):
-            document.update({str(key): value})
-        if "Block" in str(key):
-            block.update({str(key): value})
-        if "Sent" in str(key):
-            sentence.update({str(key): value})
-        if "Word" in str(key):
-            word.update({str(key): value})
-        indices.update({"document": document})
-        indices.update({"sentence": sentence})
-        indices.update({"block": block})
-        indices.update({"word": word})
+        data[repr(key)] = [value]
     return indices
 
 def compute_indices_format_array(questions):
@@ -416,24 +400,8 @@ def compute_indices_format_array(questions):
         cna_graph = CnaGraph(docs=doc, models=[model])
         compute_indices(doc=doc, cna_graph=cna_graph)
         doc_indices={}
-        document = {}
-        sentence = {}
-        block = {}
-        word = {}
-        coh = {}
         for key, value in doc.indices.items():
-            if "Doc" in str(key):
-                document.update({str(key): value})
-            if "Block" in str(key):
-                block.update({str(key): value})
-            if "Sent" in str(key):
-                sentence.update({str(key): value})
-            if "Word" in str(key):
-                word.update({str(key): value})
-            expert.update({"document": document})
-            expert.update({"sentence": sentence})
-            expert.update({"block": block})
-            expert.update({"word": word})
+            doc_indices[repr(key)] = [v]
 
         doc = Document(Lang.DE, question['text'])
         cna_graph = CnaGraph(docs=doc, models=[model])
