@@ -420,7 +420,6 @@ def compute_indices_format_array(questions):
             'doc': doc.text,
             'blocks': block
         }
-
         sentences = [sent.indices for sent in doc.get_sentences()]
         blocks = [block.indices for block in doc.get_blocks()]
 
