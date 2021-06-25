@@ -387,7 +387,7 @@ def compute_indices_format(text):
 
     indices={}
     for key, value in doc.indices.items():
-        indices[repr(key)] = [value]
+        indices.update({str(key): value})
     return indices
 
 def compute_indices_format_array(questions):
