@@ -347,7 +347,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
         if (metric['id'] in expert_indices) and metric['id'] in doc:
             low = expert_indices[metric['id']] - doc[metric['id']]
             high = doc[metric['id']] - expert_indices[metric['id']]
-            if low > 3:
+            if low > 5:
                 feedback.append({
                     'name': metric['name'],
                     'description': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))],
@@ -356,7 +356,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'expert_metric': expert_indices[metric['id']],
                     'message': metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))] + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
                 })
-            if high > 3:
+            if high > 5:
                 feedback.append({
                     'name': metric['name'],
                     'description': metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))],
