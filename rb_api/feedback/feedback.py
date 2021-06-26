@@ -355,7 +355,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'metric_id': metric['id'],
                     'metric': doc[metric['id']],
                     'expert_metric': expert_indices[metric['id']],
-                    'message': metric['name']+ ': '+ str(round(doc[metric['id']])) +' gegen ' +str(round(expert_indices[metric['id']])) +' für die Musterlösung. Also ' + metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
+                    'message': 'Deine' metric['name']+ ' ist '+ str(round(doc[metric['id']])) +' und der der Musterlösing ist, also ' +str(round(expert_indices[metric['id']])) +' für die Musterlösung. Also ' + metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
                 })
             if high > 1:
                 feedback.append({
@@ -364,7 +364,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'metric_id': metric['id'],
                     'metric': doc[metric['id']],
                     'expert_metric': expert_indices[metric['id']],
-                    'message': metric['name']+ ': '+ str(round(doc[metric['id']])) +' gegen' +str(round(expert_indices[metric['id']])) +' für die Musterlösung. Also ' + metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))]
+                    'message': 'Deine' metric['name']+ ' ist '+ str(round(doc[metric['id']])) +' und der der Musterlösing ist, also ' +str(round(expert_indices[metric['id']])) +' für die Musterlösung. Also ' + metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))]
                 })
             #else:
             #    feedback.append({
