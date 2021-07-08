@@ -131,6 +131,18 @@
                 ]
         },
         {
+            "id": "StartEndCoh",
+            "name": "Intra-Absatz-Zusammenhalt, basierend auf word2vec",
+            "min": 0.461116332,
+            "max": 1.0,
+            "feedbackMessagesLow": [
+              "Der Text weist eine geringe lokale Kohäsion zwischen den in den Absätzen enthaltenen Sätzen auf. Wir empfehlen die kursive und verknüpfte Darstellung der nachfolgenden Ideen in den Absätzen."
+            ],
+            "feedbackMessagesHigh": [
+                "Der Text hat einen zu hohen Zusammenhalt. Wir empfehlen, Konzepte und Ausdruck zu diversifizieren."
+                ]
+        }
+        {
             "id": "AvgSentPOSMain_noun",
             "name": "durchschnittliche Anzahl von Substantiven pro Satz",
             "min": 0.00,
