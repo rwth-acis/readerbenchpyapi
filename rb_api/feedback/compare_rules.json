@@ -141,7 +141,7 @@
             "feedbackMessagesHigh": [
                 "Der Text hat einen zu hohen Zusammenhalt. Wir empfehlen, Konzepte und Ausdruck zu diversifizieren."
                 ]
-        }
+        },
         {
             "id": "AvgSentPOSMain_noun",
             "name": "durchschnittliche Anzahl von Substantiven pro Satz",
