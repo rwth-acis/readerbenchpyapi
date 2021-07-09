@@ -14,7 +14,7 @@
         },
         {
             "id": "AvgWordWdLen",
-            "name": "durchschnittliche Länge aller Wörter",
+            "name": "Durchschnittliche Länge aller Wörter",
             "min": 5.620840609,
             "max": 7.081674433,
             "feedbackMessagesLow": [
@@ -50,7 +50,7 @@
         },
         {
             "id": "AvgBlockNoWd",
-            "name": "durchschnittliche Anzahl von Wörtern pro Absatz",
+            "name": "Durchschnittliche Anzahl von Wörtern pro Absatz",
             "min": 50,
             "max": 150,
             "feedbackMessagesLow": [
@@ -64,7 +64,7 @@
             "id": "AvgBlockPOSMain_noun",
             "min": 0.00,
             "max": 32.424,
-            "name": "durchschnittliche Anzahl von Substantiven pro Absatz",
+            "name": "Durchschnittliche Anzahl von Substantiven pro Absatz",
             "feedbackMessagesLow": ["Die Absätze enthalten zu wenige Substantive. Wir empfehlen, die Anzahl zu erhöhen, um die Konsistenz zu erhöhen."
             ],
             "feedbackMessagesHigh": ["Die Absätze enthalten zu viele Substantive. Versuchen Sie, die Anzahl zu verringern, um die Fließfähigkeit der Absätze zu verbessern."
@@ -74,7 +74,7 @@
             "id": "AvgBlockPOSMain_verb",
             "min": 0.00,
             "max": 30.36,
-            "name": "durchschnittliche Anzahl von Verben pro Absatz",
+            "name": "Durchschnittliche Anzahl von Verben pro Absatz",
             "feedbackMessagesLow": [
               "Die Anzahl der Verben in diesem Text ist zu gering. Es wird empfohlen, ihre Häufigkeit zu erhöhen, um die Absätze besser zu verstehen."
             ],
@@ -86,7 +86,7 @@
             "id": "AvgBlockPOSMain_adv",
             "min": 0.00,
             "max": 16.08,
-            "name": "durchschnittliche Anzahl von Adverbien pro Absatz",
+            "name": "Durchschnittliche Anzahl von Adverbien pro Absatz",
             "feedbackMessagesLow": [
               "Dieser Text enthält zu wenige Adverbien. Versuchen Sie, ihre Anzahl zu erhöhen, um die Absätze besser zu verstehen."
             ],
@@ -98,7 +98,7 @@
             "id": "AvgBlockPOSMain_adj",
             "min": 0.00,
             "max": 17.22,
-            "name": "durchschnittliche  Anzahl von Adjektiven pro Absatz",
+            "name": "Durchschnittliche  Anzahl von Adjektiven pro Absatz",
             "feedbackMessagesLow": [
               "Dieser Text enthält zu wenige Adjektive. Es wird empfohlen, ihre Häufigkeit zu erhöhen, um die Absätze besser zu verstehen. "
             ],
@@ -108,7 +108,7 @@
         },
         {
             "id": "AvgSentNoWd",
-            "name": "durchschnittliche Anzahl von Wörtern pro Satz",
+            "name": "Durchschnittliche Anzahl von Wörtern pro Satz",
             "min": 5,
             "max": 35,
             "feedbackMessagesLow": [
@@ -144,7 +144,7 @@
         },
         {
             "id": "AvgSentPOSMain_noun",
-            "name": "durchschnittliche Anzahl von Substantiven pro Satz",
+            "name": "Durchschnittliche Anzahl von Substantiven pro Satz",
             "min": 0.00,
             "max": 7.5502,
             "feedbackMessagesLow": [
@@ -156,7 +156,7 @@
         },
         {
             "id": "AvgSentPOSMain_verb",
-            "name": "durchschnittliche Anzahl von Verben pro Satz",
+            "name": "Durchschnittliche Anzahl von Verben pro Satz",
             "min": 0.00,
             "max": 7.09,
             "feedbackMessagesLow": [
@@ -168,7 +168,7 @@
         },
         {
             "id": "AvgSentPOSMain_adv",
-            "name": "durchschnittliche Anzahl von Adverbien pro Satz",
+            "name": "Durchschnittliche Anzahl von Adverbien pro Satz",
             "min": 0.00,
             "max": 3.80,
             "feedbackMessagesLow": [
@@ -180,7 +180,7 @@
         },
         {
             "id": "AvgSentPOSMain_adj",
-            "name": "durchschnittliche  Anzahl von Adjektiven pro Satz",
+            "name": "Durchschnittliche  Anzahl von Adjektiven pro Satz",
             "min": 0.00,
             "max": 4.24,
             "feedbackMessagesLow": [
@@ -204,7 +204,7 @@
         },
         {
             "id": "AvgSentNoPunct",
-            "name": "durchschnittliche  Anzahl von Satzzeichen auf Satzebene",
+            "name": "Durchschnittliche  Anzahl von Satzzeichen auf Satzebene",
             "min": 1,
             "max": 20,
             "feedbackMessagesLow": [
@@ -216,7 +216,7 @@
         },
         {
             "id": "AvgBlockNoPunct",
-            "name": "durchschnittliche  Anzahl von Satzzeichen auf Absatzebene",
+            "name": "Durchschnittliche  Anzahl von Satzzeichen auf Absatzebene",
             "min": 5,
             "max": 125,
             "feedbackMessagesLow": [
@@ -228,7 +228,7 @@
         },
         {
             "id": "AvgSentNoCommas",
-            "name": "durchschnittliche  Anzahl von Kommas auf Satzebene",
+            "name": "Durchschnittliche  Anzahl von Kommas auf Satzebene",
             "min": 0,
             "max": 20,
             "feedbackMessagesLow": [
@@ -240,7 +240,7 @@
         },
         {
             "id": "AvgBlockNoCommas",
-            "name": "durchschnittliche  Anzahl von Kommas auf Absatzebene",
+            "name": "Durchschnittliche  Anzahl von Kommas auf Absatzebene",
             "min": 0,
             "max": 90,
             "feedbackMessagesLow": [
