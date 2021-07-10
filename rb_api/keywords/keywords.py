@@ -83,6 +83,6 @@ def keywordsPost():
     # textElement = Document(lang=lang, text=text, vector_model=vector_model)
     # print(textElement.keywords)
 
-    keywords_extractor = KeywordExtractor()
-    keywords = keywords_extractor.extract_keywords(text=text, lang=lang, threshold=threshold)
+    
+    keywords = KeywordExtractor.extract_keywords(text=text, lang=lang, threshold=threshold)
     return jsonify(transform_for_visualization(keywords=keywords, lang=lang))
