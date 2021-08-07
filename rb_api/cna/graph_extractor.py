@@ -60,6 +60,7 @@ def compute_graph(texts: List[str], lang: Lang, models: List) -> str:
         for pair, types in edges.items()
     ]
     result["data"]["edges"] = edges
+    graph_draw(graph)
     return result
 
 def compute_graph_cscl(texts: List[str], lang: Lang, models: List, textLabels: List[str]) -> str:

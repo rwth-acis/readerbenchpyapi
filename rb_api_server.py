@@ -3,7 +3,7 @@ import os
 from rb_api.sentiment.sentiment_models import sentiment_post
 import uuid
 
-from flask import Flask, jsonify, request, Response
+from flask import Flask, jsonify, request, Response, send_file
 from flask_cors import CORS, cross_origin
 from rb.utils.utils import str_to_lang
 from werkzeug.utils import secure_filename
@@ -17,12 +17,22 @@ import rb_api.textual_complexity.textual_complexity as textual_complexity
 import rb_api.feedback.feedback as feedback
 from rb_api.cna.graph_extractor import compute_graph
 from rb_api.cscl import cscl
+
+import rb_api.pandoc_filters.converter as converter
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/api/v1/isalive")
 def hello():
     return "Alive"
+
+@app.route("/api/v1/getPdf")
+def getpdf():
+    filename = converter.convert_file()
+    
+    return send_file(filename, mimetype='application/pdf')
+        
 
 
 @app.route("/api/v1/keywords", methods=['OPTIONS'])

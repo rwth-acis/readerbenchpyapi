@@ -60,3 +60,6 @@ The prediction represents the sentiment score of the text that can be between [0
 Note: The requests might take a while in the beginning due to the requirements of downloading the models and loading them into memory.
 After the first call, the time should improve.
 Also note that having a GPU with CUDA can drastically improve performance rather than using only CPU.
+
+
+docker exec -it tester cat rb_api/pandoc_filters/template.md | pandoc -s -f gfm -t json | python rb_api/pandoc_filters/caps.py | pandoc -s -f json -o ex.pdf

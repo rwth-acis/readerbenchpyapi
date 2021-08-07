@@ -14,16 +14,25 @@ from rb.similarity.vector_model import (CorporaEnum, VectorModel,
 from rb.similarity.vector_model_factory import VECTOR_MODELS, get_default_model
 from rb.utils.utils import str_to_lang
 
+
+from rb_api.visualizer.graph import graph_draw
+from rb_api.visualizer.graph import hyponym_graph
+from nltk.corpus import wordnet as wn
+import matplotlib
+import networkx as nx
+
 app = Flask(__name__)
 
 
 def keywordsOption():
     return ""
 
-def transform_for_visualization(keywords: List[Tuple[int, Word]], lang: Lang) -> Dict:
+def transform_for_visualization(plotName, keywords: List[Tuple[int, Word]], lang: Lang) -> Dict:
 
     vector_model: VectorModel = get_default_model(lang)
     edge_list, node_list = [], []
+    
+    G = nx.Graph()
 
     for i, kw1 in enumerate(keywords):
         for j, kw2 in enumerate(keywords):
@@ -36,6 +45,8 @@ def transform_for_visualization(keywords: List[Tuple[int, Word]], lang: Lang) ->
                         "sourceUri": kw1[1],
                         "targetUri": kw2[1]
                     })
+                    print("Problem with ****************************************")
+                    G.add_weighted_edges(kw1[1], kw2[1], weight=max(sim, 0))
             except:
                 print("Problem with " + kw1[1] + " or " + kw2[1])
 
@@ -47,7 +58,10 @@ def transform_for_visualization(keywords: List[Tuple[int, Word]], lang: Lang) ->
             "active": True,
             "degree": str(max(0, float(kw[0])))
         })
-
+        G.add_node(kw[1],weight=max(0, float(kw[0])))
+    
+    nx.draw(G, with_labels = True)
+    matplotlib.pyplot.savefig('rb_api/pandoc_filters/figures/'+ plotName +'.png')
     return {
         "data": {
             "edgeList": edge_list,
@@ -67,6 +81,8 @@ def keywordsPost():
     languageString = params.get('language')
     lang = str_to_lang(languageString)
     threshold = params.get('threshold')
+    plotName = "wordnet"
+    #plotName = params.get('saveAs')
 
     # if lang is Lang.RO:
     #     vector_model = VECTOR_MODELS[lang][CorporaEnum.README][VectorModelType.WORD2VEC](
@@ -88,4 +104,4 @@ def keywordsPost():
 
     
     keywords = KeywordExtractor.extract_keywords(text=text, lang=lang)
-    return jsonify(transform_for_visualization(keywords=keywords, lang=lang))
+    return jsonify(transform_for_visualization(plotName, keywords=keywords, lang=lang))
