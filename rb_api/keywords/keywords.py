@@ -61,7 +61,7 @@ def transform_for_visualization(plotName, keywords: List[Tuple[int, Word]], lang
         G.add_node(kw[1],weight=max(0, float(kw[0])))
     
     nx.draw(G, with_labels = True)
-    matplotlib.pyplot.savefig('rb_api/pandoc_filters/figures/'+ plotName +'.png')
+    matplotlib.pyplot.savefig('rb_api/pandoc_filters/images/'+ plotName +'.png')
     return {
         "data": {
             "edgeList": edge_list,
