@@ -23,7 +23,7 @@ def caps(elem, doc):
         elem.text = subject
         return elem
 
-    if elem.text == "-graph1-:
+    if elem.text == "-graph1-":
         caption = "caption"
         src = 'rb_api/output/figures/04.png'
         imgPath  = 'rb_api/output/figures/04.png'
@@ -32,7 +32,7 @@ def caps(elem, doc):
         if not os.path.isfile(dest):
             return None
 
-        return Para(Image(alt, url=src, title=''))
+        return Image(alt, url=src, title='')
 
 
 def main(doc=None):

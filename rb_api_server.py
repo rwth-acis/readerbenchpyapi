@@ -27,9 +27,13 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 def hello():
     return "Alive"
 
-@app.route("/api/v1/getPdf")
+@app.route("/api/v1/getPdf", methods=['POST'])
 def getpdf():
-    filename = converter.convert_file()
+    params = json.loads(request.get_data())
+    topicName = params.get('topicName')
+    topicSize = params.get('topicSize')
+
+    filename = converter.convert_file(topicName, topicSize)
     
     return send_file(filename, mimetype='application/pdf')
         
@@ -82,12 +86,15 @@ def complexityCompareOption():
 def complexityComparePost():
     params = json.loads(request.get_data())
     text = params.get('text')
-    expert=  params.get('expert') 
+    expert=  params.get('expert')
+    #name of the Json file to save the Pdf
+    dataName=  params.get('topicName') 
+    StringName=  params.get('saveAs') 
     response = dict()
     doc_indices = feedback.compute_textual_indices(text)
     expert_indices = response= feedback.compute_indices_format(expert)
     level = textual_complexity.predictLevel(doc_indices['indices']['document'])
-    response['feedback'] = feedback.compare_feedback(expert_indices, doc_indices)
+    response['feedback'] = feedback.compare_feedback(expert_indices, doc_indices, dataName, StringName)
     response['level'] = level
     response = success(response)
     return generate_response(response)
@@ -145,7 +152,9 @@ def computeCnaGraphPost():
     languageString = params.get('lang')
     lang = str_to_lang(languageString)
     models = params.get('models')
-    return compute_graph(texts, lang, models)
+    dataName = params.get('saveAs')
+    JsonName = params.get('topicName')
+    return compute_graph(dataName, JsonName, texts, lang, models)
 
 
 @app.route('/api/v1/extract_text', methods=['POST'])

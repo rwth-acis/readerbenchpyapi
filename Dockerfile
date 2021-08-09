@@ -18,6 +18,7 @@ RUN pip3 install nltk
 RUN pip3 install panflute
 RUN pip3 install pypandoc
 RUN pip3 install pygraphviz
+RUN pip3 install PyPDF2
 RUN python3 -m spacy download de_core_news_lg
 RUN pytest --pyargs networkx
 COPY . /src

@@ -14,12 +14,10 @@ from rb.similarity.vector_model import (CorporaEnum, VectorModel,
 from rb.similarity.vector_model_factory import VECTOR_MODELS, get_default_model
 from rb.utils.utils import str_to_lang
 
-
-from rb_api.visualizer.graph import graph_draw
-from rb_api.visualizer.graph import hyponym_graph
 from nltk.corpus import wordnet as wn
 import matplotlib
 import networkx as nx
+import os
 
 app = Flask(__name__)
 
@@ -27,13 +25,15 @@ app = Flask(__name__)
 def keywordsOption():
     return ""
 
-def transform_for_visualization(plotName, keywords: List[Tuple[int, Word]], lang: Lang) -> Dict:
+def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tuple[int, Word]], lang: Lang) -> Dict:
 
     vector_model: VectorModel = get_default_model(lang)
     edge_list, node_list = [], []
     
     G = nx.Graph()
-
+    edge_labels={}
+    
+        
     for i, kw1 in enumerate(keywords):
         for j, kw2 in enumerate(keywords):
             try:
@@ -46,7 +46,9 @@ def transform_for_visualization(plotName, keywords: List[Tuple[int, Word]], lang
                         "targetUri": kw2[1]
                     })
                     print("Problem with ****************************************")
-                    G.add_weighted_edges(kw1[1], kw2[1], weight=max(sim, 0))
+                    #G.add_edge(kw1[1], kw2[1], weight=max(sim, 0))
+                    G.add_edge(kw1[1], kw2[1])
+                    edge_labels[(kw1[1], kw2[1])]= round(max(sim, 0), 2)
             except:
                 print("Problem with " + kw1[1] + " or " + kw2[1])
 
@@ -58,10 +60,17 @@ def transform_for_visualization(plotName, keywords: List[Tuple[int, Word]], lang
             "active": True,
             "degree": str(max(0, float(kw[0])))
         })
-        G.add_node(kw[1],weight=max(0, float(kw[0])))
+        #G.add_node(kw[1],weight=max(0, float(kw[0])))
+        
+    pos = nx.nx_agraph.graphviz_layout(G, prog="twopi")
     
-    nx.draw(G, with_labels = True)
-    matplotlib.pyplot.savefig('rb_api/pandoc_filters/images/'+ plotName +'.png')
+    nx.draw(G, with_labels = True, node_size=1500, node_color="skyblue", pos=pos)
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+    matplotlib.pyplot.savefig('rb_api/pandoc_filters/images/'+ dataName +'.png', dpi=199)
+    data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
+    data.update({textType : 'rb_api/pandoc_filters/images/'+dataName+'.png'})
+    with open('rb_api/pandoc_filters'+JsonName+'.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
     return {
         "data": {
             "edgeList": edge_list,
@@ -71,6 +80,14 @@ def transform_for_visualization(plotName, keywords: List[Tuple[int, Word]], lang
         "errorMsg": ""
     }
 
+def getJson(url):
+    varData= {}
+    if os.path.isfile(url):
+        # checks if file exists
+        print ("File exists ")
+        with open(url, encoding='UTF-8') as f:
+            varData = json.load(f)
+    return varData
 
 def keywordsPost():
     """TODO, not working"""
@@ -101,7 +118,8 @@ def keywordsPost():
 
     # textElement = Document(lang=lang, text=text, vector_model=vector_model)
     # print(textElement.keywords)
-
-    
+    dataName =  params.get('saveAs') 
+    textType = params.get('type')
+    JsonName = params.get('topicName')
     keywords = KeywordExtractor.extract_keywords(text=text, lang=lang)
-    return jsonify(transform_for_visualization(plotName, keywords=keywords, lang=lang))
+    return jsonify(transform_for_visualization(dataName, JsonName, textType, keywords=keywords, lang=lang))

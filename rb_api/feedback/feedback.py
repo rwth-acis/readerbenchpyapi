@@ -30,6 +30,9 @@ import pandas as pd
 import numpy as np
 
 import pickle
+import sys
+import json
+import os
 
 
 def prepare_dataset(filename):
@@ -327,23 +330,23 @@ def automatic_feedback(doc_indices):
     }
 
 
-def compare_feedback(expert_indices, doc_indices):
+def compare_feedback(expert_indices, doc_indices, dataName, StringName):
     url = 'rb_api/feedback/compare_rules.json'
     feedback_metrics = get_feedback_metrics(url)
     return {
         'text': doc_indices['text'],
-        'document': automatic_compare_granularity(expert_indices,doc_indices['indices']['document'], 'document', feedback_metrics),
+        'document': automatic_compare_granularity(expert_indices,doc_indices['indices']['document'], 'document', feedback_metrics, dataName, StringName),
         #'sentence': [automatic_compare_granularity(expert_indices['sentence'], ind, 'sentence', feedback_metrics) for ind in doc_indices['indices']['sentence']],
         #'block': [automatic_compare_granularity(expert_indices['block'], ind, 'block', feedback_metrics) for ind in doc_indices['indices']['block']]
     }
     return {null}
 
-def automatic_compare_granularity( expert_indices, doc_indices, granularity, feedback_metrics):
+def automatic_compare_granularity( expert_indices, doc_indices, granularity, feedback_metrics, dataName, StringName):
     doc = {}
     feedback = []
     for key, value in doc_indices.items():
         doc.update({str(key): value})
-
+    PdfString =""
     for metric in feedback_metrics[granularity]:
         if (metric['id'] in expert_indices) and metric['id'] in doc:
             low = expert_indices[metric['id']] - doc[metric['id']]
@@ -357,6 +360,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'expert_metric': expert_indices[metric['id']],
                     'message': 'Deine ' +metric['name']+ ' beträgt '+ str(round(doc[metric['id']])) +' und der der Musterlösung ist ' +str(round(expert_indices[metric['id']])) +'. ' + metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
                 })
+                PdfString+="-" + metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
             if high > 1:
                 feedback.append({
                     'name': metric['name'],
@@ -366,6 +370,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'expert_metric': expert_indices[metric['id']],
                     'message': 'Deine ' +metric['name']+ ' beträgt '+ str(round(doc[metric['id']])) +' und der der Musterlösung ist ' +str(round(expert_indices[metric['id']])) +'. ' + metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))]
                 })
+                PdfString+="-" + metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
             #else:
             #    feedback.append({
             #        'name': metric['name'],
@@ -375,7 +380,20 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
             #        'expert_metric': expert_indices[metric['id']],
             #        'message': "es gibt nichts über den Index zu sagen, der durch den Namen" + metric['name'] + "beschrieben wird, weil er derselbe ist wie der der Korrektur " + '\n Der Indexwert deines Schreibens: ' + str(doc[metric['id']])+ ' \n Der Indexwert der Musterlösung: '+  str(expert_indices[metric['id']])
             #    })
+    data = getJson('rb_api/pandoc_filters/'+dataName+'.json')
+    data.update({str(StringName): PdfString})
+    with open('rb_api/pandoc_filters/'+dataName+'.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
     return feedback
+
+def getJson(url):
+    varData= {}
+    if os.path.isfile(url):
+        # checks if file exists
+        print ("File exists ")
+        with open(url, encoding='UTF-8') as f:
+            varData = json.load(f)
+    return varData
 
 def compute_indices_format(text):
     lang = str_to_lang("de")
