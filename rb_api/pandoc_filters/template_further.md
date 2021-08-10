@@ -11,9 +11,13 @@ Die Folgende Tabelle vergleich deinen Dokument und deine Absätze mit der Muster
 
 ## 2. Vergleich der Stichtpunkte
 
+### Deine Schlüsselwörter
+
 | -student- |
 |:--:|
 | *Abbildung (2): Das Expertenmodell zum Thema -topicName-* |
+
+###  Schlüsselwörter Der Musterlösung
 
 | -expert- |
 |:--:|
