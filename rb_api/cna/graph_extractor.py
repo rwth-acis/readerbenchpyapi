@@ -32,13 +32,13 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
         label =""
         for type in edge['types']:
             if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP':
-                label+= "A:"+ type['weight']
+                label+= "A:"+ round(type['weight'], 2)
             if type['name']=='LEXICAL_OVERLAP: TOPIC_OVERLAP':
-                label+= "B:"+ type['weight']
+                label+= "B:"+ round(type['weight'], 2)
             if type['name']=='LEXICAL_OVERLAP: ARGUMENT_OVERLAP':
-                label+= "C:"+ type['weight']
+                label+= "C:"+ round(type['weight'], 2)
             if type['name']=='SEMANTIC: WORD2VEC(wiki)':
-                label+= "D:"+ type['weight']
+                label+= "D:"+ round(type['weight'], 2)
         G.add_edge(edge['source'], edge['target'])
         edge_labels[(edge['source'], edge['target'])]= label
     pos = nx.nx_agraph.graphviz_layout(G, prog="twopi")

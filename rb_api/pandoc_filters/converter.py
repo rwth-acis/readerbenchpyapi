@@ -69,7 +69,7 @@ def convert_file(topicName, topicSize):
                 json.dump(data, f, ensure_ascii=False, indent=4)
             stream = os.popen('pandoc -V geometry:paperwidth=4in -V geometry:paperheight=6in -V geometry:margin=.5in rb_api/pandoc_filters/template_main.md  --pdf-engine=xelatex -o rb_api/pandoc_filters/'+topicName+'_'+str(fileNumber)+'.pdf --filter rb_api/pandoc_filters/subjectName.py --resource-path=rb_api/pandoc_filters/')
             output = stream.read()
-            print(output)
+            print(output)   
     #print(output)
 
     #stream = os.popen(' cat rb_api/pandoc_filters/template.md | pandoc -s -f gfm -t json | python3 rb_api/pandoc_filters/keywordVIz.py  | pandoc -s -f json -o rb_api/pandoc_filters/template1.md')
