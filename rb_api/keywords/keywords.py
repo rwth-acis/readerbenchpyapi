@@ -33,7 +33,16 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     G = nx.Graph()
     edge_labels={}
     
-        
+    for kw in keywords:
+        node_list.append({
+            "type": "Word",
+            "uri": kw[1],
+            "displayName": kw[1],
+            "active": True,
+            "degree": str(max(0, float(kw[0])))
+        })
+        G.add_node(kw[1],weight=max(0, float(kw[0])))
+
     for i, kw1 in enumerate(keywords):
         for j, kw2 in enumerate(keywords):
             try:
@@ -46,21 +55,13 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
                         "targetUri": kw2[1]
                     })
                     print("Problem with ****************************************")
-                    #G.add_edge(kw1[1], kw2[1], weight=max(sim, 0))
-                    G.add_edge(kw1[1], kw2[1])
-                    edge_labels[(kw1[1], kw2[1])]= round(max(sim, 0), 2)
+                    G.add_edge(kw1[1], kw2[1], weight=max(sim, 0))
+                    #G.add_edge(str(kw1[1]), str(kw2[1]))
+                    edge_labels[(str(kw1[1]), str(kw2[1]))]= round(max(sim, 0), 2)
             except:
                 print("Problem with " + kw1[1] + " or " + kw2[1])
 
-    for kw in keywords:
-        node_list.append({
-            "type": "Word",
-            "uri": kw[1],
-            "displayName": kw[1],
-            "active": True,
-            "degree": str(max(0, float(kw[0])))
-        })
-        #G.add_node(kw[1],weight=max(0, float(kw[0])))
+    
         
     pos = nx.nx_agraph.graphviz_layout(G, prog="twopi")
     

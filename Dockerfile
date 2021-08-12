@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Berlin
 RUN apt-get update -y && \
-    apt-get install -y python3-pip python3-dev build-essential git pandoc texlive texlive-latex-extra texlive-xetex graphviz graphviz-dev libgraphviz-dev wget
+    apt-get install -y python3-pip python3-dev build-essential git texlive texlive-latex-extra texlive-xetex graphviz graphviz-dev libgraphviz-dev wget
 RUN  wget https://github.com/jgm/pandoc/releases/download/2.14.1/pandoc-2.14.1-1-amd64.deb
 RUN  dpkg -i pandoc-2.14.1-1-amd64.deb
 WORKDIR /app

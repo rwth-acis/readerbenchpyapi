@@ -31,7 +31,7 @@ def convert_file(topicName, topicSize):
 
     
     
-    
+    fileURL='rb_api/pandoc_filters/'+topicName+'.pdf'
     
     os.system("chmod +x rb_api/pandoc_filters/subjectName.py")
     os.system("chmod +x rb_api/pandoc_filters/keywordVIz.py")
@@ -45,7 +45,7 @@ def convert_file(topicName, topicSize):
         
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
-        stream = os.popen('pandoc rb_api/pandoc_filters/template_main.md  --pdf-engine=xelatex -o rb_api/pandoc_filters/'+topicName+'.pdf --filter rb_api/pandoc_filters/subjectName.py --resource-path=rb_api/pandoc_filters/')
+        stream = os.popen('pandoc -V geometry:paperwidth=4in -V geometry:paperheight=6in -V geometry:margin=.5in rb_api/pandoc_filters/template_main.md  --pdf-engine=xelatex -o rb_api/pandoc_filters/'+topicName+'.pdf --filter rb_api/pandoc_filters/subjectName.py --resource-path=rb_api/pandoc_filters/')
         output = stream.read()
         print(output)
         fileURL='rb_api/pandoc_filters/'+topicName+'.pdf'
@@ -57,17 +57,17 @@ def convert_file(topicName, topicSize):
         
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
-        stream = os.popen('pandoc rb_api/pandoc_filters/template_main.md  --pdf-engine=xelatex -o rb_api/pandoc_filters/'+topicName+'.pdf --filter rb_api/pandoc_filters/subjectName.py --resource-path=rb_api/pandoc_filters/')
+        stream = os.popen('pandoc -V geometry:paperwidth=4in -V geometry:paperheight=6in -V geometry:margin=.5in rb_api/pandoc_filters/template_main.md  --pdf-engine=xelatex -o rb_api/pandoc_filters/'+topicName+'_1.pdf --filter rb_api/pandoc_filters/subjectName.py --resource-path=rb_api/pandoc_filters/')
         output = stream.read()
         print(output)
-        for fileNumber in range(2, topicSize):
+        for fileNumber in range(2, topicSize+1):
             data = getJson('rb_api/pandoc_filters/'+topicName+'.json')
             data.update({'subject': topicName})
             data.update({'questionNumber': fileNumber})
             
             with open('data.json', 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=4)
-            stream = os.popen('pandoc rb_api/pandoc_filters/template_main.md  --pdf-engine=xelatex -o rb_api/pandoc_filters/'+topicName+'_'+fileNumber+'.pdf --filter rb_api/pandoc_filters/subjectName.py --resource-path=rb_api/pandoc_filters/')
+            stream = os.popen('pandoc -V geometry:paperwidth=4in -V geometry:paperheight=6in -V geometry:margin=.5in rb_api/pandoc_filters/template_main.md  --pdf-engine=xelatex -o rb_api/pandoc_filters/'+topicName+'_'+str(fileNumber)+'.pdf --filter rb_api/pandoc_filters/subjectName.py --resource-path=rb_api/pandoc_filters/')
             output = stream.read()
             print(output)
     #print(output)
@@ -79,7 +79,7 @@ def convert_file(topicName, topicSize):
     #stream = os.popen('pandoc -i rb_api/pandoc_filters/template1.md --filter pandoc-run-filter  -o rb_api/output/pdf/'+data['subject']+data['question']+'somefile.pdf')
     #output = stream.read()
     #print(output)
-            fileURL='rb_api/pandoc_filters/'+topicName+'.pdf'
+            
             pdf_cat(topicName, topicSize, fileURL)
     return fileURL
 
@@ -89,8 +89,8 @@ def pdf_cat(topicName, topicSize, outputName):
     
     # I had 116 files in the folder that had to be merged into a single document
     # Loop through all of them and append their pages
-    for fileNumber in range(1, topicSize):
-        mergedObject.append(PdfFileReader('topicName' + str(fileNumber)+ '.pdf', 'rb'))
+    for fileNumber in range(1, topicSize+1):
+        mergedObject.append(PdfFileReader('rb_api/pandoc_filters/'+topicName + '_' + str(fileNumber)+ '.pdf', 'rb'))
     
     # Write all the files into a file which is named as shown below
     mergedObject.write(outputName)
