@@ -7,8 +7,6 @@ RUN apt-get update -y && \
 RUN  wget https://github.com/jgm/pandoc/releases/download/2.14.1/pandoc-2.14.1-1-amd64.deb
 RUN  dpkg -i pandoc-2.14.1-1-amd64.deb
 WORKDIR /app
-RUN pip3 install wget
-RUN pip3 install nltk
 ADD requirements.txt /app/requirements.txt
 RUN pip3 install -r requirements.txt
 RUN pip3 install -U numpy==1.19

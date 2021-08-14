@@ -14,6 +14,9 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import sys
 import json
+import pandas as pd
+import numpy as np
+import networkx as nx
 
 
 def encode_element(element: TextElement, names: Dict[TextElement, str], graph: CnaGraph):
@@ -25,30 +28,32 @@ def encode_element(element: TextElement, names: Dict[TextElement, str], graph: C
 def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     G = nx.Graph()
     edge_labels={}
-    for element in docs:
-        if not element.is_sentence():
-            G.add_node(names[element],weight=graph.importance[element])
+    #for element in docs:
+        #if not element.is_sentence():
+            #G.add_node(names[element],weight=float(graph.importance[element]))
     for edge in edges:
         label =""
+        #if(edge['source'] or (edge['source'])
         for type in edge['types']:
-            if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP':
-                label+= "A:"+ round(type['weight'], 2)
-            if type['name']=='LEXICAL_OVERLAP: TOPIC_OVERLAP':
-                label+= "B:"+ round(type['weight'], 2)
-            if type['name']=='LEXICAL_OVERLAP: ARGUMENT_OVERLAP':
-                label+= "C:"+ round(type['weight'], 2)
-            if type['name']=='SEMANTIC: WORD2VEC(wiki)':
-                label+= "D:"+ round(type['weight'], 2)
+            if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP' and float(type['weight'])>0:
+                label+= "A:"+ str(round(float(type['weight']), 2))
+            if type['name']=='LEXICAL_OVERLAP: TOPIC_OVERLAP' and float(type['weight'])>0:
+                label+= "B:"+ str(round(float(type['weight']), 2))
+            if type['name']=='LEXICAL_OVERLAP: ARGUMENT_OVERLAP' and float(type['weight'])>0:
+                label+= "C:"+ str(round(float(type['weight']), 2))
+            if type['name']=='SEMANTIC: WORD2VEC(wiki)' and float(type['weight'])>0:
+                label+= "D:"+ str(round(float(type['weight']), 2))
         G.add_edge(edge['source'], edge['target'])
         edge_labels[(edge['source'], edge['target'])]= label
     pos = nx.nx_agraph.graphviz_layout(G, prog="twopi")
     
     nx.draw(G, with_labels = True, node_size=1500, node_color="skyblue", pos=pos)
     nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+    plt.clf()
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'.png')
 
     data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
-    data.update({'cnaUrl': 'rb_api/pandoc_filters/images/'+dataName+'.png'})
+    data.update({dataName: 'rb_api/pandoc_filters/images/'+dataName+'.png'})
     with open('rb_api/pandoc_filters'+JsonName+'.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
     return True

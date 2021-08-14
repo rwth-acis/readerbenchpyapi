@@ -15,9 +15,11 @@ from rb.similarity.vector_model_factory import VECTOR_MODELS, get_default_model
 from rb.utils.utils import str_to_lang
 
 from nltk.corpus import wordnet as wn
-import matplotlib
 import networkx as nx
 import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
@@ -33,6 +35,10 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     G = nx.Graph()
     edge_labels={}
     
+    from_node = []
+    to_node = []
+    value= []
+
     for kw in keywords:
         node_list.append({
             "type": "Word",
@@ -41,7 +47,7 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
             "active": True,
             "degree": str(max(0, float(kw[0])))
         })
-        G.add_node(kw[1],weight=max(0, float(kw[0])))
+        #G.add_node(kw[1],weight=max(0, float(kw[0])))
 
     for i, kw1 in enumerate(keywords):
         for j, kw2 in enumerate(keywords):
@@ -55,19 +61,41 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
                         "targetUri": kw2[1]
                     })
                     print("Problem with ****************************************")
-                    G.add_edge(kw1[1], kw2[1], weight=max(sim, 0))
+                    
+                    from_node.append(kw1[1])
+                    to_node.append(kw2[1])
+                    value.append(int(max(sim, 0)*10))
+                    
+                    #G.add_edge(kw1[1], kw2[1], weight=max(sim, 0))
                     #G.add_edge(str(kw1[1]), str(kw2[1]))
-                    edge_labels[(str(kw1[1]), str(kw2[1]))]= round(max(sim, 0), 2)
+                    #edge_labels[(str(kw1[1]), str(kw2[1]))]= round(max(sim, 0), 2)
             except:
                 print("Problem with " + kw1[1] + " or " + kw2[1])
 
     
         
-    pos = nx.nx_agraph.graphviz_layout(G, prog="twopi")
+    #pos = nx.nx_agraph.graphviz_layout(G, prog="twopi")
     
-    nx.draw(G, with_labels = True, node_size=1500, node_color="skyblue", pos=pos)
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
-    matplotlib.pyplot.savefig('rb_api/pandoc_filters/images/'+ dataName +'.png', dpi=199)
+    #nx.draw(G, with_labels = True, node_size=1500, node_color="skyblue", pos=pos)
+    #nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+    
+    # Build a dataframe with your connections
+    df = pd.DataFrame({ 'from':from_node, 'to':to_node, 'value':value})
+    # Build your graph
+    G=nx.from_pandas_edgelist(df, 'from', 'to', create_using=nx.Graph() )
+    pos = nx.spring_layout(G, seed=63)
+    options = {
+    "node_color": "#A0CBE2",
+    "edge_color": value,
+    "width": 4,
+    "edge_cmap": plt.cm.Blues,
+    "with_labels": False,
+    }
+    nx.draw(G, pos, **options)
+    # Custom the nodes:
+    #nx.draw(G, with_labels=True, node_color='skyblue', node_size=1500, edge_color=df['value'], width=10.0, edge_cmap=plt.cm.Blues)
+    plt.savefig('rb_api/pandoc_filters/images/'+ dataName +'.png', dpi=199)
+    plt.clf()
     data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
     data.update({textType : 'rb_api/pandoc_filters/images/'+dataName+'.png'})
     with open('rb_api/pandoc_filters'+JsonName+'.json', 'w', encoding='utf-8') as f:

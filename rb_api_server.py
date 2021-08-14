@@ -27,6 +27,12 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 def hello():
     return "Alive"
 
+@app.route("/api/v1/sendPNG", methods=['POST'])
+def sendPNG():
+    params = json.loads(request.get_data())
+    picname = params.get('picname')
+    return send_file(picname, mimetype='application/png')
+
 @app.route("/api/v1/getPdf", methods=['POST'])
 def getpdf():
     params = json.loads(request.get_data())
