@@ -67,19 +67,19 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
             for index in elementlist:
                 if(not G1.has_node(names[index])):            
                     G1.add_node(names[index])
-                    node_size1..append(int(graph.importance[index]*1000))
+                    node_size1.append(int(graph.importance[index]*1000))
 
                 if(not G2.has_node(names[index])):  
                     G2.add_node(names[index])
-                    node_size2..append(int(graph.importance[index]*1000))
+                    node_size2.append(int(graph.importance[index]*1000))
 
                 if(not G3.has_node(names[index])):  
                     G3.add_node(names[index])
-                    node_size3..append(int(graph.importance[index]*1000))
+                    node_size3.append(int(graph.importance[index]*1000))
 
                 if(not G4.has_node(names[index])):  
                     G4.add_node(names[index])
-                    node_size4..append(int(graph.importance[index]*1000))
+                    node_size4.append(int(graph.importance[index]*1000))
 
                 table += "| "+names[index]+" | "+index.text+" |"
                 
