@@ -3,54 +3,70 @@
 
 ## 1. Vergleich der Kohäsion
 
-Dieser Teil analysiert die Kohäsion von 2 gewählte Textes (Default sind Dokument 1 mit Document 2 welche Ihre Text und die musterlösung sind) auf 4 Hauptebenen:
+In diesem Teil wird der Zusammenhang zwischen  den Textteilen (ganzer Text und Absätze) Ihrer Antwort auf die Frage -question_number- und den Textteilen der Korrektur.
+Die Analyse wird unter 4 verschiedenen Aspekten durchgeführt(LEXICAL_OVERLAP: CONTENT_OVERLAP, LEXICAL_OVERLAP: TOPIC_OVERLAP, LEXICAL_OVERLAP und SEMANTIC: WORD2VEC(wiki)).
+Für jeden dieser Aspekte wird ein Graph erstellt, in dem die Größe der Knoten die Bedeutung der verschiedenen Elemente und die Intensität der Kantenfarbe die Verbindung zwischen den Textteilen darstellt. Für jeden dieser Aspekte wird ein Graph erstellt, in dem die Größe der Knoten die Bedeutung der verschiedenen Elemente und die Intensität der Kantenfarbe die Verbindung zwischen den Textteilen darstellt. Je größer also ein Knoten ist, desto wichtiger ist dieser Teil des Textes im Text und je intensiver die Farbe eines Textes ist, desto kohärenter sind die beiden Teile des Textes. 
 
-LEXICAL_OVERLAP: CONTENT_OVERLAP: prüft, ob die verwendeten Wörter identisch sind oder nicht. Ein großer Wert des Attributs vet bedeutet, dass fast die gleichen Wörter verwendet werden
+
+
+LEXICAL_OVERLAP: CONTENT_OVERLAP: prüft, ob die verwendeten Wörter identisch sind oder nicht. Ein großer Wert des Attributwert bedeutet, dass fast die gleichen Wörter verwendet werden
+
 LEXICAL_OVERLAP: TOPIC_OVERLAP: besteht in der Überprüfung der Unterschiede der verwendeten Begriffe. Indem Sie zwei Textteile auswählen, können Sie überprüfen, ob sie die gleichen Begriffe verwenden.
+
 LEXICAL_OVERLAP: ARGUMENT_OVERLAP: vergleicht, wie zwei Teile des Textes aufgebaut sind, insbesondere die Beziehungen zwischen Ihren Wörtern. Hier geht es um die Verben, Adjektive usw., die Sie zur Formulierung Ihrer Argumente verwenden
-SEMANTIC: WORD2VEC(wiki): Die semantische Kohäsion vergleicht die  umfasst die Überprüfung der Domänen, zu denen die in einem Text verwendeten Wörter gehören. Wie groß der wert ist bestimmt ob die verwendete Begriffe zur derselben Domäne gehören. -subject- 
+
+SEMANTIC: WORD2VEC(wiki): Die semantische Kohäsion vergleicht die  umfasst die Überprüfung der Domänen, zu denen die in einem Text verwendeten Wörter gehören. Wie groß der wert ist bestimmt ob die verwendete Begriffe zur derselben Domäne gehören.
+
+Durch die Analyse dieser Aspekte werden Sie genau wissen, welche Aspekte der Elemente Ihres Textes denjenigen der Korrektur nahe kommen. Diese Aspekte sind auch miteinander verbunden, und ihre Verbindung kann es Ihnen beispielsweise ermöglichen, Folgendes zu erkennen
 
 
-Die Folgende Tabelle vergleich deinen Dokument und deine Absätze mit der Musterlösung:
+Die folgenden Schaubilder zeigen den Zusammenhalt in den verschiedenen oben genannten Aspekten und die Tabelle unter den Schaubildern hilft, die Teile des Textes zu identifizieren:
+
+| Dokument 1 und Absatz 1... sind die Teile Ihres Textes und Dokument 2 und Absatz 2... sind die Teile der Korrektur |
+| --- | 
 
 | -content- |
 |:--:|
-| *Abbildung (1): Das Expertenmodell zum Thema -topicName-* |
+| *Abbildung (1): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
 
 | -topic- |
 |:--:|
-| *Abbildung (2): Das Expertenmodell zum Thema -topicName-* |
+| *Abbildung (2): Kohäsionsanalyse(LEXICAL_OVERLAP: TOPIC_OVERLAP) zum Thema -topicName-* |
 
 | -argument- |
 |:--:|
-| *Abbildung (3): Das Expertenmodell zum Thema -topicName-* |
+| *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: ARGUMENT_OVERLAP) zum Thema -topicName-* |
 
-| -word2vec- |
+| -wordtovec- |
 |:--:|
-| *Abbildung (4): Das Expertenmodell zum Thema -topicName-* |
+| *Abbildung (4): Kohäsionsanalyse(SEMANTIC: WORD2VEC(wiki)) zum Thema -topicName-* |
+
+-textelementen-
 
 ## 2. Vergleich der Schlüsselwörter
 
 In diesem Teil werden deine Begriffe und ihre Association mit denen in der Musterlösung verglichen. So kannst du sich ein Bild davon machen, welche Begriffe von dir erwartet wurden und welche du verwendet hast. Wenn sich die von dir am häufigsten verwendeten Begriffe von denen der Musterlösung unterscheiden, bedenken Sie, dass es sich möglicherweise um Synonyme handelt. Wenn sie es nicht sind, dann unterscheiden sich deine Begriffe von der Begriffe der Musterlösung. 
-Außerdem erklären diese Wörter auch den Score der drei oben vorgestellten lexikalischen Dimensionen.'+ 
-(LEXICAL_OVERLAP: CONTENT_OVERLAP, LEXICAL_OVERLAP: TOPIC_OVERLAP, LEXICAL_OVERLAP: ARGUMENT_OVERLAP)
+Diese Aspekte sind ebenfalls miteinander verbunden, und ihre Verbindung kann es Ihnen beispielsweise ermöglichen, herauszufinden, wodurch sich Ihr Argument in Bezug auf die Schlüsselwörter unterscheidet, oder wodurch sich der (...) Aspekt Ihres Textes unterscheidet, obwohl der semantische Aspekt ähnlich ist
+
+Dieser Teil ist auch mit dem ersten Teil verbunden und erklärt einige seiner Elemente, z.B. wenn Sie sich die Schlüsselwörter, welche Verb sind und die von der Korrektur ansehen, werden Sie wissen, was Ihre Argumentation anders macht, und wenn Sie sich andere Schlüsselwörter ansehen, werden Sie wissen, was den Aspekt LEXICAL_OVERLAP: TOPIC_OVERLAP Ihres Textes anders macht, obwohl der semantische Aspekt ähnlich ist (SEMANTIC: WORD2VEC(wiki))'
+
 ### Deine Schlüsselwörter
 
 | -student- |
 |:--:|
-| *Abbildung (5): Das Expertenmodell zum Thema -topicName-* |
+| *Abbildung (5): Ihre Schlüsselwortliste zum Thema -topicName-* |
 
 ###  Schlüsselwörter Der Musterlösung
+
 | -expert- |
 |:--:|
-| *Abbildung (6): Das Expertenmodell zum Thema -topicName-* |
+| *Abbildung (6): Experten-Stichwortliste zum Thema -topicName-* |
 
 
 
 
 ## 3. Weitere Räte
 In diesem Abschnitt werden deinem Text und der Lösung anhand verschiedener Anhaltspunkte verglichen, von denen die meisten mit deinem Schreibstil zu tun haben, und ein paar Verbesserungsvorschläge werden im folgende angeboten. Liest die ruhig durch und siehst was dir gefehlt hat.
+
 -feedback-
 
-## 4. Text Elementen
--textelementen-

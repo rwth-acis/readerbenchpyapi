@@ -88,7 +88,8 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     # Build your graph
     #G=nx.from_pandas_edgelist(df, 'from', 'to', create_using=nx.Graph() )
     #G = nx.star_graph(30)
-    pos = nx.fruchterman_reingold_layout(G)
+    plt.clf()
+    pos = nx.spring_layout(G, k=1)
     options = {
     "node_color": "#A0CBE2",
     "edge_color": value,
@@ -97,6 +98,7 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     "with_labels": True,
     "node_size":node_size 
     }
+    plt.figure(figsize=(8, 11))
     nx.draw(G, pos, **options)
     # Custom the nodes:
     #nx.draw(G, with_labels=True, node_color='skyblue', node_size=1500, edge_color=df['value'], width=10.0, edge_cmap=plt.cm.Blues)
@@ -104,7 +106,7 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     plt.clf()
     data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
     data.update({textType : 'rb_api/pandoc_filters/images/'+dataName+'.png'})
-    with open('rb_api/pandoc_filters'+JsonName+'.json', 'w', encoding='utf-8') as f:
+    with open('rb_api/pandoc_filters/'+JsonName+'.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
     return {
         "data": {

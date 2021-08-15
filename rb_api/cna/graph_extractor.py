@@ -18,6 +18,7 @@ import pandas as pd
 import numpy as np
 import networkx as nx
 import logging
+import os
 
 
 def encode_element(element: TextElement, names: Dict[TextElement, str], graph: CnaGraph):
@@ -28,10 +29,10 @@ def encode_element(element: TextElement, names: Dict[TextElement, str], graph: C
 
 def mergeelement( element):
     elementlist =[]
-    if not element.is_sentence():
+    if not (element.is_sentence() or element.is_word()):
         elementlist.append(element)
     for child in element.components:
-        elementlist = elementlist + add_node(element)
+        elementlist = elementlist + mergeelement(child)
     return elementlist
 
 def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
@@ -60,28 +61,29 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     value4= []
     node_size4 = []
 
-    table="| Element  | Value |\n| ------------- | ------------- |"
+    table="""| Element  | Value | 
+    | ------------- | ------------- |"""
     for element in docs:
         if not element.is_sentence():
             elementlist = mergeelement(element)
             for index in elementlist:
-                if(not G1.has_node(names[index])):            
+                if not G1.has_node(names[index]):            
                     G1.add_node(names[index])
                     node_size1.append(int(graph.importance[index]*1000))
 
-                if(not G2.has_node(names[index])):  
+                if not G2.has_node(names[index]):  
                     G2.add_node(names[index])
                     node_size2.append(int(graph.importance[index]*1000))
 
-                if(not G3.has_node(names[index])):  
+                if not G3.has_node(names[index]):  
                     G3.add_node(names[index])
                     node_size3.append(int(graph.importance[index]*1000))
 
-                if(not G4.has_node(names[index])):  
+                if not G4.has_node(names[index]):  
                     G4.add_node(names[index])
                     node_size4.append(int(graph.importance[index]*1000))
 
-                table += "| "+names[index]+" | "+index.text+" |"
+                table += """ | """+names[index]+""" | """+index.text+""" |"""
                 
                 
             
@@ -113,7 +115,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
                 #edge_labels[(edge['source'], edge['target'])]= label
     log.info(len(node_size3))
     log.info(G3.number_of_nodes())
-    pos1 = nx.fruchterman_reingold_layout(G1)
+    pos1 = nx.spring_layout(G1, k=2)
     options1 = {
     "node_color": "#fc0303",
     "edge_color": value1,
@@ -122,7 +124,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     "with_labels": True,
     "node_size":node_size1 
     }
-    pos2 = nx.fruchterman_reingold_layout(G2)
+    pos2 = nx.spring_layout(G2, k=2)
     options2 = {
     "node_color": "#03fc39",
     "edge_color": value2,
@@ -131,7 +133,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     "with_labels": True,
     "node_size":node_size2 
     }
-    pos3 = nx.fruchterman_reingold_layout(G3)
+    pos3 = nx.spring_layout(G3, k=2)
     options3 = {
     "node_color": "#fcbe03",
     "edge_color": value3,
@@ -140,7 +142,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     "with_labels": True,
     "node_size":node_size3
     }
-    pos4 = nx.fruchterman_reingold_layout(G4)
+    pos4 = nx.spring_layout(G4, k=2)
     options4 = {
     "node_color": "#A0CBE2",
     "edge_color": value4,
@@ -164,14 +166,20 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     plt.clf()
     data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
     data.update({dataName: table})
-    with open('rb_api/pandoc_filters'+JsonName+'.json', 'w', encoding='utf-8') as f:
+    with open('rb_api/pandoc_filters/'+JsonName+'.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
     return True
 
+
 def getJson(url):
-    with open(url, encoding='UTF-8') as f:
-        varData = json.load(f)
+    varData= {}
+    if os.path.isfile(url):
+        # checks if file exists
+        print ("File exists ")
+        with open(url, encoding='UTF-8') as f:
+            varData = json.load(f)
     return varData
+
 def compute_graph(dataName, JsonName, texts: List[str], lang: Lang, models: List) -> str:
     docs = [Document(lang=lang, text=text) for text in texts]
     models = [create_vector_model(lang, VectorModelType.from_str(model["model"]), model["corpus"]) for model in models]
