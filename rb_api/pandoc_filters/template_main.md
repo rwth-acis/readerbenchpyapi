@@ -13,9 +13,21 @@ SEMANTIC: WORD2VEC(wiki): Die semantische Kohäsion vergleicht die  umfasst die 
 
 Die Folgende Tabelle vergleich deinen Dokument und deine Absätze mit der Musterlösung:
 
-| -cohesion- |
+| -content- |
+|:--:|
+| *Abbildung (1): Das Expertenmodell zum Thema -topicName-* |
+
+| -topic- |
 |:--:|
 | *Abbildung (2): Das Expertenmodell zum Thema -topicName-* |
+
+| -argument- |
+|:--:|
+| *Abbildung (3): Das Expertenmodell zum Thema -topicName-* |
+
+| -word2vec- |
+|:--:|
+| *Abbildung (4): Das Expertenmodell zum Thema -topicName-* |
 
 ## 2. Vergleich der Schlüsselwörter
 
@@ -26,12 +38,12 @@ Außerdem erklären diese Wörter auch den Score der drei oben vorgestellten lex
 
 | -student- |
 |:--:|
-| *Abbildung (2): Das Expertenmodell zum Thema -topicName-* |
+| *Abbildung (5): Das Expertenmodell zum Thema -topicName-* |
 
 ###  Schlüsselwörter Der Musterlösung
 | -expert- |
 |:--:|
-| *Abbildung (2): Das Expertenmodell zum Thema -topicName-* |
+| *Abbildung (6): Das Expertenmodell zum Thema -topicName-* |
 
 
 
@@ -39,3 +51,6 @@ Außerdem erklären diese Wörter auch den Score der drei oben vorgestellten lex
 ## 3. Weitere Räte
 In diesem Abschnitt werden deinem Text und der Lösung anhand verschiedener Anhaltspunkte verglichen, von denen die meisten mit deinem Schreibstil zu tun haben, und ein paar Verbesserungsvorschläge werden im folgende angeboten. Liest die ruhig durch und siehst was dir gefehlt hat.
 -feedback-
+
+## 4. Text Elementen
+-textelementen-

@@ -20,6 +20,8 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import logging
+
 
 app = Flask(__name__)
 
@@ -28,7 +30,7 @@ def keywordsOption():
     return ""
 
 def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tuple[int, Word]], lang: Lang) -> Dict:
-
+    log = logging.getLogger("my-logger")
     vector_model: VectorModel = get_default_model(lang)
     edge_list, node_list = [], []
     
@@ -38,6 +40,7 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     from_node = []
     to_node = []
     value= []
+    node_size = []
 
     for kw in keywords:
         node_list.append({
@@ -47,7 +50,8 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
             "active": True,
             "degree": str(max(0, float(kw[0])))
         })
-        #G.add_node(kw[1],weight=max(0, float(kw[0])))
+        G.add_node(kw[1],weight=max(0, float(kw[0])))
+        node_size.append(int(max(0, float(kw[0]))*1000))
 
     for i, kw1 in enumerate(keywords):
         for j, kw2 in enumerate(keywords):
@@ -64,11 +68,11 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
                     
                     from_node.append(kw1[1])
                     to_node.append(kw2[1])
-                    value.append(int(max(sim, 0)*10))
                     
-                    #G.add_edge(kw1[1], kw2[1], weight=max(sim, 0))
-                    #G.add_edge(str(kw1[1]), str(kw2[1]))
-                    #edge_labels[(str(kw1[1]), str(kw2[1]))]= round(max(sim, 0), 2)
+
+                    if not G.has_edge(str(kw1[1]), str(kw2[1])):
+                        G.add_edge(str(kw1[1]), str(kw2[1]))
+                        value.append(int(max(sim, 0)*100))
             except:
                 print("Problem with " + kw1[1] + " or " + kw2[1])
 
@@ -80,16 +84,18 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     #nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
     
     # Build a dataframe with your connections
-    df = pd.DataFrame({ 'from':from_node, 'to':to_node, 'value':value})
+    #df = pd.DataFrame({ 'from':from_node, 'to':to_node, 'value':value})
     # Build your graph
-    G=nx.from_pandas_edgelist(df, 'from', 'to', create_using=nx.Graph() )
-    pos = nx.spring_layout(G, seed=63)
+    #G=nx.from_pandas_edgelist(df, 'from', 'to', create_using=nx.Graph() )
+    #G = nx.star_graph(30)
+    pos = nx.fruchterman_reingold_layout(G)
     options = {
     "node_color": "#A0CBE2",
     "edge_color": value,
     "width": 4,
     "edge_cmap": plt.cm.Blues,
-    "with_labels": False,
+    "with_labels": True,
+    "node_size":node_size 
     }
     nx.draw(G, pos, **options)
     # Custom the nodes:
