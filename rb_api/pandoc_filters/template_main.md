@@ -16,7 +16,8 @@ In den folgenden Unterabschnitten werden diese verschiedenen Aspekte Ihres Texte
 | Dokument 1 und Absatz 1... sind die Teile Ihres Textes und Dokument 2 und Absatz 2... sind die Teile der Korrektur |
 | --- | 
 
-### 1. LEXICAL_OVERLAP: CONTENT_OVERLAP
+\pagebreak
+### LEXICAL_OVERLAP: CONTENT_OVERLAP
 
 LEXICAL_OVERLAP: CONTENT_OVERLAP: prüft, ob die verwendeten Wörter identisch sind oder nicht. Ein großer Wert des Attributwert bedeutet, dass fast die gleichen Wörter verwendet werden.
 
@@ -24,7 +25,8 @@ LEXICAL_OVERLAP: CONTENT_OVERLAP: prüft, ob die verwendeten Wörter identisch s
 |:--:|
 | *Abbildung (1): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
 
-### 2. LEXICAL_OVERLAP: TOPIC_OVERLAP
+\pagebreak
+### LEXICAL_OVERLAP: TOPIC_OVERLAP
 
 LEXICAL_OVERLAP: TOPIC_OVERLAP: besteht in der Überprüfung der Unterschiede der verwendeten Begriffe. Indem Sie zwei Textteile auswählen, können Sie überprüfen, ob sie die gleichen Begriffe verwenden.
 
@@ -32,7 +34,8 @@ LEXICAL_OVERLAP: TOPIC_OVERLAP: besteht in der Überprüfung der Unterschiede de
 |:--:|
 | *Abbildung (2): Kohäsionsanalyse(LEXICAL_OVERLAP: TOPIC_OVERLAP) zum Thema -topicName-* |
 
-### 3. LEXICAL_OVERLAP: ARGUMENT_OVERLAP
+\pagebreak
+### LEXICAL_OVERLAP: ARGUMENT_OVERLAP
 
 LEXICAL_OVERLAP: ARGUMENT_OVERLAP: vergleicht, wie zwei Teile des Textes aufgebaut sind, insbesondere die Beziehungen zwischen Ihren Wörtern. Hier geht es um die Verben, Adjektive usw., die Sie zur Formulierung Ihrer Argumente verwenden
 
@@ -40,7 +43,8 @@ LEXICAL_OVERLAP: ARGUMENT_OVERLAP: vergleicht, wie zwei Teile des Textes aufgeba
 |:--:|
 | *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: ARGUMENT_OVERLAP) zum Thema -topicName-* |
 
-### 3. SEMANTIC: WORD2VEC(wiki)
+\pagebreak
+### SEMANTIC: WORD2VEC(wiki)
 
 SEMANTIC: WORD2VEC(wiki): Die semantische Kohäsion vergleicht die  umfasst die Überprüfung der Domänen, zu denen die in einem Text verwendeten Wörter gehören. Wie groß der wert ist bestimmt ob die verwendete Begriffe zur derselben Domäne gehören.
 
@@ -48,6 +52,7 @@ SEMANTIC: WORD2VEC(wiki): Die semantische Kohäsion vergleicht die  umfasst die 
 |:--:|
 | *Abbildung (4): Kohäsionsanalyse(SEMANTIC: WORD2VEC(wiki)) zum Thema -topicName-* |
 
+### Textelementen
 <!-- textelementen -->
 
 ## 2. Vergleich der Schlüsselwörter
@@ -57,12 +62,14 @@ Diese Aspekte sind ebenfalls miteinander verbunden, und ihre Verbindung kann es 
 
 Dieser Teil ist auch mit dem ersten Teil verbunden und erklärt einige seiner Elemente, z.B. wenn Sie sich die Schlüsselwörter, welche Verb sind und die von der Korrektur ansehen, werden Sie wissen, was Ihre Argumentation anders macht, und wenn Sie sich andere Schlüsselwörter ansehen, werden Sie wissen, was den Aspekt LEXICAL_OVERLAP: TOPIC_OVERLAP Ihres Textes anders macht, obwohl der semantische Aspekt ähnlich ist (SEMANTIC: WORD2VEC(wiki))'
 
+\pagebreak
 ### Deine Schlüsselwörter
 
 | -student- |
 |:--:|
 | *Abbildung (5): Ihre Schlüsselwortliste zum Thema -topicName-* |
 
+\pagebreak
 ###  Schlüsselwörter Der Musterlösung
 
 | -expert- |

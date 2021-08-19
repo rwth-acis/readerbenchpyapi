@@ -9,17 +9,29 @@ Die folgenden Schaubilder zeigen den Zusammenhalt in den verschiedenen oben gena
 | Dokument 1 und Absatz 1... sind die Teile Ihres Textes und Dokument 2 und Absatz 2... sind die Teile der Korrektur |
 | --- | 
 
+\pagebreak
+### LEXICAL_OVERLAP: CONTENT_OVERLAP
+
 | -content- |
 |:--:|
 | *Abbildung (1): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
+
+\pagebreak
+### LEXICAL_OVERLAP: TOPIC_OVERLAP
 
 | -topic- |
 |:--:|
 | *Abbildung (2): Kohäsionsanalyse(LEXICAL_OVERLAP: TOPIC_OVERLAP) zum Thema -topicName-* |
 
+\pagebreak
+### LEXICAL_OVERLAP: ARGUMENT_OVERLAP
+
 | -argument- |
 |:--:|
 | *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: ARGUMENT_OVERLAP) zum Thema -topicName-* |
+
+\pagebreak
+### SEMANTIC: WORD2VEC(wiki)
 
 | -wordtovec- |
 |:--:|
@@ -28,13 +40,12 @@ Die folgenden Schaubilder zeigen den Zusammenhalt in den verschiedenen oben gena
 <!-- textelementen -->
 
 ## 2. Vergleich der Schlüsselwörter
-
 ### Deine Schlüsselwörter
 
 | -student- |
 |:--:|
 | *Abbildung (5): Ihre Schlüsselwortliste zum Thema -topicName-* |
-
+\pagebreak
 ###  Schlüsselwörter Der Musterlösung
 
 | -expert- |

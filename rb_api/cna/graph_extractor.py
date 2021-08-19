@@ -150,19 +150,19 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     "with_labels": True,
     "node_size":node_size4
     }
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(8, 7))
     nx.draw(G1, pos1, **options1)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content.png')
     plt.clf()
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(8, 7))
     nx.draw(G2, pos2, **options2)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_topic.png')
     plt.clf()
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(8, 7))
     nx.draw(G3, pos3, **options3)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_argument.png')
     plt.clf()
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(8, 7))
     nx.draw(G4, pos4, **options4)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_word2vec.png')
     plt.clf()
