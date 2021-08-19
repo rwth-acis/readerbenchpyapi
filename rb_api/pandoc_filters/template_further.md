@@ -25,7 +25,7 @@ Die folgenden Schaubilder zeigen den Zusammenhalt in den verschiedenen oben gena
 |:--:|
 | *Abbildung (4): Kohäsionsanalyse(SEMANTIC: WORD2VEC(wiki)) zum Thema -topicName-* |
 
--textelementen-
+<!-- textelementen -->
 
 ## 2. Vergleich der Schlüsselwörter
 
@@ -46,4 +46,4 @@ Die folgenden Schaubilder zeigen den Zusammenhalt in den verschiedenen oben gena
 
 ## 3. Weitere Räte
 
--feedback-
+<!-- feedback -->

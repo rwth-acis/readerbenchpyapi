@@ -346,7 +346,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
     feedback = []
     for key, value in doc_indices.items():
         doc.update({str(key): value})
-    PdfString =""
+    PdfString =[]
     for metric in feedback_metrics[granularity]:
         if (metric['id'] in expert_indices) and metric['id'] in doc:
             low = expert_indices[metric['id']] - doc[metric['id']]
@@ -360,7 +360,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'expert_metric': expert_indices[metric['id']],
                     'message': 'Deine ' +metric['name']+ ' beträgt '+ str(round(doc[metric['id']])) +' und der der Musterlösung ist ' +str(round(expert_indices[metric['id']])) +'. ' + metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
                 })
-                PdfString+="\n - " + metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
+                PdfString.append(metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))])
             if high > 1:
                 feedback.append({
                     'name': metric['name'],
@@ -370,7 +370,7 @@ def automatic_compare_granularity( expert_indices, doc_indices, granularity, fee
                     'expert_metric': expert_indices[metric['id']],
                     'message': 'Deine ' +metric['name']+ ' beträgt '+ str(round(doc[metric['id']])) +' und der der Musterlösung ist ' +str(round(expert_indices[metric['id']])) +'. ' + metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))]
                 })
-                PdfString+="\n - " + metric['feedbackMessagesLow'][randrange(len(metric['feedbackMessagesLow']))]
+                PdfString.append(metric['feedbackMessagesHigh'][randrange(len(metric['feedbackMessagesHigh']))])
             #else:
             #    feedback.append({
             #        'name': metric['name'],

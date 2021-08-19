@@ -8,15 +8,65 @@ import os
 Pandoc filter to convert all regular text to uppercase.
 Code, link URLs, etc. are not affected.
 """
-from panflute import run_filter, Str, Para, Image
+from panflute import run_filter, Str, Para, Image, DefinitionList, BulletList, ListItem, Strong
+import panflute as pf
 
 def getJson(url):
     with open(url, encoding='UTF-8') as f:
         varData = json.load(f)
     return varData
 
+
+
 def caps(elem, doc):
     data = getJson('data.json')
+    if isinstance(elem, pf.RawBlock) and (elem.format == 'html'):
+        if elem.text == "<!-- feedback -->":
+            feedback = data[data['subject']+str(data['questionNumber'])]
+            body = []
+            i=0
+            for item in feedback:
+                cells = [str(i+1),item]
+                cells = [pf.TableCell(pf.Plain(Str(cell))) for cell in cells]
+                row = pf.TableRow(*cells)
+            
+                body.append(pf.TableBody(row))
+                i=i+1
+
+            cells = ['Nr.','Empfehlung']
+            cells = [pf.TableCell(pf.Plain(Str(cell))) for cell in cells]
+            row = pf.TableRow(*cells)
+            head = pf.TableHead(row)
+
+            width = [0.1,0.7]
+            alignment = ['AlignDefault'] * len(width)
+            caption = 'Empfehlungen'
+            caption = pf.Caption(Para(Str(caption)))
+            return pf.Div(pf.Table(*body, colspec=zip(alignment, width), caption=caption))
+        
+        if elem.text == "<!-- textelementen -->":
+            subject = data[data['subject']+str(data['questionNumber'])+'_cna']
+            body = []
+            i=0
+            for item in subject:
+                cells = [item[0], item[1]]
+                cells = [pf.TableCell(pf.Plain(Str(cell))) for cell in cells]
+                row = pf.TableRow(*cells)
+            
+                body.append(pf.TableBody(row))
+                i=i+1
+
+            cells = ['Abschnitt','Wert']
+            cells = [pf.TableCell(pf.Plain(Str(cell))) for cell in cells]
+            row = pf.TableRow(*cells)
+            head = pf.TableHead(row)
+
+            width = [0.16,0.7]
+            alignment = ['AlignDefault'] * len(width)
+            caption = 'Textelementen'
+            caption = pf.Caption(Para(Str(caption)))
+            return pf.Div(pf.Table(*body, colspec=zip(alignment, width), caption=caption))
+
     if type(elem) == Str: 
         if elem.text == "-topicName-":
             subject = data['subject'] +" Frage nummer " + str(data['questionNumber'])
@@ -26,11 +76,6 @@ def caps(elem, doc):
         if elem.text == "-textelementen-":
             subject = data[data['subject']+str(data['questionNumber'])+'_cna']
             elem.text = subject
-            return elem
-
-        if elem.text == "-feedback-":
-            feedback = data[data['subject']+str(data['questionNumber'])]
-            elem.text = feedback
             return elem
         
         if elem.text == "-question_number-":

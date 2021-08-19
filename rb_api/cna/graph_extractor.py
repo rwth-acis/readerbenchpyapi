@@ -61,8 +61,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     value4= []
     node_size4 = []
 
-    table="""| Element  | Value | 
-    | ------------- | ------------- |"""
+    table=[]
     for element in docs:
         if not element.is_sentence():
             elementlist = mergeelement(element)
@@ -83,7 +82,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
                     G4.add_node(names[index])
                     node_size4.append(int(graph.importance[index]*1000))
 
-                table += """ | """+names[index]+""" | """+index.text+""" |"""
+                table.append((names[index],index.text))
                 
                 
             
@@ -151,16 +150,19 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     "with_labels": True,
     "node_size":node_size4
     }
-    
+    plt.figure(figsize=(8, 5))
     nx.draw(G1, pos1, **options1)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content.png')
     plt.clf()
+    plt.figure(figsize=(8, 5))
     nx.draw(G2, pos2, **options2)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_topic.png')
     plt.clf()
+    plt.figure(figsize=(8, 5))
     nx.draw(G3, pos3, **options3)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_argument.png')
     plt.clf()
+    plt.figure(figsize=(8, 5))
     nx.draw(G4, pos4, **options4)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_word2vec.png')
     plt.clf()
