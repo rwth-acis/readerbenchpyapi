@@ -60,6 +60,8 @@ werden?
 Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
 | *-gemeinsam-* |
+|:--:|
+| *Abbildung (3): : Liste der gemeinsamen Schlüsselwörter* |
 
 
 ### Fehlende Schlüsselwörter
@@ -68,6 +70,8 @@ Musterlösung eigene Schwerpunkte gesetzt hat. Hier lernst du die Wörter, die d
 Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
 | *-unterschied1-* |
+|:--:|
+| *Abbildung (4): Liste der Schlüsselwörter von der Musterlösung* |
 
 Die dritte Liste sammelt die Begriffe, die du in deinem Text verwendet hast, jedoch
 nicht im Expertentext vorkommen. Mit Hilfe dieser List lässt sich gut sehen, wo du
@@ -77,6 +81,8 @@ Ergänzungen gut zum Thema  passen.
 Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
 | *-unterschied2-* |
+|:--:|
+| *Abbildung (5): Liste deiner ‚eigenen' Schlüsselwörter* |
 
 ## Vergleich der Kohäsion
 
@@ -100,7 +106,7 @@ LEXICAL_OVERLAP: CONTENT_OVERLAP: prüft, ob die verwendeten Wörter identisch s
 
 | -content- |
 |:--:|
-| *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
+| *Abbildung (6): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
 
 Im Folgenden findest du einige Beispiele dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst e sdir auch andere Lernmöglichkeiten anfallen:
 
@@ -116,7 +122,7 @@ SEMANTIC: WORD2VEC(wiki): Die semantische Kohäsion vergleicht die  umfasst die 
 
 | -wordtovec- |
 |:--:|
-| *Abbildung (6): Kohäsionsanalyse(SEMANTIC: WORD2VEC(wiki)) zum Thema -topicName-* |
+| *Abbildung (7): Kohäsionsanalyse(SEMANTIC: WORD2VEC(wiki)) zum Thema -topicName-* |
 
 Im Folgenden findest du ein Beispiel dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst es dir auch andere Lernmöglichkeiten anfallen:
 
