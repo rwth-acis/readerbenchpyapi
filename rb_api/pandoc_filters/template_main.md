@@ -69,7 +69,7 @@ Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
 | *-unterschied1-* |
 
-Die zweite Liste sammelt die Begriffe, die du in deinem Text verwendet hast, jedoch
+Die dritte Liste sammelt die Begriffe, die du in deinem Text verwendet hast, jedoch
 nicht im Expertentext vorkommen. Mit Hilfe dieser List lässt sich gut sehen, wo du
 eigene Schwerpunkte gesetzt hast oder auch Themen mit einbezogen hast, die über
 den Fokus des Expertentextes hinausgehen. Hier kannst du überlegen, ob diese
@@ -107,33 +107,7 @@ Im Folgenden findest du einige Beispiele dafür, wie du an den Graph herangehen 
 - Wenn zwei Teile Ihres Textes eng miteinander verbunden sind, sollten Sie prüfen, ob einer der beiden Teile nicht überflüssig ist.
 - Eine schwache verbindung zwischen deiner Textteilen und die von der Musterlösung bedeutet, dass du nicht dieselben Wörter verwendest wie in der Korrektur und Teil 1 wird dir helfen oder hat dir geholfen, mehrdarüber zu wissen.
 - Wenn zwei Teile des Korrekturtextes (z.B. A und B) eng miteinander verbunden sind und ein Teil deines Textes (z.B. C) mit einem der Teile (A oder B) verbunden ist, dann sollte ein Teil deines Textes mit C und mit A oder B verbunden sein. Wenn dies nicht der Fall ist, hast du möglicherweise einen Teil ausgelassen, der mit C verknüpft sein sollte, da A mit B in der Korrektur verknüpft ist. Vielleicht hast du vergessen, eine Zusammenfassung zu schreiben, oder du hast sie nicht gut zusammengefasst oder etwas anderes? Unten kannst du auch die entsprechenden Textteile anlesen.
-
-\pagebreak
-### LEXICAL_OVERLAP: TOPIC_OVERLAP
-
-LEXICAL_OVERLAP: TOPIC_OVERLAP: besteht in der Überprüfung der Unterschiede der verwendeten Begriffe. Indem Sie zwei Textteile auswählen, können Sie überprüfen, ob sie die gleichen Begriffe verwenden.
-
-| -topic- |
-|:--:|
-| *Abbildung (4): Kohäsionsanalyse(LEXICAL_OVERLAP: TOPIC_OVERLAP) zum Thema -topicName-* |
-
-Im Folgenden findest du einige Beispiele dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst es dir auch andere Lernmöglichkeiten anfallen:
-
-- Eine schwache verbindung zwischen deiner Textteilen und die von der Musterlösung bedeutet, dass du nicht dieselben Wörter verwendest wie in der Korrektur und Teil 1 wird dir helfen oder hat dir geholfen, mehrdarüber zu wissen.
-- Wenn zwei Teile des Korrekturtextes (z.B. A und B) eng miteinander verbunden sind und ein Teil deines Textes (z.B. C) mit einem der Teile (A oder B) verbunden ist, dann sollte ein Teil deines Textes mit C und mit A oder B verbunden sein. Wenn dies nicht der Fall ist, hast du möglicherweise einen Teil ausgelassen, der mit C verknüpft sein sollte, da A mit B in der Korrektur verknüpft ist. Vielleicht hast du vergessen, eine Zusammenfassung zu schreiben, oder du hast sie nicht gut zusammengefasst oder etwas anderes? Unten kannst du auch die entsprechenden Textteile anlesen.
-
-\pagebreak
-### LEXICAL_OVERLAP: ARGUMENT_OVERLAP
-
-LEXICAL_OVERLAP: ARGUMENT_OVERLAP: vergleicht, wie zwei Teile des Textes aufgebaut sind, insbesondere die Beziehungen zwischen Ihren Wörtern. Hier geht es um die Verben, Adjektive usw., die Sie zur Formulierung Ihrer Argumente verwenden
-
-| -argument- |
-|:--:|
-| *Abbildung (5): Kohäsionsanalyse(LEXICAL_OVERLAP: ARGUMENT_OVERLAP) zum Thema -topicName-* |
-
-Im Folgenden findest du eini Beispiel dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst es dir auch andere Lernmöglichkeiten anfallen:
-
-- Wenn zwei Teile Ihres Textes eng miteinander verbunden sind, sollten Sie prüfen, ob du die Verben, Adjektiven von einer der beiden Teile nicht ändern solltest, da sie vielleicht überflüssig sind.
+- Wenn ein Teil deines Textes eng mit einem Teil der Lösung verbunden ist, diese aber nicht die gleiche Größe haben, bedeutet dies, dass du weniger Wörter aus dem Bereich verwendest, wenn er kleiner ist, und mehr, wenn er größer ist. Du solltest also entweder die Größe dieses Textes mit mehr Domänenwörtern erhöhen oder ihn verkleinern, wodurch die Größe des Teils deines Textes, der wie die Lösung aussieht, angepasst wird.
 
 \pagebreak
 ### SEMANTIC: WORD2VEC(wiki)
@@ -147,6 +121,7 @@ SEMANTIC: WORD2VEC(wiki): Die semantische Kohäsion vergleicht die  umfasst die 
 Im Folgenden findest du ein Beispiel dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst es dir auch andere Lernmöglichkeiten anfallen:
 
 - Wenn zwei Teile des Korrekturtextes (z.B. A und B) eng miteinander verbunden sind und ein Teil deines Textes (z.B. C) mit einem der Teile (A oder B) verbunden ist, dann sollte ein Teil deines Textes mit C und mit A oder B verbunden sein. Wenn dies nicht der Fall ist, hättest du möglicherweise einen Teilteil geschrieben, welcher mit C verknüpft sein sollte, da A mit B in der Korrektur verknüpft ist. 
+- Wenn ein Teil deines Textes eng mit einem Teil der Lösung verbunden ist, diese aber nicht die gleiche Größe haben, bedeutet dies, dass du weniger Wörter aus dem Bereich verwendest, wenn er kleiner ist, und mehr, wenn er größer ist. Du solltest also entweder die Größe dieses Textes mit mehr Domänenwörtern erhöhen oder ihn verkleinern, wodurch die Größe des Teils deines Textes, der wie die Lösung aussieht, angepasst wird.
 
 ### Textelementen
 <!-- textelementen -->
