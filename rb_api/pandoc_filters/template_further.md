@@ -53,7 +53,11 @@ Die folgenden Schaubilder zeigen den Zusammenhalt in den verschiedenen oben gena
 | *Abbildung (6): Experten-Stichwortliste zum Thema -topicName-* |
 
 
+### Gemeinsame Schlüsselwörter
+<!-- gemeinsam -->
 
+### Fehlende Schlüsselwörter
+<!-- unterschied -->
 
 ## 3. Weitere Räte
 

@@ -3,6 +3,7 @@
 import sys
 import json
 import os
+import itertools
 
 """
 Pandoc filter to convert all regular text to uppercase.
@@ -16,7 +17,11 @@ def getJson(url):
         varData = json.load(f)
     return varData
 
-
+def divide_chunks(l, n):
+    	
+	# looping till length l
+	for i in range(0, len(l), n):
+		yield l[i:i + n]
 
 def caps(elem, doc):
     data = getJson('data.json')
@@ -67,6 +72,76 @@ def caps(elem, doc):
             caption = pf.Caption(Para(Str(caption)))
             return pf.Div(pf.Table(*body, colspec=zip(alignment, width), caption=caption))
 
+        if elem.text == "<!-- unterschied -->":
+            expert = data[data['subject']+str(data['questionNumber'])+'_expert_keyword']
+            student = data[data['subject']+str(data['questionNumber'])+'_keyword']
+            sorted_expert = sorted(expert, key = lambda k:k['degree'])
+            sorted_student = sorted(student, key = lambda k:k['degree'])
+            unterschied = []
+            for e in expert:
+                unterschied.append(e["displayName"]+"("+str(round(float(e["degree"])*100, 2))+")")
+                
+            for e in expert:
+                inside = True
+                for s in student:
+                    if e['displayName'] == s['displayName']:
+                        inside= False
+                        break
+                if not inside:
+                    unterschied.append(e["displayName"]+"("+str(round(float(e["degree"])*100, 2))+")")
+                
+                break
+            string =''
+            if len(unterschied) == 1:
+                string+= str(unterschied[0])
+            elif len(unterschied)>1:
+                string = unterschied[0]
+                for index in range(1, len(unterschied)-1): 
+                    string +=', '+ str(unterschied[index])
+
+            body = []
+            
+            cells = [string]
+            cells = [pf.TableCell(pf.Plain(Str(cell))) for cell in cells]
+            row = pf.TableRow(*cells)
+        
+            body.append(pf.TableBody(row))
+                
+
+            
+
+            width = [0.8]
+            alignment = ['AlignDefault'] * len(width)
+            caption = 'Textelementen'
+            caption = pf.Caption(Para(Str(caption)))
+            return pf.Div(pf.Table(*body, colspec=zip(alignment, width), caption=caption))
+
+
+        if elem.text == "- gemeinsam -":
+            expert = data[data['subject']+str(data['questionNumber'])+'_expert_keyword']
+            student = data[data['subject']+str(data['questionNumber'])+'_keyword']
+            sorted_expert = sorted(expert, key = lambda k:k['degree'])
+            sorted_student = sorted(student, key = lambda k:k['degree'])
+            gemeinsam = []
+            for e in expert:
+                for s in student:
+                    if e['displayName'] == s['displayName']:
+                        gemeinsam.append(e["displayName"]+"("+str(round(float(e["degree"])*100, 2))+")")
+                    break
+                else:
+                    continue
+                break
+            string =''
+            gemeinsam = [x["displayName"]+"("+str(round(float(x["degree"])*100, 2))+")" for x in expert+student if (any(e['displayName'])==x['displayName'] for e in  expert) and (any(s['displayName'])==x['displayName'] for s in student)]
+            if len(gemeinsam) == 1:
+                string+= gemeinsam[0]
+            elif len(gemeinsam)>1:
+                string = gemeinsam[0]
+                for index in range(1, len(gemeinsam)-1): 
+                    string +=', '+ gemeinsam[index]
+
+            return string
+
     if type(elem) == Str: 
         if elem.text == "-topicName-":
             subject = data['subject'] +" Frage nummer " + str(data['questionNumber'])
@@ -81,6 +156,63 @@ def caps(elem, doc):
         if elem.text == "-question_number-":
             feedback = str(data['questionNumber'])
             elem.text = feedback
+            return elem
+
+        if elem.text == "-gemeinsam-":
+            expert = data[data['subject']+str(data['questionNumber'])+'_expert_keyword']
+            student = data[data['subject']+str(data['questionNumber'])+'_keyword']
+            sorted_expert = reversed(sorted(expert, key = lambda k:k['degree']))
+            sorted_student = reversed(sorted(student, key = lambda k:k['degree']))
+            
+            string =''
+            list_of_all_values = [value for elem in sorted_student
+                      for value in elem.values()]
+            gemeinsam = [x["displayName"] for x in sorted_expert if x['displayName'] in list_of_all_values]
+            if len(gemeinsam) == 1:
+                string+= gemeinsam[0]
+            elif len(gemeinsam)>1:
+                string = gemeinsam[0]
+                for index in range(1, len(gemeinsam)-1): 
+                    string +=', '+ gemeinsam[index]
+            elem.text = string
+            return elem
+
+        if elem.text == "-unterschied1-":
+            expert = data[data['subject']+str(data['questionNumber'])+'_expert_keyword']
+            student = data[data['subject']+str(data['questionNumber'])+'_keyword']
+            sorted_expert = reversed(sorted(expert, key = lambda k:k['degree']))
+            sorted_student = reversed(sorted(student, key = lambda k:k['degree']))
+            
+            string =''
+            list_of_all_values = [value for elem in sorted_student
+                      for value in elem.values()]
+            gemeinsam = [x["displayName"] for x in sorted_expert if x['displayName'] not in list_of_all_values]
+            if len(gemeinsam) == 1:
+                string+= gemeinsam[0]
+            elif len(gemeinsam)>1:
+                string = gemeinsam[0]
+                for index in range(1, len(gemeinsam)-1): 
+                    string +=', '+ gemeinsam[index]
+            elem.text = string
+            return elem
+
+        if elem.text == "-unterschied2-":
+            expert = data[data['subject']+str(data['questionNumber'])+'_expert_keyword']
+            student = data[data['subject']+str(data['questionNumber'])+'_keyword']
+            sorted_expert = reversed(sorted(expert, key = lambda k:k['degree']))
+            sorted_student = reversed(sorted(student, key = lambda k:k['degree']))
+            
+            string =''
+            list_of_all_values = [value for elem in sorted_expert
+                      for value in elem.values()]
+            gemeinsam = [x["displayName"] for x in sorted_student if x['displayName'] not in list_of_all_values]
+            if len(gemeinsam) == 1:
+                string+= gemeinsam[0]
+            elif len(gemeinsam)>1:
+                string = gemeinsam[0]
+                for index in range(1, len(gemeinsam)-1): 
+                    string +=', '+ gemeinsam[index]
+            elem.text = string
             return elem
 
         if elem.text == "-expert-":

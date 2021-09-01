@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rbpy-controller
+  namespace: ma-zeufack
+  labels:
+    app: rbpy-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rbpy-controller
+  template:
+    metadata:
+      name: rbpy-controller
+      labels:
+        app: rbpy-controller
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - detel
+      containers:
+        - name: rbpy-controller
+          image: registry.tech4comp.dbis.rwth-aachen.de/rwthacis/readerbenchpyapi:main
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 6006 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rb-controller
+  namespace: ma-zeufack
+spec:
+  selector:
+    app: rbpy-controller
+  ports:
+  - port: 32446
+    targetPort: 6006 
+    protocol: TCP
+  type: ClusterIP 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: rb-controller-out
+  namespace: ma-zeufack
+spec:
+  selector:
+    app: rbpy-controller
+  ports:
+  - port: 32446
+    targetPort: 6006 
+    nodePort: 32447
+  type: NodePort 

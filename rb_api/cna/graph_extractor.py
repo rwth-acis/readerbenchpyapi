@@ -94,20 +94,20 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
                 if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP' and float(type['weight'])>0:
                     if not G1.has_edge(edge['source'], edge['target']):
                         G1.add_edge(edge['source'], edge['target'])
-                        value1.append(int(float(type['weight'])*100))
+                        value1.append(int(float(type['weight'])*10))
                         #edge_labels[(edge['source'], edge['target'])]= label
                 if type['name']=='LEXICAL_OVERLAP: TOPIC_OVERLAP' and float(type['weight'])>0:
                     if not G2.has_edge(edge['source'], edge['target']):
                         G2.add_edge(edge['source'], edge['target'])
-                        value2.append(int(float(type['weight'])*100))
+                        value2.append(int(float(type['weight'])*10))
                 if type['name']=='LEXICAL_OVERLAP: ARGUMENT_OVERLAP' and float(type['weight'])>0:
                     if not G3.has_edge(edge['source'], edge['target']):
                         G3.add_edge(edge['source'], edge['target'])
-                        value3.append(int(float(type['weight'])*100))
+                        value3.append(int(float(type['weight'])*10))
                 if type['name']=='SEMANTIC: WORD2VEC(wiki)' and float(type['weight'])>0:
                     if not G4.has_edge(edge['source'], edge['target']):
                         G4.add_edge(edge['source'], edge['target'])
-                        value4.append(int(float(type['weight'])*100))
+                        value4.append(int(float(type['weight'])*10))
             #if not G1.has_edge(edge['source'], edge['target']):
                 #G1.add_edge(edge['source'], edge['target'])
                 #value1.append(int(max(sim, 0)*100))
@@ -117,8 +117,8 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     pos1 = nx.spring_layout(G1, k=2)
     options1 = {
     "node_color": "#fc0303",
-    "edge_color": value1,
-    "width": 4,
+    "edge_color": "#fc0303",
+    "width": value1,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size1 
@@ -126,8 +126,8 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     pos2 = nx.spring_layout(G2, k=2)
     options2 = {
     "node_color": "#03fc39",
-    "edge_color": value2,
-    "width": 4,
+    "edge_color": "#03fc39",
+    "width": value2,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size2 
@@ -135,8 +135,8 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     pos3 = nx.spring_layout(G3, k=2)
     options3 = {
     "node_color": "#fcbe03",
-    "edge_color": value3,
-    "width": 4,
+    "edge_color": "#fcbe03",
+    "width": value3,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size3
@@ -144,8 +144,8 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     pos4 = nx.spring_layout(G4, k=2)
     options4 = {
     "node_color": "#A0CBE2",
-    "edge_color": value4,
-    "width": 4,
+    "edge_color": "#A0CBE2",
+    "width": value4,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size4

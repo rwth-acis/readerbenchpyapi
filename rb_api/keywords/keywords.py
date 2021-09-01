@@ -72,7 +72,7 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
 
                     if not G.has_edge(str(kw1[1]), str(kw2[1])):
                         G.add_edge(str(kw1[1]), str(kw2[1]))
-                        value.append(int(max(sim, 0)*100))
+                        value.append(int(max(sim, 0)*10))
             except:
                 print("Problem with " + kw1[1] + " or " + kw2[1])
 
@@ -92,8 +92,8 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     pos = nx.spring_layout(G, k=1)
     options = {
     "node_color": "#A0CBE2",
-    "edge_color": value,
-    "width": 4,
+    "edge_color": "#A0CBE2",
+    "width": value,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size 
@@ -106,6 +106,7 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     plt.clf()
     data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
     data.update({textType : 'rb_api/pandoc_filters/images/'+dataName+'.png'})
+    data.update({dataName : node_list})
     with open('rb_api/pandoc_filters/'+JsonName+'.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
     return {
