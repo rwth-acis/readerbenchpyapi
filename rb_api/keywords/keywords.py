@@ -92,8 +92,8 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     pos = nx.spring_layout(G, k=1)
     options = {
     "node_color": "#A0CBE2",
-    "edge_color": "#A0CBE2",
-    "width": value,
+    "edge_color": value,
+    "width": 2,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size 

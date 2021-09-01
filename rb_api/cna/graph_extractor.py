@@ -117,8 +117,8 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     pos1 = nx.spring_layout(G1, k=2)
     options1 = {
     "node_color": "#fc0303",
-    "edge_color": "#fc0303",
-    "width": value1,
+    "edge_color": value1,
+    "width": 2,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size1 
@@ -126,8 +126,8 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     pos2 = nx.spring_layout(G2, k=2)
     options2 = {
     "node_color": "#03fc39",
-    "edge_color": "#03fc39",
-    "width": value2,
+    "edge_color": value2,
+    "width": 2,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size2 
@@ -135,8 +135,8 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     pos3 = nx.spring_layout(G3, k=2)
     options3 = {
     "node_color": "#fcbe03",
-    "edge_color": "#fcbe03",
-    "width": value3,
+    "edge_color": value3,
+    "width": 2,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size3
@@ -144,8 +144,8 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     pos4 = nx.spring_layout(G4, k=2)
     options4 = {
     "node_color": "#A0CBE2",
-    "edge_color": "#A0CBE2",
-    "width": value4,
+    "edge_color": value4,
+    "width": 2,
     "edge_cmap": plt.cm.Blues,
     "with_labels": True,
     "node_size":node_size4

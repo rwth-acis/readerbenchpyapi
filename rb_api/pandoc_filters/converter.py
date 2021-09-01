@@ -67,7 +67,7 @@ def convert_file(topicName, topicSize):
             
             with open('data.json', 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=4)
-            stream = os.popen('pandoc   -V geometry:margin=.5in rb_api/pandoc_filters/template_further.md  --pdf-engine=xelatex -o rb_api/pandoc_filters/'+topicName+'_'+str(fileNumber)+'.pdf --filter rb_api/pandoc_filters/subjectName.py --resource-path=rb_api/pandoc_filters/')
+            stream = os.popen('pandoc   -V geometry:margin=.5in rb_api/pandoc_filters/template_main.md  --pdf-engine=xelatex -o rb_api/pandoc_filters/'+topicName+'_'+str(fileNumber)+'.pdf --filter rb_api/pandoc_filters/subjectName.py --resource-path=rb_api/pandoc_filters/')
             output = stream.read()
             print(output)   
     #print(output)

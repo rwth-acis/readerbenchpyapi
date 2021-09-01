@@ -1,11 +1,13 @@
-# Dein Feedback zur Schreibaufgabe zum Thema -topicName-.
+# Dein Feedback zur Schreibaufgabe zum Thema -topicName-
 
 Dieses Dokument enthält eine Analyse zu deiner Schreibaufgabe zum Thema -topicName-. Die
 Analyse wurde automatisch auf der Grundlage der von dir bearbeiteten
 Schreibaufgabe erstellt. Dabei wurden die Wissensstrukturen, die dein Text
 enthältgraphisch dargestellt, mit den Seminartexten verglichen und für dich
 interpretiert.
+
 ## Schlüsselwörter
+
 In diesem Abschnitt werden die Begriffe aus deinem Text präsentiert und mit dem Modell der Musterlösung(sog. Expertentext) verglichen. So kannst du sich ein Bild davon machen, welche Begriffe von dir erwartet wurden und welche du verwendet hast. Wenn sich die von dir am häufigsten verwendeten Begriffe von denen der Musterlösung unterscheiden, bedenkt, dass es sich um Synonyme handeln kann. Wenn sie es nicht sind, dann unterscheiden sich deine Begriffe von der Begriffe der Musterlösung. 
 
 Mittels einer computerlinguistischen Analysesoftware wurde der Graph auf der nächsten Seite auf der Grundlage deiner Ausarbeitung zum Thema -topicName- erstellt. Sie enthält die wichtigsten in deinem
@@ -22,7 +24,7 @@ stehen eher am Rand und sind kaum mit den Knoten des Modells verbunden?
 
 | -student- |
 |:--:|
-| *Abbildung (5): Ihre Schlüsselwortliste zum Thema -topicName-* |
+| *Abbildung (1): Ihre Schlüsselwortliste zum Thema -topicName-* |
 
 \pagebreak
 Als Vergleich zu deinem Text zeigen wir dir auf der nächsten Seite anschließend das sogenannte
@@ -37,7 +39,7 @@ du die Verbindungen, die davon ausgehen, nachvollziehen und erläutern kannst.
 
 | -expert- |
 |:--:|
-| *Abbildung (6): Experten-Stichwortliste zum Thema -topicName-* |
+| *Abbildung (2): Experten-Stichwortliste zum Thema -topicName-* |
 
 \pagebreak
 ## Vergleich der Schlüsselwörter
@@ -57,7 +59,7 @@ für die Aufgabe wichtig erscheinen, die im Expertentext liegen, in deinem Text 
 werden?
 Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
-[-gemeinsam-]
+| *-gemeinsam-* |
 
 
 ### Fehlende Schlüsselwörter
@@ -65,7 +67,7 @@ Die zweite Liste sammelt die Begriffe, die in Expertentext vorkommen, jedoch du 
 Musterlösung eigene Schwerpunkte gesetzt hat. Hier lernst du die Wörter, die du in Zukunft verwenden könntest, wenn du diese Übung wiederholen müsstest.
 Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
-[-unterschied1-]
+| *-unterschied1-* |
 
 Die zweite Liste sammelt die Begriffe, die du in deinem Text verwendet hast, jedoch
 nicht im Expertentext vorkommen. Mit Hilfe dieser List lässt sich gut sehen, wo du
@@ -74,7 +76,7 @@ den Fokus des Expertentextes hinausgehen. Hier kannst du überlegen, ob diese
 Ergänzungen gut zum Thema  passen.
 Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
-[-unterschied2-]
+| *-unterschied2-* |
 
 ## Vergleich der Kohäsion
 
@@ -98,7 +100,7 @@ LEXICAL_OVERLAP: CONTENT_OVERLAP: prüft, ob die verwendeten Wörter identisch s
 
 | -content- |
 |:--:|
-| *Abbildung (1): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
+| *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
 
 Im Folgenden findest du einige Beispiele dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst e sdir auch andere Lernmöglichkeiten anfallen:
 
@@ -113,9 +115,10 @@ LEXICAL_OVERLAP: TOPIC_OVERLAP: besteht in der Überprüfung der Unterschiede de
 
 | -topic- |
 |:--:|
-| *Abbildung (2): Kohäsionsanalyse(LEXICAL_OVERLAP: TOPIC_OVERLAP) zum Thema -topicName-* |
+| *Abbildung (4): Kohäsionsanalyse(LEXICAL_OVERLAP: TOPIC_OVERLAP) zum Thema -topicName-* |
 
 Im Folgenden findest du einige Beispiele dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst es dir auch andere Lernmöglichkeiten anfallen:
+
 - Eine schwache verbindung zwischen deiner Textteilen und die von der Musterlösung bedeutet, dass du nicht dieselben Wörter verwendest wie in der Korrektur und Teil 1 wird dir helfen oder hat dir geholfen, mehrdarüber zu wissen.
 - Wenn zwei Teile des Korrekturtextes (z.B. A und B) eng miteinander verbunden sind und ein Teil deines Textes (z.B. C) mit einem der Teile (A oder B) verbunden ist, dann sollte ein Teil deines Textes mit C und mit A oder B verbunden sein. Wenn dies nicht der Fall ist, hast du möglicherweise einen Teil ausgelassen, der mit C verknüpft sein sollte, da A mit B in der Korrektur verknüpft ist. Vielleicht hast du vergessen, eine Zusammenfassung zu schreiben, oder du hast sie nicht gut zusammengefasst oder etwas anderes? Unten kannst du auch die entsprechenden Textteile anlesen.
 
@@ -126,9 +129,10 @@ LEXICAL_OVERLAP: ARGUMENT_OVERLAP: vergleicht, wie zwei Teile des Textes aufgeba
 
 | -argument- |
 |:--:|
-| *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: ARGUMENT_OVERLAP) zum Thema -topicName-* |
+| *Abbildung (5): Kohäsionsanalyse(LEXICAL_OVERLAP: ARGUMENT_OVERLAP) zum Thema -topicName-* |
 
 Im Folgenden findest du eini Beispiel dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst es dir auch andere Lernmöglichkeiten anfallen:
+
 - Wenn zwei Teile Ihres Textes eng miteinander verbunden sind, sollten Sie prüfen, ob du die Verben, Adjektiven von einer der beiden Teile nicht ändern solltest, da sie vielleicht überflüssig sind.
 
 \pagebreak
@@ -138,7 +142,7 @@ SEMANTIC: WORD2VEC(wiki): Die semantische Kohäsion vergleicht die  umfasst die 
 
 | -wordtovec- |
 |:--:|
-| *Abbildung (4): Kohäsionsanalyse(SEMANTIC: WORD2VEC(wiki)) zum Thema -topicName-* |
+| *Abbildung (6): Kohäsionsanalyse(SEMANTIC: WORD2VEC(wiki)) zum Thema -topicName-* |
 
 Im Folgenden findest du ein Beispiel dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst es dir auch andere Lernmöglichkeiten anfallen:
 
