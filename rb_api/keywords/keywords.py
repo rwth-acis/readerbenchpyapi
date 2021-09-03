@@ -89,7 +89,7 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     #G=nx.from_pandas_edgelist(df, 'from', 'to', create_using=nx.Graph() )
     #G = nx.star_graph(30)
     plt.clf()
-    pos = nx.spring_layout(G, k=2)
+    pos = nx.spring_layout(G, k=1, iterations=20, scale=6)
     options = {
     "node_color": "#A0CBE2",
     "edge_color": value,

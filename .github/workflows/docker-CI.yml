@@ -15,7 +15,7 @@ jobs:
       id: extract_branch
     - name: Build the Docker image
       run: | 
-        docker build . -t registry.tech4comp.dbis.rwth-aachen.de/rwthacis/readerbenchpyapi:${{ steps.extract_branch.outputs.branch }}
+        docker build . -t registry.tech4comp.dbis.rwth-aachen.de/rwthacis/readerbenchpyapi:${{ steps.extract_branch.outputs.branch }}  --no-cache
     - name: Push to registry
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}  

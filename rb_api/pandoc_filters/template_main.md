@@ -80,15 +80,16 @@ Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
 ## Vergleich der Kohäsion
 
-Nun, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text im Detail zu betrachten, indem du die Kohäsion entlang verschiedener Dimensionen (LEXICAL_OVERLAP: CONTENT_OVERLAP, LEXICAL_OVERLAP: TOPIC_OVERLAP, LEXICAL_OVERLAP und SEMANTIC: WORD2VEC(wiki)) analysierst.
-Für jede Dimension wird ein Graph erstellt, der die verschiedenen Teile deines Textes zeigt.
+Jetzt, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text genauer zu betrachten, indem du den Zusammenhalt der Wörter in deinem Text und ihre Wichtigkeit berücksichtigst. Zu diesem Zweck wird ein Graph dargestellt, in dem die Knoten einen Teil des Textes darstellen und ihre Größe der Knoten die Wichtigkeit dieser Teile im Text wiedergibt, während die Kanten zwischen zwei Knoten die Überlappung des Textes darstellen, der diese Knoten darstellt (je dunkler die Farbe der Kante, desto größer die Überlappung). Anhand dieses Diagramms kannst du erkennen, welche Wörter dir fehlen oder welche du in einem Absatz streichen solltest, um der Korrektheit so nahe wie möglich zu kommen.
 
+Im Folgenden findest du einige Beispiele dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst e sdir auch andere Lernmöglichkeiten anfallen:
 
+- Wenn zwei Teile Ihres Textes eng miteinander verbunden sind, sollten Sie prüfen, ob einer der beiden Teile nicht überflüssig ist.
+- Eine schwache verbindung zwischen deiner Textteilen und die von der Musterlösung bedeutet, dass du nicht dieselben Wörter verwendest wie in der Korrektur und Teil 1 wird dir helfen oder hat dir geholfen, mehrdarüber zu wissen.
+- Wenn zwei Teile des Korrekturtextes (z.B. A und B) eng miteinander verbunden sind und ein Teil deines Textes (z.B. C) mit einem der Teile (A oder B) verbunden ist, dann sollte ein Teil deines Textes mit C und mit A oder B verbunden sein. Wenn dies nicht der Fall ist, hast du möglicherweise einen Teil ausgelassen, der mit C verknüpft sein sollte, da A mit B in der Korrektur verknüpft ist. Vielleicht hast du vergessen, eine Zusammenfassung zu schreiben, oder du hast sie nicht gut zusammengefasst oder etwas anderes? Unten kannst du auch die entsprechenden Textteile anlesen.
+- Wenn ein Teil deines Textes eng mit einem Teil der Lösung verbunden ist, diese aber nicht die gleiche Größe haben, bedeutet dies, dass du weniger Wörter aus dem Bereich verwendest, wenn er kleiner ist, und mehr, wenn er größer ist. Du solltest also entweder die Größe dieses Textes mit mehr Domänenwörtern erhöhen oder ihn verkleinern, wodurch die Größe des Teils deines Textes, der wie die Lösung aussieht, angepasst wird.
 
-
-Für jeden dieser Aspekte wird ein Graph erstellt, in dem die Größe der Knoten die Bedeutung der verschiedenen Elemente und die Breite der Kanten die Verbindung zwischen den Textteilen darstellt. Je größer also ein Knoten ist, desto wichtiger ist dieser Teil des Textes im Text und je großer eine kante ist, desto stärker sind die beiden Teile des Textes verbundet. 
-
-Die Inhalte der Textteile werden nach den Grafiken im Abschnitt Textelemente dargestellt 
+Nach dem Graph folgt eine Liste mit den Schlüsselwörtern der Textteile, die im Graph enthalten sind. 
 
 | die Textteile, die mit 1 beginnen, beziehen sich auf deinen Text und die, die mit 2 beginnen, auf den Expertentext|
 | --- | 
@@ -102,26 +103,8 @@ LEXICAL_OVERLAP: CONTENT_OVERLAP: prüft, ob die verwendeten Wörter identisch s
 |:--:|
 | *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
 
-Im Folgenden findest du einige Beispiele dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst e sdir auch andere Lernmöglichkeiten anfallen:
 
-- Wenn zwei Teile Ihres Textes eng miteinander verbunden sind, sollten Sie prüfen, ob einer der beiden Teile nicht überflüssig ist.
-- Eine schwache verbindung zwischen deiner Textteilen und die von der Musterlösung bedeutet, dass du nicht dieselben Wörter verwendest wie in der Korrektur und Teil 1 wird dir helfen oder hat dir geholfen, mehrdarüber zu wissen.
-- Wenn zwei Teile des Korrekturtextes (z.B. A und B) eng miteinander verbunden sind und ein Teil deines Textes (z.B. C) mit einem der Teile (A oder B) verbunden ist, dann sollte ein Teil deines Textes mit C und mit A oder B verbunden sein. Wenn dies nicht der Fall ist, hast du möglicherweise einen Teil ausgelassen, der mit C verknüpft sein sollte, da A mit B in der Korrektur verknüpft ist. Vielleicht hast du vergessen, eine Zusammenfassung zu schreiben, oder du hast sie nicht gut zusammengefasst oder etwas anderes? Unten kannst du auch die entsprechenden Textteile anlesen.
-- Wenn ein Teil deines Textes eng mit einem Teil der Lösung verbunden ist, diese aber nicht die gleiche Größe haben, bedeutet dies, dass du weniger Wörter aus dem Bereich verwendest, wenn er kleiner ist, und mehr, wenn er größer ist. Du solltest also entweder die Größe dieses Textes mit mehr Domänenwörtern erhöhen oder ihn verkleinern, wodurch die Größe des Teils deines Textes, der wie die Lösung aussieht, angepasst wird.
 
-\pagebreak
-### SEMANTIC: WORD2VEC(wiki)
-
-SEMANTIC: WORD2VEC(wiki): Die semantische Kohäsion vergleicht die  umfasst die Überprüfung der Domänen, zu denen die in einem Text verwendeten Wörter gehören. Wie groß der wert ist bestimmt ob die verwendete Begriffe zur derselben Domäne gehören.
-
-| -wordtovec- |
-|:--:|
-| *Abbildung (4): Kohäsionsanalyse(SEMANTIC: WORD2VEC(wiki)) zum Thema -topicName-* |
-
-Im Folgenden findest du ein Beispiel dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst es dir auch andere Lernmöglichkeiten anfallen:
-
-- Wenn zwei Teile des Korrekturtextes (z.B. A und B) eng miteinander verbunden sind und ein Teil deines Textes (z.B. C) mit einem der Teile (A oder B) verbunden ist, dann sollte ein Teil deines Textes mit C und mit A oder B verbunden sein. Wenn dies nicht der Fall ist, hättest du möglicherweise einen Teilteil geschrieben, welcher mit C verknüpft sein sollte, da A mit B in der Korrektur verknüpft ist. 
-- Wenn ein Teil deines Textes eng mit einem Teil der Lösung verbunden ist, diese aber nicht die gleiche Größe haben, bedeutet dies, dass du weniger Wörter aus dem Bereich verwendest, wenn er kleiner ist, und mehr, wenn er größer ist. Du solltest also entweder die Größe dieses Textes mit mehr Domänenwörtern erhöhen oder ihn verkleinern, wodurch die Größe des Teils deines Textes, der wie die Lösung aussieht, angepasst wird.
 
 ### Textelementen
 <!-- textelementen -->

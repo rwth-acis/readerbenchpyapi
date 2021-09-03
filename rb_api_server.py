@@ -99,9 +99,9 @@ def complexityComparePost():
     response = dict()
     doc_indices = feedback.compute_textual_indices(text)
     expert_indices = response= feedback.compute_indices_format(expert)
-    level = textual_complexity.predictLevel(doc_indices['indices']['document'])
+    #level = textual_complexity.predictLevel(doc_indices['indices']['document'])
     response['feedback'] = feedback.compare_feedback(expert_indices, doc_indices, dataName, StringName)
-    response['level'] = level
+    #response['level'] = level
     response = success(response)
     return generate_response(response)
 

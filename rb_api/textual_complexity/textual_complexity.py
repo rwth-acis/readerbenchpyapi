@@ -83,7 +83,7 @@ def textualComplexityPost():
 
     #data = {}
     #for key, v in document.indices.items():
-        data[repr(key)] = [v]
+        #data[repr(key)] = [v]
 
     # load the model from disk
     #loaded_model = pickle.load(open("rb_api/textual_complexity/lsvc.sav", 'rb'))
