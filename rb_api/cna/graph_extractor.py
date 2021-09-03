@@ -19,10 +19,23 @@ import numpy as np
 import networkx as nx
 import logging
 import os
+import rb_api.keywords.keywords as keywords
+from rb.processings.keywords.keywords_extractor import KeywordExtractor
 
 
 def encode_element(element: TextElement, names: Dict[TextElement, str], graph: CnaGraph):
-    result =  { "name": names[element], "value": element.text, "type": element.depth, "importance": graph.importance[element] }
+    keywords = KeywordExtractor.extract_keywords(text=element.text, lang=lang)
+    count = len(keywords)
+    keywords.sort(key=lambda x:x[1])	
+    sorted_keywords = reversed(keywords)
+    string =''
+    if len(keywords) == 1:
+        string+= keywords[0][1]
+    elif len(keywords)>1:
+        string = keywords[0][1]
+        for index in range(1, len(keywords)-1): 
+            string +=', '+ keywords[index][1]
+    result =  { "name": names[element], "value": string, "type": element.depth, "importance": graph.importance[element] }
     if not element.is_sentence():
         result["children"] = [encode_element(child, names, graph) for child in element.components]
     return result
@@ -61,7 +74,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     value4= []
     node_size4 = []
 
-    table=[]
+    textElement=[]
     for element in docs:
         if not element.is_sentence():
             elementlist = mergeelement(element)
@@ -82,7 +95,20 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
                     G4.add_node(names[index])
                     node_size4.append(int(graph.importance[index]*1000))
 
-                table.append((names[index],index.text))
+                keywords = KeywordExtractor.extract_keywords(text=index.text, lang=lang)
+                count = len(keywords)
+                keywords.sort(key=lambda x:x[1])	
+                sorted_keywords = reversed(keywords)
+                string =''
+                if len(keywords) == 1:
+                    string+= keywords[0][1]
+                elif len(keywords)>1:
+                    string = keywords[0][1]
+                    for index in range(1, len(keywords)-1): 
+                        string +=', '+ keywords[index][1]
+
+
+                textElement.append((names[index],string))
                 
                 
             
@@ -167,7 +193,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_word2vec.png')
     plt.clf()
     data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
-    data.update({dataName: table})
+    data.update({dataName: textElement})
     with open('rb_api/pandoc_filters/'+JsonName+'.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
     return True

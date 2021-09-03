@@ -1,6 +1,6 @@
 # Dein Feedback zur Schreibaufgabe zum Thema -topicName-
 
-Dieses Dokument enthält eine Analyse zu deiner Schreibaufgabe zum Thema -topicName-. Die
+Dieses Dokument enthält eine Analyse zu deiner Schreibaufgabe zum Thema -topicName- . Die
 Analyse wurde automatisch auf der Grundlage der von dir bearbeiteten
 Schreibaufgabe erstellt. Dabei wurden die Wissensstrukturen, die dein Text
 enthältgraphisch dargestellt, mit den Seminartexten verglichen und für dich
@@ -30,7 +30,7 @@ stehen eher am Rand und sind kaum mit den Knoten des Modells verbunden?
 Als Vergleich zu deinem Text zeigen wir dir auf der nächsten Seite anschließend das sogenannte
 "Expertenmodell", eine Darstellung der Musterlösung, auf den sich deine
 Schreibaufgabe bezieht. Dieses "Expertengraph" basiert auf dem Musterlösungtext und enthält die wichtigsten
-Wörter zum Thema -topicName-. Du kannst es gut zur Wiederholung und Überprüfung
+Wörter zum Thema -topicName- . Du kannst es gut zur Wiederholung und Überprüfung
 deines Wissensstandes nutzen: Schau dir die zentralen Begriffe an und überlege, ob
 du die Verbindungen, die davon ausgehen, nachvollziehen und erläutern kannst.
 
