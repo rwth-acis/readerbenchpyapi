@@ -23,7 +23,7 @@ import rb_api.keywords.keywords as keywords
 from rb.processings.keywords.keywords_extractor import KeywordExtractor
 
 
-def encode_element(element: TextElement, names: Dict[TextElement, str], graph: CnaGraph):
+def encode_element(element: TextElement, names: Dict[TextElement, str], graph: CnaGraph,  lang: Lang):
     keywords = KeywordExtractor.extract_keywords(text=element.text, lang=lang)
     count = len(keywords)
     keywords.sort(key=lambda x:x[1])	
@@ -37,7 +37,7 @@ def encode_element(element: TextElement, names: Dict[TextElement, str], graph: C
             string +=', '+ keywords[index][1]
     result =  { "name": names[element], "value": string, "type": element.depth, "importance": graph.importance[element] }
     if not element.is_sentence():
-        result["children"] = [encode_element(child, names, graph) for child in element.components]
+        result["children"] = [encode_element(child, names, graph, lang) for child in element.components]
     return result
 
 def mergeelement( element):
@@ -48,7 +48,7 @@ def mergeelement( element):
         elementlist = elementlist + mergeelement(child)
     return elementlist
 
-def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
+def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     log = logging.getLogger("my-logger")
     #LEXICAL_OVERLAP: CONTENT_OVERLAP
     G1 = nx.Graph()
@@ -104,11 +104,11 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges):
                     string+= keywords[0][1]
                 elif len(keywords)>1:
                     string = keywords[0][1]
-                    for index in range(1, len(keywords)-1): 
-                        string +=', '+ keywords[index][1]
+                    for index2 in range(1, len(keywords)-1): 
+                        string +=', '+ keywords[index2][1]
 
 
-                textElement.append((names[index],string))
+                textElement.append((names[index], string))
                 
                 
             
@@ -224,7 +224,7 @@ def compute_graph(dataName, JsonName, texts: List[str], lang: Lang, models: List
                 names[sentence] = "Sentence {}.{}.{}".format(doc_index + 1, paragraph_index + 1, sentence_index + 1)
     result = {"data": {
         "name": "Document Set", "value": None, "type": None, "importance": None,
-        "children": [encode_element(doc, names, graph) for doc in docs]}
+        "children": [encode_element(doc, names, graph, lang) for doc in docs]}
         }
     edges = {}
     for a, b, data in graph.graph.edges(data=True):
@@ -249,7 +249,7 @@ def compute_graph(dataName, JsonName, texts: List[str], lang: Lang, models: List
         }
         for pair, types in edges.items()
     ]
-    compute_nxGraph(dataName, JsonName, docs, names, graph, edges)
+    compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang)
     result["data"]["edges"] = edges
     return result
 
@@ -267,7 +267,7 @@ def compute_graph_cscl(texts: List[str], lang: Lang, models: List, textLabels: L
             names[paragraph] = "{} {}.{}".format(textLabels[1], block_index+1, paragraph_index+1)
     result = {"data": {
         "name": "Document Set", "value": None, "type": None, "importance": None,
-        "children": [encode_element(block, names, graph) for block in blocks]}
+        "children": [encode_element(block, names, graph, lang) for block in blocks]}
         }
     edges = {}
     for a, b, data in graph.graph.edges(data=True):

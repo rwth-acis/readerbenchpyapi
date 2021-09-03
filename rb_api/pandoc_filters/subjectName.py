@@ -61,7 +61,7 @@ def caps(elem, doc):
                 body.append(pf.TableBody(row))
                 i=i+1
 
-            cells = ['Abschnitt','Wert']
+            cells = ['Abschnitt','Schlusselwörter']
             cells = [pf.TableCell(pf.Plain(Str(cell))) for cell in cells]
             row = pf.TableRow(*cells)
             head = pf.TableHead(row)

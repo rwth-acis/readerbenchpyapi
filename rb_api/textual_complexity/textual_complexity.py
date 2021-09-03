@@ -81,15 +81,17 @@ def textualComplexityPost():
             complexityIndices[categoryName] = []
         complexityIndices[categoryName].append(complexityIndexDTO)
 
-    data = {}
-    for key, v in document.indices.items():
+    #data = {}
+    #for key, v in document.indices.items():
         data[repr(key)] = [v]
 
     # load the model from disk
-    loaded_model = pickle.load(open("rb_api/textual_complexity/lsvc.sav", 'rb'))
+    #loaded_model = pickle.load(open("rb_api/textual_complexity/lsvc.sav", 'rb'))
 
-    item = pd.DataFrame.from_dict(data)
-    level = loaded_model.predict(item)[0]
+    #item = pd.DataFrame.from_dict(data)
+    #level = loaded_model.predict(item)[0]
+    #TO do train a Model
+    level = "C"
 
     for paragraph_id, paragraph in enumerate(document.components):
         for key, value in paragraph.indices.items():
