@@ -13,7 +13,7 @@ In diesem Abschnitt werden die Begriffe aus deinem Text präsentiert und mit dem
 Mittels einer computerlinguistischen Analysesoftware wurde der Graph auf der nächsten Seite auf der Grundlage deiner Ausarbeitung zum Thema -topicName- erstellt. Sie enthält die wichtigsten in deinem
 Text vorkommenden Wörter zum Thema und zeigt, wie sie miteinander
 verknüpft sind. In deinem Text besonders stark assoziierte Begriffsverbindungen
-werden mit breiten Kanten dargestellt. Achte bei der Betrachtung auch auf das gesamte Netzwerk: Welche Begriffe sind
+werden mit dunklen Kanten dargestellt. Achte bei der Betrachtung auch auf das gesamte Netzwerk: Welche Begriffe sind
 zentral und gehen viele Verbindungen mit benachbarten Konzepten ein? Welche
 stehen eher am Rand und sind kaum mit den Knoten des Modells verbunden?
 

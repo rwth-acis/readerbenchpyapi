@@ -150,6 +150,7 @@ def caps(elem, doc):
         
         if elem.text == "-textelementen-":
             subject = data[data['subject']+str(data['questionNumber'])+'_cna']
+            subject = subject.replace("_", " ")
             elem.text = subject
             return elem
         
