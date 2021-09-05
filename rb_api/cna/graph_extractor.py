@@ -95,7 +95,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
                     G4.add_node(names[index])
                     node_size4.append(int(graph.importance[index]*1000))
 
-                keywords = KeywordExtractor.extract_keywords(text=index.text, lang=lang)
+                keywords = KeywordExtractor.extract_keywords(text=index.text, lang=lang, threshold=0.0)
                 count = len(keywords)
                 keywords.sort(key=lambda x:x[1])	
                 sorted_keywords = reversed(keywords)
@@ -120,7 +120,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
                 if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP' and float(type['weight'])>0:
                     if not G1.has_edge(edge['source'], edge['target']):
                         G1.add_edge(edge['source'], edge['target'])
-                        value1.append(int(float(type['weight'])*10))
+                        value1.append((float(type['weight'])+0.6)*500)
                         #edge_labels[(edge['source'], edge['target'])]= label
                 if type['name']=='LEXICAL_OVERLAP: TOPIC_OVERLAP' and float(type['weight'])>0:
                     if not G2.has_edge(edge['source'], edge['target']):
@@ -176,7 +176,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     "with_labels": True,
     "node_size":node_size4
     }
-    plt.figure(figsize=(8, 7))
+    plt.figure(figsize=(8, 9))
     nx.draw(G1, pos1, **options1)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content.png')
     plt.clf()
