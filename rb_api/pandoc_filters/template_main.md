@@ -80,16 +80,16 @@ Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
 ## Vergleich der Kohäsion
 
-Jetzt, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text genauer zu betrachten, indem du den Zusammenhalt der Wörter in deinem Text und ihre Wichtigkeit berücksichtigst. Zu diesem Zweck wird ein Graph dargestellt, in dem die Knoten einen Teil des Textes darstellen und ihre Größe der Knoten die Wichtigkeit dieser Teile im Text wiedergibt, während die Kanten zwischen zwei Knoten die Überlappung des Textes darstellen, der diese Knoten darstellt (je dunkler die Farbe der Kante, desto größer die Überlappung). Anhand dieses Diagramms kannst du erkennen, welche Wörter dir fehlen oder welche du in einem Absatz streichen solltest, um der Korrektheit so nahe wie möglich zu kommen.
+Jetzt, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text genauer zu betrachten, indem du den Zusammenhalt der Wörter in deinem Text und ihre Wichtigkeit berücksichtigst. Zu diesem Zweck wird ein Graph dargestellt, in dem die Knoten einen Teil des Textes darstellen und ihre Größe der Knoten die Wichtigkeit dieser Teile im Text wiedergibt, während die Kanten zwischen zwei Knoten die Überlappung des Textes darstellen, der diese Knoten darstellt (je dunkler die Farbe der Kante, desto größer die Überlappung). Anhand dieses Graphs kannst du erkennen, welche Wörter dir fehlen oder welche du in einem Absatz streichen solltest, um der Korrektheit so nahe wie möglich zu kommen.
 
+Diese Grafik gilt als perfekt, wenn die Teile Ihres Textes (Absatz und Dokument) und die Korrektur eng miteinander verknüpft sind (dunkelblaue Farbe) oder überhaupt nicht verknüpft sind und die eng miteinander verknüpften Knoten zwischen den Teilen Ihres Textes und der Korrektur die gleiche Größe haben.
+
+Um deinen Text zu verbessern, solltest du so nah wie möglich an das oben definierte perfekte Graphen herankommen. Dafür musst du die Verbindungen zwischen den Teilen deines Textes und denen der Korrektur verstärken, indem du die fehlenden Wörter hinzufügst, wenn ihre gemeinsame Kante nicht zu vernachlässigen ist, oder die gemeinsamen Wörter streichst, wenn die Kante, die sie verbindet, sehr schwach ist. 
+Außerdem musst du entweder verschiedene Wörter entfernen oder die fehlenden Wörter in einem Absatz oder Dokument ergänzen, wenn dieser größer oder kleiner ist als der Teil(Absatz oder Dokument) des Korrekturtextes, mit dem er eng verbunden ist.
 Im Folgenden findest du einige Beispiele dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst e sdir auch andere Lernmöglichkeiten anfallen:
 
-- Wenn zwei Teile Ihres Textes eng miteinander verbunden sind, sollten Sie prüfen, ob einer der beiden Teile nicht überflüssig ist.
-- Eine schwache verbindung zwischen deiner Textteilen und die von der Musterlösung bedeutet, dass du nicht dieselben Wörter verwendest wie in der Korrektur und Teil 1 wird dir helfen oder hat dir geholfen, mehrdarüber zu wissen.
-- Wenn zwei Teile des Korrekturtextes (z.B. A und B) eng miteinander verbunden sind und ein Teil deines Textes (z.B. C) mit einem der Teile (A oder B) verbunden ist, dann sollte ein Teil deines Textes mit C und mit A oder B verbunden sein. Wenn dies nicht der Fall ist, hast du möglicherweise einen Teil ausgelassen, der mit C verknüpft sein sollte, da A mit B in der Korrektur verknüpft ist. Vielleicht hast du vergessen, eine Zusammenfassung zu schreiben, oder du hast sie nicht gut zusammengefasst oder etwas anderes? Unten kannst du auch die entsprechenden Textteile anlesen.
-- Wenn ein Teil deines Textes eng mit einem Teil der Lösung verbunden ist, diese aber nicht die gleiche Größe haben, bedeutet dies, dass du weniger Wörter aus dem Bereich verwendest, wenn er kleiner ist, und mehr, wenn er größer ist. Du solltest also entweder die Größe dieses Textes mit mehr Domänenwörtern erhöhen oder ihn verkleinern, wodurch die Größe des Teils deines Textes, der wie die Lösung aussieht, angepasst wird.
 
-Nach dem Graph folgt eine Liste mit den Schlüsselwörtern der Textteile, die im Graph enthalten sind. 
+Nach dem Graph folgt eine Liste mit den Schlüsselwörtern der Textteile, die im Graph enthalten sind. Du wirst die brauchen, um zu wissen, welches Stichwort zu löschen oder zu erhöhen 
 
 | die Textteile, die mit 1 beginnen, beziehen sich auf deinen Text und die, die mit 2 beginnen, auf den Expertentext|
 | --- | 
