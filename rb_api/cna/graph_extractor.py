@@ -42,7 +42,7 @@ def encode_element(element: TextElement, names: Dict[TextElement, str], graph: C
 
 def mergeelement( element):
     elementlist =[]
-    if not (element.is_sentence() or element.is_word() or element.is_document()):
+    if not (element.is_sentence() or element.is_word()):
         elementlist.append(element)
     for child in element.components:
         elementlist = elementlist + mergeelement(child)
@@ -79,42 +79,43 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
         if not element.is_sentence():
             elementlist = mergeelement(element)
             for index in elementlist:
-                if not G1.has_node(names[index]):            
-                    G1.add_node(names[index])
-                    node_size1.append(int(graph.importance[index]*1000))
+                if not index.is_document():
+                    if not G1.has_node(names[index]):            
+                        G1.add_node(names[index])
+                        node_size1.append(int(graph.importance[index]*1000))
 
-                if not G2.has_node(names[index]):  
-                    G2.add_node(names[index])
-                    node_size2.append(int(graph.importance[index]*1000))
+                    if not G2.has_node(names[index]):  
+                        G2.add_node(names[index])
+                        node_size2.append(int(graph.importance[index]*1000))
 
-                if not G3.has_node(names[index]):  
-                    G3.add_node(names[index])
-                    node_size3.append(int(graph.importance[index]*1000))
+                    if not G3.has_node(names[index]):  
+                        G3.add_node(names[index])
+                        node_size3.append(int(graph.importance[index]*1000))
 
-                if not G4.has_node(names[index]):  
-                    G4.add_node(names[index])
-                    node_size4.append(int(graph.importance[index]*1000))
+                    if not G4.has_node(names[index]):  
+                        G4.add_node(names[index])
+                        node_size4.append(int(graph.importance[index]*1000))
 
-                keywords = KeywordExtractor.extract_keywords(False, text=index.text, lang=lang, threshold=0.0)
-                count = len(keywords)
-                keywords.sort(key=lambda x:x[1])	
-                sorted_keywords = reversed(keywords)
-                string =''
-                if len(keywords) == 1:
-                    string+= keywords[0][1]
-                elif len(keywords)>1:
-                    string = keywords[0][1]
-                    for index2 in range(1, len(keywords)-1): 
-                        string +=', '+ keywords[index2][1]
+                    keywords = KeywordExtractor.extract_keywords(False, text=index.text, lang=lang, threshold=0.0)
+                    count = len(keywords)
+                    keywords.sort(key=lambda x:x[1])	
+                    sorted_keywords = reversed(keywords)
+                    string =''
+                    if len(keywords) == 1:
+                        string+= keywords[0][1]
+                    elif len(keywords)>1:
+                        string = keywords[0][1]
+                        for index2 in range(1, len(keywords)-1): 
+                            string +=', '+ keywords[index2][1]
 
 
-                textElement.append((names[index], string))
+                    textElement.append((names[index], string))
                 
                 
             
     for edge in edges:
         label =""
-        if( not (edge['source'].startswith('Sentence') or edge['source'].startswith('Sentence') or edge['source'].startswith('Document') or edge['source'].startswith('Document'))):
+        if( not (edge['source'].startswith('Sentence') or edge['target'].startswith('Sentence') or edge['source'].startswith('Document') or edge['target'].startswith('Document'))):
             
             for type in edge['types']:                
                 if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP' and float(type['weight'])>0:
