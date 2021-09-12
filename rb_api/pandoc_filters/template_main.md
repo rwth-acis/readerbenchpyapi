@@ -17,6 +17,12 @@ werden mit dunklen Kanten dargestellt. Achte bei der Betrachtung auch auf das ge
 zentral und gehen viele Verbindungen mit benachbarten Konzepten ein? Welche
 stehen eher am Rand und sind kaum mit den Knoten des Modells verbunden?
 
+Als Vergleich zu deinem Text zeigen wir dir auch den nächsten Seite anschließend das sogenannte
+"Expertenmodell", eine Darstellung der Musterlösung, auf den sich deine
+Schreibaufgabe bezieht. Dieses "Expertengraph" basiert auf dem Musterlösungtext und enthält die wichtigsten
+Wörter zum Thema -topicName- . Du kannst es gut zur Wiederholung und Überprüfung
+deines Wissensstandes nutzen: Schau dir die zentralen Begriffe an und überlege, ob
+du die Verbindungen, die davon ausgehen, nachvollziehen und erläutern kannst.
 
 
 \pagebreak
@@ -26,20 +32,15 @@ stehen eher am Rand und sind kaum mit den Knoten des Modells verbunden?
 |:--:|
 | *Abbildung (1): Ihre Schlüsselwortliste zum Thema -topicName-* |
 
-\pagebreak
-Als Vergleich zu deinem Text zeigen wir dir auf der nächsten Seite anschließend das sogenannte
-"Expertenmodell", eine Darstellung der Musterlösung, auf den sich deine
-Schreibaufgabe bezieht. Dieses "Expertengraph" basiert auf dem Musterlösungtext und enthält die wichtigsten
-Wörter zum Thema -topicName- . Du kannst es gut zur Wiederholung und Überprüfung
-deines Wissensstandes nutzen: Schau dir die zentralen Begriffe an und überlege, ob
-du die Verbindungen, die davon ausgehen, nachvollziehen und erläutern kannst.
+
+
 
 \pagebreak
 ###  Schlüsselwörter Der Musterlösung
 
 | -expert- |
 |:--:|
-| *Abbildung (2): Experten-Stichwortliste zum Thema -topicName-* |
+| *Abbildung (2): Expertenmodell zum Thema -topicName-* |
 
 \pagebreak
 ## Vergleich der Schlüsselwörter
@@ -78,6 +79,7 @@ Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
 | *-unterschied2-* |
 
+\pagebreak
 ## Vergleich der Kohäsion
 
 Jetzt, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text genauer zu betrachten, indem du den Zusammenhalt der Wörter in deinem Text und ihre Wichtigkeit berücksichtigst. Zu diesem Zweck wird ein Graph dargestellt, in dem die Knoten einen Teil des Textes darstellen und ihre Größe der Knoten die Wichtigkeit dieser Teile im Text wiedergibt, während die Kanten zwischen zwei Knoten die Überlappung des Textes darstellen, der diese Knoten darstellt (je dunkler die Farbe der Kante, desto größer die Überlappung). Anhand dieses Graphs kannst du erkennen, welche Wörter dir fehlen oder welche du in einem Absatz streichen solltest, um der Korrektheit so nahe wie möglich zu kommen.
