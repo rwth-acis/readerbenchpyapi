@@ -159,5 +159,5 @@ def keywordsPost():
     dataName =  params.get('saveAs') 
     textType = params.get('type')
     JsonName = params.get('topicName')
-    keywords = KeywordExtractor.extract_keywords(text=text, lang=lang)
+    keywords = KeywordExtractor.extract_keywords(True, text=text, lang=lang)
     return jsonify(transform_for_visualization(dataName, JsonName, textType, keywords=keywords, lang=lang))

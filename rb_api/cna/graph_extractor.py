@@ -24,7 +24,7 @@ from rb.processings.keywords.keywords_extractor import KeywordExtractor
 
 
 def encode_element(element: TextElement, names: Dict[TextElement, str], graph: CnaGraph,  lang: Lang):
-    keywords = KeywordExtractor.extract_keywords(text=element.text, lang=lang)
+    keywords = KeywordExtractor.extract_keywords(False, text=element.text, lang=lang)
     count = len(keywords)
     keywords.sort(key=lambda x:x[1])	
     sorted_keywords = reversed(keywords)
@@ -42,7 +42,7 @@ def encode_element(element: TextElement, names: Dict[TextElement, str], graph: C
 
 def mergeelement( element):
     elementlist =[]
-    if not (element.is_sentence() or element.is_word()):
+    if not (element.is_sentence() or element.is_word() or element.is_document()):
         elementlist.append(element)
     for child in element.components:
         elementlist = elementlist + mergeelement(child)
@@ -95,7 +95,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
                     G4.add_node(names[index])
                     node_size4.append(int(graph.importance[index]*1000))
 
-                keywords = KeywordExtractor.extract_keywords(text=index.text, lang=lang, threshold=0.0)
+                keywords = KeywordExtractor.extract_keywords(False, text=index.text, lang=lang, threshold=0.0)
                 count = len(keywords)
                 keywords.sort(key=lambda x:x[1])	
                 sorted_keywords = reversed(keywords)
@@ -114,7 +114,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
             
     for edge in edges:
         label =""
-        if( not (edge['source'].startswith('Sentence') or edge['source'].startswith('Sentence'))):
+        if( not (edge['source'].startswith('Sentence') or edge['source'].startswith('Sentence') or edge['source'].startswith('Document') or edge['source'].startswith('Document'))):
             
             for type in edge['types']:                
                 if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP' and float(type['weight'])>0:
