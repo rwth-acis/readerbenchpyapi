@@ -87,9 +87,9 @@ Jetzt, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text genau
 Diese Grafik gilt als perfekt, wenn die Absätze Ihres Textes und die Korrektur eng miteinander verknüpft sind (dunkelblaue Farbe) oder überhaupt nicht verknüpft sind und die eng miteinander verknüpften Knoten zwischen den Absätze Ihres Textes und der Korrektur die gleiche Größe haben.
 
 Um deinen Text zu verbessern, solltest du so nah wie möglich an das oben definierte perfekte Graphen herankommen. Dafür musst du die Verbindungen zwischen den Absätze deines Textes und denen der Korrektur verstärken, indem du die fehlenden Wörter hinzufügst, wenn ihre gemeinsame Kante nicht zu vernachlässigen ist, oder die gemeinsamen Wörter streichst, wenn die Kante, die sie verbindet, sehr schwach ist. 
-Außerdem musst du entweder verschiedene Wörter entfernen oder die fehlenden Wörter in einem Absatz ergänzen, wenn dieser größer oder kleiner ist als der Teil(Absatz oder Dokument) des Korrekturtextes, mit dem er eng verbunden ist.
+Außerdem musst du entweder verschiedene Wörter entfernen oder die fehlenden Wörter in einem Absatz ergänzen, wenn dieser größer oder kleiner ist als der Teil(Absatz) des Korrekturtextes, mit dem er eng verbunden ist.
 
-Nach dem Graph folgt eine Liste mit den Schlüsselwörtern der Textteile oder Absätze, die im Graph enthalten sind. Du wirst die brauchen, um zu wissen, welches Stichwort zu löschen oder zu erhöhen 
+Nach dem Graph folgt eine Liste mit den wichtigen Wörtern der Textteile oder Absätze, die im Graph enthalten sind. Du wirst die brauchen, um zu wissen, welches Stichwort z.B. um zu wissen, welches Schlüsselwort eines Absatzes der Korrektur Sie in Ihren Absatz einfügen sollten.
 
 | die Absätze, die mit 1 beginnen, beziehen sich auf deinen Text und die, die mit 2 beginnen, auf den Expertentext|
 | --- | 
