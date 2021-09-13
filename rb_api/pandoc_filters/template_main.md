@@ -82,18 +82,16 @@ Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 \pagebreak
 ## Vergleich der Kohäsion
 
-Jetzt, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text genauer zu betrachten, indem du den Zusammenhalt der Wörter in deinem Text und ihre Wichtigkeit berücksichtigst. Zu diesem Zweck wird ein Graph dargestellt, in dem die Knoten einen Teil des Textes darstellen und ihre Größe der Knoten die Wichtigkeit dieser Teile im Text wiedergibt, während die Kanten zwischen zwei Knoten die Überlappung des Textes darstellen, der diese Knoten darstellt (je dunkler die Farbe der Kante, desto größer die Überlappung). Anhand dieses Graphs kannst du erkennen, welche Wörter dir fehlen oder welche du in einem Absatz streichen solltest, um der Korrektheit so nahe wie möglich zu kommen.
+Jetzt, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text genauer zu betrachten, indem du den Zusammenhalt der Wörter in deinem Text und ihre Wichtigkeit berücksichtigst. Zu diesem Zweck wird ein Graph dargestellt, in dem die Knoten die Absätze des Textes darstellen und ihre Größe der Knoten die Wichtigkeit diesen Absätze im Text wiedergibt, während die Kanten zwischen zwei Knoten die Überlappung des Textes darstellen, der diese Knoten darstellt (je dunkler die Farbe der Kante, desto größer die Überlappung). Anhand dieses Graphs kannst du erkennen, welche Wörter dir fehlen oder welche du in einem Absatz streichen solltest, um der Korrektheit so nahe wie möglich zu kommen.
 
-Diese Grafik gilt als perfekt, wenn die Teile Ihres Textes (Absatz und Dokument) und die Korrektur eng miteinander verknüpft sind (dunkelblaue Farbe) oder überhaupt nicht verknüpft sind und die eng miteinander verknüpften Knoten zwischen den Teilen Ihres Textes und der Korrektur die gleiche Größe haben.
+Diese Grafik gilt als perfekt, wenn die Absätze Ihres Textes und die Korrektur eng miteinander verknüpft sind (dunkelblaue Farbe) oder überhaupt nicht verknüpft sind und die eng miteinander verknüpften Knoten zwischen den Absätze Ihres Textes und der Korrektur die gleiche Größe haben.
 
-Um deinen Text zu verbessern, solltest du so nah wie möglich an das oben definierte perfekte Graphen herankommen. Dafür musst du die Verbindungen zwischen den Teilen deines Textes und denen der Korrektur verstärken, indem du die fehlenden Wörter hinzufügst, wenn ihre gemeinsame Kante nicht zu vernachlässigen ist, oder die gemeinsamen Wörter streichst, wenn die Kante, die sie verbindet, sehr schwach ist. 
-Außerdem musst du entweder verschiedene Wörter entfernen oder die fehlenden Wörter in einem Absatz oder Dokument ergänzen, wenn dieser größer oder kleiner ist als der Teil(Absatz oder Dokument) des Korrekturtextes, mit dem er eng verbunden ist.
-Im Folgenden findest du einige Beispiele dafür, wie du an den Graph herangehen solltest und wie du daraus lernen kannst. Natürlich kannst e sdir auch andere Lernmöglichkeiten anfallen:
+Um deinen Text zu verbessern, solltest du so nah wie möglich an das oben definierte perfekte Graphen herankommen. Dafür musst du die Verbindungen zwischen den Absätze deines Textes und denen der Korrektur verstärken, indem du die fehlenden Wörter hinzufügst, wenn ihre gemeinsame Kante nicht zu vernachlässigen ist, oder die gemeinsamen Wörter streichst, wenn die Kante, die sie verbindet, sehr schwach ist. 
+Außerdem musst du entweder verschiedene Wörter entfernen oder die fehlenden Wörter in einem Absatz ergänzen, wenn dieser größer oder kleiner ist als der Teil(Absatz oder Dokument) des Korrekturtextes, mit dem er eng verbunden ist.
 
+Nach dem Graph folgt eine Liste mit den Schlüsselwörtern der Textteile oder Absätze, die im Graph enthalten sind. Du wirst die brauchen, um zu wissen, welches Stichwort zu löschen oder zu erhöhen 
 
-Nach dem Graph folgt eine Liste mit den Schlüsselwörtern der Textteile, die im Graph enthalten sind. Du wirst die brauchen, um zu wissen, welches Stichwort zu löschen oder zu erhöhen 
-
-| die Textteile, die mit 1 beginnen, beziehen sich auf deinen Text und die, die mit 2 beginnen, auf den Expertentext|
+| die Absätze, die mit 1 beginnen, beziehen sich auf deinen Text und die, die mit 2 beginnen, auf den Expertentext|
 | --- | 
 
 \pagebreak
