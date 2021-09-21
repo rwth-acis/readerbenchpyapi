@@ -16,6 +16,7 @@ import sys
 import json
 import pandas as pd
 import numpy as np
+import seaborn as sns
 import networkx as nx
 import logging
 import os
@@ -112,16 +113,21 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
                     textElement.append((names[index], string))
                 
                 
-            
+    X = []
+    Y = []
+    Z = []        
     for edge in edges:
         label =""
         if( not (edge['source'].startswith('Sentence') or edge['target'].startswith('Sentence') or edge['source'].startswith('Document') or edge['target'].startswith('Document'))):
             
-            for type in edge['types']:                
+            for type in edge['types']:           
                 if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP' and float(type['weight'])>0:
                     if not G1.has_edge(edge['source'], edge['target']):
                         G1.add_edge(edge['source'], edge['target'])
                         value1.append((float(type['weight'])+0.6)*500)
+                        X.append(edge['source'])
+                        Y.append(edge['target'])
+                        Z.append((float(type['weight'])))
                         #edge_labels[(edge['source'], edge['target'])]= label
                 if type['name']=='LEXICAL_OVERLAP: TOPIC_OVERLAP' and float(type['weight'])>0:
                     if not G2.has_edge(edge['source'], edge['target']):
@@ -179,19 +185,24 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     }
     plt.figure(figsize=(8, 9))
     nx.draw(G1, pos1, **options1)
-    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content.png')
+    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content.png', dpi=300)
+    plt.clf()
+    data = pd.DataFrame(data={'x':X, 'y':Y, 'z':Z})
+    data = data.pivot(index='x', columns='y', values='z')
+    sns.heatmap(data)
+    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content_heat.png', dpi=300)
     plt.clf()
     plt.figure(figsize=(8, 7))
     nx.draw(G2, pos2, **options2)
-    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_topic.png')
+    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_topic.png', dpi=300)
     plt.clf()
     plt.figure(figsize=(8, 7))
     nx.draw(G3, pos3, **options3)
-    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_argument.png')
+    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_argument.png', dpi=300)
     plt.clf()
     plt.figure(figsize=(8, 7))
     nx.draw(G4, pos4, **options4)
-    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_word2vec.png')
+    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_word2vec.png', dpi=300)
     plt.clf()
     data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
     data.update({dataName: textElement})

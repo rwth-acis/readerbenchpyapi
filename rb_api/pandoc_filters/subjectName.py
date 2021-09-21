@@ -246,6 +246,16 @@ def caps(elem, doc):
 
             return Image(alt, url=src, title='')
         
+        if elem.text == "-heat-":
+            caption = "caption"
+            src = 'rb_api/pandoc_filters/images/'+data['subject']+str(data['questionNumber'])+'_cna_content_heat.png'
+            alt = Str(caption)
+
+            if not os.path.isfile('rb_api/pandoc_filters/images/'+data['subject']+str(data['questionNumber'])+'_cna_content_heat.png'):
+                return None
+
+            return Image(alt, url=src, title='')
+        
         if elem.text == "-topic-":
             caption = "caption"
             src = 'rb_api/pandoc_filters/images/'+data['subject']+str(data['questionNumber'])+'_cna_topic.png'

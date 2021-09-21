@@ -6,7 +6,7 @@ Schreibaufgabe erstellt. Dabei wurden die Wissensstrukturen, die dein Text
 enthältgraphisch dargestellt, mit den Seminartexten verglichen und für dich
 interpretiert.
 
-## Schlüsselwörter
+## 1.Schlüsselwörter
 
 In diesem Abschnitt werden die Begriffe aus deinem Text präsentiert und mit dem Modell der Musterlösung(sog. Expertentext) verglichen. So kannst du sich ein Bild davon machen, welche Begriffe von dir erwartet wurden und welche du verwendet hast. Wenn sich die von dir am häufigsten verwendeten Begriffe von denen der Musterlösung unterscheiden, bedenkt, dass es sich um Synonyme handeln kann. Wenn sie es nicht sind, dann unterscheiden sich deine Begriffe von der Begriffe der Musterlösung. 
 
@@ -80,7 +80,7 @@ Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 | *-unterschied2-* |
 
 \pagebreak
-## Vergleich der Kohäsion
+## 2.Vergleich der Kohäsion
 
 Jetzt, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text genauer zu betrachten, indem du den Zusammenhalt der Wörter in deinem Text und ihre Wichtigkeit berücksichtigst. Zu diesem Zweck wird ein Graph dargestellt, in dem die Knoten die Absätze des Textes darstellen und ihre Größe der Knoten die Wichtigkeit diesen Absätze im Text wiedergibt, während die Kanten zwischen zwei Knoten die Überlappung des Textes darstellen, der diese Knoten darstellt (je dunkler die Farbe der Kante, desto größer die Überlappung). Anhand dieses Graphs kannst du erkennen, welche Wörter dir fehlen oder welche du in einem Absatz streichen solltest, um der Korrektheit so nahe wie möglich zu kommen.
 
@@ -102,6 +102,10 @@ LEXICAL_OVERLAP: CONTENT_OVERLAP: prüft, ob die verwendeten Wörter identisch s
 | -content- |
 |:--:|
 | *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
+
+| -heat- |
+|:--:|
+| *Abbildung (4): Heatmap Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
 
 
 
