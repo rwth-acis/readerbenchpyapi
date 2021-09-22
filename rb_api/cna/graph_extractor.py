@@ -125,9 +125,10 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
                     if not G1.has_edge(edge['source'], edge['target']):
                         G1.add_edge(edge['source'], edge['target'])
                         value1.append((float(type['weight'])+0.6)*500)
-                        X.append(edge['source'])
-                        Y.append(edge['target'])
-                        Z.append((float(type['weight'])))
+                        if edge['source'].startswith('Paragraph 1') and edge['target'].startswith('Paragraph 2'):
+                            X.append(edge['source'])
+                            Y.append(edge['target'])
+                            Z.append((float(type['weight'])))
                         #edge_labels[(edge['source'], edge['target'])]= label
                 if type['name']=='LEXICAL_OVERLAP: TOPIC_OVERLAP' and float(type['weight'])>0:
                     if not G2.has_edge(edge['source'], edge['target']):
@@ -190,6 +191,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     data = pd.DataFrame(data={'x':X, 'y':Y, 'z':Z})
     data = data.pivot(index='x', columns='y', values='z')
     sns.heatmap(data)
+    plt.figure(figsize=(8, 9))
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content_heat.png', dpi=300)
     plt.clf()
     plt.figure(figsize=(8, 7))
@@ -200,7 +202,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     nx.draw(G3, pos3, **options3)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_argument.png', dpi=300)
     plt.clf()
-    plt.figure(figsize=(8, 7))
+    plt.figure(figsize=(8, 7))  
     nx.draw(G4, pos4, **options4)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_word2vec.png', dpi=300)
     plt.clf()
