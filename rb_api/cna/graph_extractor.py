@@ -75,6 +75,8 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     value4= []
     node_size4 = []
 
+
+    color_map = []
     textElement=[]
     for element in docs:
         if not element.is_sentence():
@@ -82,20 +84,36 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
             for index in elementlist:
                 if not index.is_document():
                     if not G1.has_node(names[index]):            
-                        G1.add_node(names[index])
+                        G1.add_node(names[index].replace("Paragraph", "Absatz"))
                         node_size1.append(int(graph.importance[index]*1000))
+                        if (names[index].startswith('Paragraph 1')):
+                            color_map.append('#fc0303')
+                        if (names[index].startswith('Paragraph 2')):
+                            color_map.append('green')
 
                     if not G2.has_node(names[index]):  
-                        G2.add_node(names[index])
+                        G2.add_node(names[index].replace("Paragraph", "Absatz"))
                         node_size2.append(int(graph.importance[index]*1000))
+                        if (names[index].startswith('Paragraph 1')):
+                            color_map.append('#fc0303')
+                        if (names[index].startswith('Paragraph 2')):
+                            color_map.append('green')
 
                     if not G3.has_node(names[index]):  
-                        G3.add_node(names[index])
+                        G3.add_node(names[index].replace("Paragraph", "Absatz"))
                         node_size3.append(int(graph.importance[index]*1000))
+                        if (names[index].startswith('Paragraph 1')):
+                            color_map.append('#fc0303')
+                        if (names[index].startswith('Paragraph 2')):
+                            color_map.append('green')
 
                     if not G4.has_node(names[index]):  
-                        G4.add_node(names[index])
+                        G4.add_node(names[index].replace("Paragraph", "Absatz"))
                         node_size4.append(int(graph.importance[index]*1000))
+                        if (names[index].startswith('Paragraph 1')):
+                            color_map.append('#fc0303')
+                        if (names[index].startswith('Paragraph 2')):
+                            color_map.append('green')
 
                     keywords = KeywordExtractor.extract_keywords(False, text=index.text, lang=lang, threshold=0.0)
                     count = len(keywords)
@@ -123,11 +141,11 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
             for type in edge['types']:           
                 if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP' and float(type['weight'])>0:
                     if not G1.has_edge(edge['source'], edge['target']):
-                        G1.add_edge(edge['source'], edge['target'])
+                        G1.add_edge(edge['source'].replace("Paragraph", "Absatz"), edge['target'].replace("Paragraph", "Absatz"))
                         value1.append((float(type['weight'])+0.6)*500)
                         if (edge['source'].startswith('Paragraph 1') and edge['target'].startswith('Paragraph 2')):
-                            X.append(edge['source'])
-                            Y.append(edge['target'])
+                            X.append(edge['source'].replace("Paragraph", "Absatz"))
+                            Y.append(edge['target'].replace("Paragraph", "Absatz"))
                             Z.append((float(type['weight'])))
                         #edge_labels[(edge['source'], edge['target'])]= label
                 if type['name']=='LEXICAL_OVERLAP: TOPIC_OVERLAP' and float(type['weight'])>0:
@@ -150,7 +168,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     log.info(G3.number_of_nodes())
     pos1 = nx.spring_layout(G1, k=2)
     options1 = {
-    "node_color": "#fc0303",
+    "node_color": color_map,
     "edge_color": value1,
     "width": 2,
     "edge_cmap": plt.cm.Blues,
