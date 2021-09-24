@@ -95,19 +95,10 @@ Nach dem Graph folgt eine Liste mit den wichtigen Wörtern der Textteile oder Ab
 | --- | 
 
 \pagebreak
-### LEXICAL_OVERLAP: CONTENT_OVERLAP
-
-LEXICAL_OVERLAP: CONTENT_OVERLAP: prüft, ob die verwendeten Wörter identisch sind oder nicht. Ein großer Wert des Attributwert bedeutet, dass fast die gleichen Wörter verwendet werden.
 
 | -content- |
 |:--:|
 | *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
-
-| -heat- |
-|:--:|
-| *Abbildung (4): Heatmap Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
-
-
 
 
 ### Textelementen

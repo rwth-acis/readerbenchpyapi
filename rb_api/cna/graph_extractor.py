@@ -76,47 +76,51 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     node_size4 = []
 
 
-    color_map = []
+    color_map1 = []
+    color_map2 = []
+    color_map3 = []
+    color_map4 = []
+
     textElement=[]
     for element in docs:
         if not element.is_sentence():
             elementlist = mergeelement(element)
             for index in elementlist:
                 if not index.is_document():
-                    if not G1.has_node(names[index]): 
+                    if not G1.has_node(names[index].replace("Paragraph", "Absatz")): 
                         if (names[index].startswith('Paragraph 1')):
-                            color_map.append('#A0CBE2')
+                            color_map1.append('#A0CBE2')
                         elif (names[index].startswith('Paragraph 2')):
-                            color_map.append('green')  
-                        else:
-                            color_map.append('#fc0303')         
+                            color_map1.append('green')          
                         G1.add_node(names[index].replace("Paragraph", "Absatz"))
                         node_size1.append(int(graph.importance[index]*1000))
+                        log.info(names[index])
+                        
                         
 
                     if not G2.has_node(names[index]):  
                         G2.add_node(names[index].replace("Paragraph", "Absatz"))
                         node_size2.append(int(graph.importance[index]*1000))
                         if (names[index].startswith('Paragraph 1')):
-                            color_map.append('#fc0303')
+                            color_map2.append('#fc0303')
                         if (names[index].startswith('Paragraph 2')):
-                            color_map.append('green')
+                            color_map2.append('green')
 
                     if not G3.has_node(names[index]):  
                         G3.add_node(names[index].replace("Paragraph", "Absatz"))
                         node_size3.append(int(graph.importance[index]*1000))
                         if (names[index].startswith('Paragraph 1')):
-                            color_map.append('#fc0303')
+                            color_map3.append('#fc0303')
                         if (names[index].startswith('Paragraph 2')):
-                            color_map.append('green')
+                            color_map3.append('green')
 
                     if not G4.has_node(names[index]):  
                         G4.add_node(names[index].replace("Paragraph", "Absatz"))
                         node_size4.append(int(graph.importance[index]*1000))
                         if (names[index].startswith('Paragraph 1')):
-                            color_map.append('#fc0303')
+                            color_map4.append('#fc0303')
                         if (names[index].startswith('Paragraph 2')):
-                            color_map.append('green')
+                            color_map4.append('green')
 
                     keywords = KeywordExtractor.extract_keywords(False, text=index.text, lang=lang, threshold=0.0)
                     count = len(keywords)
@@ -134,22 +138,24 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
                     textElement.append((names[index], string))
                 
                 
-    X = []
-    Y = []
-    Z = []        
+    #X = []
+    #Y = []
+    #Z = []        
     for edge in edges:
         label =""
         if( not (edge['source'].startswith('Sentence') or edge['target'].startswith('Sentence') or edge['source'].startswith('Document') or edge['target'].startswith('Document'))):
             
             for type in edge['types']:           
                 if type['name']=='LEXICAL_OVERLAP: CONTENT_OVERLAP' and float(type['weight'])>0:
-                    if not G1.has_edge(edge['source'], edge['target']):
+                    if not G1.has_edge(edge['source'].replace("Paragraph", "Absatz"), edge['target'].replace("Paragraph", "Absatz")):
                         G1.add_edge(edge['source'].replace("Paragraph", "Absatz"), edge['target'].replace("Paragraph", "Absatz"))
                         value1.append((float(type['weight'])+0.6)*500)
-                        if (edge['source'].startswith('Paragraph 1') and edge['target'].startswith('Paragraph 2')):
-                            X.append(edge['source'].replace("Paragraph", "Absatz"))
-                            Y.append(edge['target'].replace("Paragraph", "Absatz"))
-                            Z.append((float(type['weight'])))
+                        log.info((float(type['weight'])+0.6)*500)
+                        log.info(edge['source']+edge['target'])
+                        #if (edge['source'].startswith('Paragraph 1') and edge['target'].startswith('Paragraph 2')):
+                            #X.append(edge['source'].replace("Paragraph", "Absatz"))
+                            #Y.append(edge['target'].replace("Paragraph", "Absatz"))
+                            #Z.append((float(type['weight'])))
                         #edge_labels[(edge['source'], edge['target'])]= label
                 if type['name']=='LEXICAL_OVERLAP: TOPIC_OVERLAP' and float(type['weight'])>0:
                     if not G2.has_edge(edge['source'], edge['target']):
@@ -169,9 +175,10 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
                 #edge_labels[(edge['source'], edge['target'])]= label
     log.info(len(node_size3))
     log.info(G3.number_of_nodes())
+    log.info(G1.number_of_edges())
     pos1 = nx.spring_layout(G1, k=2)
     options1 = {
-    "node_color": color_map,
+    "node_color": color_map1,
     "edge_color": value1,
     "width": 2,
     "edge_cmap": plt.cm.Blues,
@@ -209,23 +216,23 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     nx.draw(G1, pos1, **options1)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content.png', dpi=300)
     plt.clf()
-    data = pd.DataFrame(data={'x':X, 'y':Y, 'z':Z})
-    data = data.pivot(index='x', columns='y', values='z')
-    sns.heatmap(data)
-    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content_heat.png', dpi=300)
-    plt.clf()
-    plt.figure(figsize=(8, 7))
-    nx.draw(G2, pos2, **options2)
-    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_topic.png', dpi=300)
-    plt.clf()
-    plt.figure(figsize=(8, 7))
-    nx.draw(G3, pos3, **options3)
-    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_argument.png', dpi=300)
-    plt.clf()
-    plt.figure(figsize=(8, 7))  
-    nx.draw(G4, pos4, **options4)
-    plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_word2vec.png', dpi=300)
-    plt.clf()
+    #data = pd.DataFrame(data={'x':X, 'y':Y, 'z':Z})
+    #data = data.pivot(index='x', columns='y', values='z')
+    #sns.heatmap(data)
+    #plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content_heat.png', dpi=300)
+    #plt.clf()
+    #plt.figure(figsize=(8, 7))
+    #nx.draw(G2, pos2, **options2)
+    #plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_topic.png', dpi=300)
+    #plt.clf()
+    #plt.figure(figsize=(8, 7))
+    #nx.draw(G3, pos3, **options3)
+    #plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_argument.png', dpi=300)
+    #plt.clf()
+    #plt.figure(figsize=(8, 7))  
+    #nx.draw(G4, pos4, **options4)
+    #plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_word2vec.png', dpi=300)
+    #plt.clf()
     data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
     data.update({dataName: textElement})
     with open('rb_api/pandoc_filters/'+JsonName+'.json', 'w', encoding='utf-8') as f:
