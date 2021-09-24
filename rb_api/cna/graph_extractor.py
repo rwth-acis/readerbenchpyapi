@@ -83,13 +83,16 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
             elementlist = mergeelement(element)
             for index in elementlist:
                 if not index.is_document():
-                    if not G1.has_node(names[index]):            
+                    if not G1.has_node(names[index]): 
+                        if (names[index].startswith('Paragraph 1')):
+                            color_map.append('#A0CBE2')
+                        elif (names[index].startswith('Paragraph 2')):
+                            color_map.append('green')  
+                        else:
+                            color_map.append('#fc0303')         
                         G1.add_node(names[index].replace("Paragraph", "Absatz"))
                         node_size1.append(int(graph.importance[index]*1000))
-                        if (names[index].startswith('Paragraph 1')):
-                            color_map.append('#fc0303')
-                        if (names[index].startswith('Paragraph 2')):
-                            color_map.append('green')
+                        
 
                     if not G2.has_node(names[index]):  
                         G2.add_node(names[index].replace("Paragraph", "Absatz"))
