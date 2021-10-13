@@ -34,6 +34,9 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     vector_model: VectorModel = get_default_model(lang)
     edge_list, node_list = [], []
     
+    #sort the keywords
+    
+
     G = nx.Graph()
     edge_labels={}
     
@@ -160,4 +163,4 @@ def keywordsPost():
     textType = params.get('type')
     JsonName = params.get('topicName')
     keywords = KeywordExtractor.extract_keywords(True, text=text, lang=lang)
-    return jsonify(transform_for_visualization(dataName, JsonName, textType, keywords=keywords, lang=lang))
+    return jsonify(transform_for_visualization(dataName, JsonName, textType, keywords=keywords, lang=lang, max_keywords=15))
