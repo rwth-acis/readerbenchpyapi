@@ -29,10 +29,11 @@ app = Flask(__name__)
 def keywordsOption():
     return ""
 
-def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tuple[int, Word]], lang: Lang) -> Dict:
+def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tuple[int, Word]], keywordsWithmax: List[Tuple[int, Word]], lang: Lang) -> Dict:
     log = logging.getLogger("my-logger")
     vector_model: VectorModel = get_default_model(lang)
     edge_list, node_list = [], []
+    edge_list2, node_list2 = [], []
     
     #sort the keywords
     
@@ -53,6 +54,15 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
             "active": True,
             "degree": str(max(0, float(kw[0])))
         })
+
+    for kw in keywordsWithmax:
+        node_list2.append({
+            "type": "Word",
+            "uri": kw[1],
+            "displayName": kw[1],
+            "active": True,
+            "degree": str(max(0, float(kw[0])))
+        })
         G.add_node(kw[1],weight=max(0, float(kw[0])))
         node_size.append(int(max(0, float(kw[0]))*1000))
 
@@ -62,6 +72,20 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
                 sim = vector_model.similarity(vector_model.get_vector(kw1[1]), vector_model.get_vector(kw2[1]))
                 if i != j and sim >= 0.3:
                     edge_list.append({
+                        "edgeType": "SemanticDistance",
+                        "score": str(max(sim, 0)),
+                        "sourceUri": kw1[1],
+                        "targetUri": kw2[1]
+                    })
+            except:
+                print("Problem with " + kw1[1] + " or " + kw2[1])
+
+    for i, kw1 in enumerate(keywordsWithmax):
+        for j, kw2 in enumerate(keywordsWithmax):
+            try:
+                sim = vector_model.similarity(vector_model.get_vector(kw1[1]), vector_model.get_vector(kw2[1]))
+                if i != j and sim >= 0.3:
+                    edge_list2.append({
                         "edgeType": "SemanticDistance",
                         "score": str(max(sim, 0)),
                         "sourceUri": kw1[1],
@@ -163,4 +187,5 @@ def keywordsPost():
     textType = params.get('type')
     JsonName = params.get('topicName')
     keywords = KeywordExtractor.extract_keywords(True, text=text, lang=lang)
-    return jsonify(transform_for_visualization(dataName, JsonName, textType, keywords=keywords, lang=lang, max_keywords=15))
+    keywordsWithmax = KeywordExtractor.extract_keywords(True, text=text, lang=lang, max_keywords=15)
+    return jsonify(transform_for_visualization(dataName, JsonName, textType, keywords=keywords, keywordsWithmax=keywordsWithmax, lang=lang))
