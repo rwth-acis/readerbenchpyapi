@@ -133,7 +133,7 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     plt.clf()
     data = getJson('rb_api/pandoc_filters/'+JsonName+'.json')
     data.update({textType : 'rb_api/pandoc_filters/images/'+dataName+'.png'})
-    data.update({dataName : node_list2})
+    data.update({dataName : node_list})
     with open('rb_api/pandoc_filters/'+JsonName+'.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
     return {

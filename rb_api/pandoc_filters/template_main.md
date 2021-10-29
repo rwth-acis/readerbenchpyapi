@@ -17,10 +17,8 @@ werden mit dunklen Kanten dargestellt. Achte bei der Betrachtung auch auf das ge
 zentral und gehen viele Verbindungen mit benachbarten Konzepten ein? Welche
 stehen eher am Rand und sind kaum mit den Knoten des Modells verbunden?
 
-Als Vergleich zu deinem Text zeigen wir dir auch den nächsten Seite anschließend das sogenannte
-"Expertenmodell", eine Darstellung der Musterlösung, auf den sich deine
-Schreibaufgabe bezieht. Dieses "Expertengraph" basiert auf dem Musterlösungtext und enthält die wichtigsten
-Wörter zum Thema -topicName- . Du kannst es gut zur Wiederholung und Überprüfung
+Als Vergleich zu deinem Text zeigen wir dir eine Darstellung der Musterlösung, auf den sich deine
+Schreibaufgabe bezieht. Du kannst es gut zur Wiederholung und Überprüfung
 deines Wissensstandes nutzen: Schau dir die zentralen Begriffe an und überlege, ob
 du die Verbindungen, die davon ausgehen, nachvollziehen und erläutern kannst.
 
@@ -49,7 +47,7 @@ In diesem Abschnitt wird deine Schreibaufgabe zum Thema  -topicName- mit dem
 entsprechenden Seminartext verglichen. Natürlich kannst du das auch selbst tun,
 indem du die beiden vorher abgebildeten Graphen betrachtest und nach
 Gemeinsamkeiten und Unterschieden suchst. Als Hilfestellung für diesen Vergleich
-bieten wir in diesem Abschnitt zwei Wortlisten an.
+bieten wir in diesem Abschnitt drei Wortlisten an.
 
 
 ### Gemeinsame Schlüsselwörter
