@@ -125,7 +125,7 @@ def transform_for_visualization(dataName, JsonName, textType, keywords: List[Tup
     "with_labels": True,
     "node_size":node_size 
     }
-    plt.figure(figsize=(8, 9.7))
+    plt.figure(figsize=(8, 5))
     nx.draw(G, pos, **options)
     # Custom the nodes:
     #nx.draw(G, with_labels=True, node_color='skyblue', node_size=1500, edge_color=df['value'], width=10.0, edge_cmap=plt.cm.Blues)

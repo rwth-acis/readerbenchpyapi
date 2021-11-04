@@ -212,7 +212,7 @@ def compute_nxGraph(dataName, JsonName, docs, names, graph, edges, lang):
     "with_labels": True,
     "node_size":node_size4
     }
-    plt.figure(figsize=(8, 9))
+    plt.figure(figsize=(8, 9.7))
     nx.draw(G1, pos1, **options1)
     plt.savefig('rb_api/pandoc_filters/images/'+dataName+'_content.png', dpi=300)
     plt.clf()

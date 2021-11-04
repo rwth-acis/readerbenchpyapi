@@ -23,7 +23,7 @@ deines Wissensstandes nutzen: Schau dir die zentralen Begriffe an und überlege,
 du die Verbindungen, die davon ausgehen, nachvollziehen und erläutern kannst.
 
 
-\pagebreak
+
 ### Deine Schlüsselwörter
 
 | -student- |
@@ -40,7 +40,7 @@ du die Verbindungen, die davon ausgehen, nachvollziehen und erläutern kannst.
 |:--:|
 | *Abbildung (2): Expertenmodell zum Thema -topicName-* |
 
-\pagebreak
+
 ## Vergleich der Schlüsselwörter
 
 In diesem Abschnitt wird deine Schreibaufgabe zum Thema  -topicName- mit dem
@@ -77,7 +77,7 @@ Die Wörter sind in der Reihenfolge ihrer Wichtigkeit geordnet.
 
 | *-unterschied2-* |
 
-\pagebreak
+
 ## 2.Vergleich der Kohäsion
 
 Jetzt, da du die fehlenden Wörter kennst, ist es an der Zeit, deinen Text genauer zu betrachten, indem du den Zusammenhalt der Wörter in deinem Text und ihre Wichtigkeit berücksichtigst. Zu diesem Zweck wird ein Graph dargestellt, in dem die Knoten die Absätze des Textes darstellen und ihre Größe der Knoten die Wichtigkeit diesen Absätze im Text wiedergibt, während die Kanten zwischen zwei Knoten die Überlappung des Textes darstellen, der diese Knoten darstellt (je dunkler die Farbe der Kante, desto größer die Überlappung). Anhand dieses Graphs kannst du erkennen, welche Wörter dir fehlen oder welche du in einem Absatz streichen solltest, um der Korrektheit so nahe wie möglich zu kommen.
