@@ -98,7 +98,7 @@ Nach dem Graph folgt eine Liste mit den wichtigen Wörtern der Textteile oder Ab
 |:--:|
 | *Abbildung (3): Kohäsionsanalyse(LEXICAL_OVERLAP: CONTENT_OVERLAP) zum Thema -topicName-* |
 
-
+\pagebreak
 ### Textelementen
 <!-- textelementen -->
 
